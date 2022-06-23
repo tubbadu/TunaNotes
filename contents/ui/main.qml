@@ -232,7 +232,7 @@ Item {
 								} else if (event.key == shiftTabKey){
 
 								} else if (event.key == escKey){
-									focus = false
+									//focus = false
 								}
 							}
 
