@@ -1,0 +1,20 @@
+[Desktop Entry]
+Name=plasmaNotes
+Comment=take markdown notes easily in a plasmoid
+
+Icon=knotes
+Type=Service
+X-KDE-ServiceTypes=Plasma/Applet
+
+X-Plasma-API=declarativeappletscript
+X-Plasma-MainScript=ui/main.qml
+
+X-KDE-PluginInfo-Author=tubbadu
+X-KDE-PluginInfo-Email=tubbadu@gmail.com
+X-KDE-PluginInfo-Name=com.github.plasmaNotes
+X-KDE-PluginInfo-Version=1.1
+X-KDE-PluginInfo-Website=https://github.com/tubbadu/plasmaNotes
+X-KDE-PluginInfo-Category=Utilities
+X-KDE-PluginInfo-License=GPL
+X-Plasma-NotificationArea=true
+
