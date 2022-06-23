@@ -66,9 +66,9 @@ Item {
 	}
 
 	function exportMarkdown(){
-		let doc = lView.itemAtIndex(0).getText()
-		for(let i=1; i<lView.model.count; i++){
-			doc = doc + "\n" + lView.itemAtIndex(i).getText()
+		let doc = ""
+		for(let i=0; i<lView.model.count; i++){
+			doc = doc + lView.itemAtIndex(i).getText()+ "\n"
 		}
 		saveFile("/home/tubbadu/prova.md", doc)
 	}
@@ -78,7 +78,6 @@ Item {
 		let doc = openFile("/home/tubbadu/prova.md").split("\n")
 		for (let i=0; i<doc.length; i++){
 			lView.addBlock(-1, doc[i])
-			lView.itemAtIndex(i).textFormat(doc[i])
 		}
 	}
 	
@@ -100,13 +99,13 @@ Item {
 				onClicked: text = "lModel.get(i).text"//exportMarkdown() //lView.addBlock(0)
 			}
 
-			/*Text {
+			Text {
 				id: hiddenMarkdownRender
 				visible: false
 				font.pixelSize: 18 // add in config TODO
 				textFormat: TextEdit.MarkdownText
 				text: "a"
-			}*/
+			}
 
 			ListModel{
 				id: lModel
@@ -119,27 +118,11 @@ Item {
 					implicitWidth: colLay.width 
 					implicitHeight: col.implicitHeight
 					color: (tEdit.focus ? textSelectionBackground : textBackground) // change colors
-					property string formatted: ""
-					property bool isCheckbox: false
-					property bool isChecked: false
-					property bool isBullet: false
-					property bool isQuote: false
-					property int spacerNum: 0
-					
-					Format {
-						id: format
+					property string formatted
+					onFocusChanged: {
+						tEdit.focus = true
 					}
-					
-					
-					function textFormat(txt){
-						let f = format.format(txt)
-						formatted = f["formatted"]
-						isCheckbox = f["isCheckbox"]
-						isChecked = f["isChecked"]
-						isBullet = f["isBullet"]
-						spacerNum = f["spacerNum"]
-						isQuote = f["isQuote"]
-					}
+
 					function setAsCurrentItem(){
 						lView.currentIndex = index
 					}
@@ -149,12 +132,11 @@ Item {
 					function addText(txt){
 						tEdit.text = tEdit.text + txt
 					}
-
-					function getText(){
-						return tEdit.text
-					}
 					function setCursorPosition(pos){
 						tEdit.cursorPosition = pos
+					}
+					function getText(){
+						return tEdit.text
 					}
 					function getLength(){
 						return tEdit.length
@@ -187,9 +169,6 @@ Item {
 							// is the last block, do nothing
 						}
 					}
-					onFocusChanged: {
-						tEdit.focus = true
-					}
 					Column {
 						id: col
 						anchors.fill: parent
@@ -200,20 +179,18 @@ Item {
 							property string ssetText: setText
 							width: parent.width
 							text: setText
-							font.pixelSize: 18 //TEMPORARY! //(hiddenMarkdownRender.height / tView.lineCount) * 0.75
+							font.pixelSize: (hiddenMarkdownRender.height / tView.lineCount) * 0.75
 							color: textColor
 							wrapMode: TextEdit.Wrap
 
 							onFocusChanged: {
-								//tView.visible = !focus
-								row.visible = !focus
+								tView.visible = !focus
 								visible = focus
-								//textFormat(text) //fails, but not necessary
+								formatted = text
 								if (focus) {
-									//hiddenMarkdownRender.text = formatted
+									hiddenMarkdownRender.text = formatted
 									setAsCurrentItem()
 								}
-								
 							}
 
 							Component.onCompleted:{
@@ -224,14 +201,13 @@ Item {
 								exportMarkdown()
 							}
 
-							Keys.onReturnPressed: { // add kp_enter too!
+							Keys.onReturnPressed: {
 								if (lView.currentIndex + 1 < lView.model.count){
 									lView.addBlock(lView.currentIndex + 1)
 								} else {
 									lView.addBlock(-1)
 								}
 							}
-							
 
 							Keys.onPressed: {
 								let delKey = 16777219
@@ -252,11 +228,9 @@ Item {
 										deleteNextItemAndMoveUp()
 									}
 								} else if (event.key == tabKey){
-									event.accepted = true;
-									tEdit.text = "\t" + tEdit.text
+									openMarkdown()
 								} else if (event.key == shiftTabKey){
-									event.accepted = true;
-									tEdit.text = tEdit.text.replace(/^\t/g, "")
+
 								} else if (event.key == escKey){
 									//focus = false
 								}
@@ -267,75 +241,53 @@ Item {
 								running: tEdit.focus && plasmoid.expanded
 								repeat: true
 								onTriggered: {
-									textFormat(tEdit.text) //formatted=tEdit.text // CHANGE TODO
-									//hiddenMarkdownRender.text = formatted 
-									//saveFile("/home/tubbadu/log.txt", Date().toString())
+									formatted=tEdit.text
+									hiddenMarkdownRender.text = formatted
+									saveFile("/home/tubbadu/log.txt", Date().toString())
 									lView.focus = true
 								}
 							}
 						}
-						Row{
+
+						Text {
+							id: tView
+							font.pixelSize: hiddenMarkdownRender.font.pixelSize
+							textFormat: TextEdit.MarkdownText
+							text: formatted
+							width: parent.width
+							wrapMode: TextEdit.Wrap
+							color: textColor
+
+							function clicked(){
+								tEdit.focus = true
+							}
+
+							MouseArea {
+								anchors.fill: parent
+								onClicked: {
+									tView.clicked()
+								}
+							}
+						}
+						/*Row{
 							id: row
-							
-							Rectangle {
+							Rectangle{
 								id: spacer
-								anchors.verticalCenter: parent.verticalCenter
-								width: 4 + 20 * spacerNum
+								width: 20
 								height: 1
-								color: null
-								
+								color: "red"
 							}
-							Row {
-								id: quote
-								visible: isQuote
-								anchors.verticalCenter: parent.verticalCenter
-								height: parent.height
-								width: 4
-								Rectangle {
-									anchors.verticalCenter: parent.verticalCenter
-									width: 3
-									height: parent.height
-									color: "#3DAEE9"
-								}
-								Rectangle {
-									anchors.verticalCenter: parent.verticalCenter
-									width: 3
-									height: parent.height
-									color: null
-								}
-							}
-							
-							CheckBox {
+							CheckBox{
 								id: checkbox
-								anchors.verticalCenter: parent.verticalCenter
-								visible: isCheckbox
-								checked: isChecked
-								onCheckedChanged: {
-									let ch
-									if(checkState == Qt.Checked) {
-										ch="* [x] "
-									}
-									else {
-										ch="* [ ] "
-									}
-									tEdit.text = tEdit.text.replace(/\* \[.\] /g, ch)
-								}
+
 							}
-							Text {
-								id: bullet
-								anchors.verticalCenter: parent.verticalCenter
-								visible: isBullet
-								text: "  •  "
-								color: "white" //TODO CHANGE
-								font.pixelSize: 18 //change
-							}
-							Text {
-								id: htmlView
-								anchors.verticalCenter: parent.verticalCenter
-								font.pixelSize: 18 // TEMPORARY! //hiddenMarkdownRender.font.pixelSize
-								textFormat: Text.RichText
+							Text{
+								id: tView2
+								font.pixelSize: hiddenMarkdownRender.font.pixelSize
+								textFormat: TextEdit.MarkdownText
 								text: formatted
-								width: root.width
+								width: parent.width
+								wrapMode: TextEdit.Wrap
 								color: textColor
 
 								function clicked(){
@@ -345,11 +297,11 @@ Item {
 								MouseArea {
 									anchors.fill: parent
 									onClicked: {
-										htmlView.clicked()
+										tView.clicked()
 									}
 								}
 							}
-						}
+						}*/
 					}
 				}
 			}

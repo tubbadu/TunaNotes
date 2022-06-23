@@ -12,7 +12,7 @@
 + [ ] convert --- (or more) in horizontal line
 + [ ] make checkboxes clickable (perhaps using real checkboxes)
 + [ ] perhaps is better to manually convert to markdown view using html
-    + [[spacer] [thickbox] [text]] [markdown]
+    + [[spacer] [vertical_line] [thickbox] [text]] [markdown]
     + hide everytime elements not used
     + the spacer's width depends on the number of `\t` at the beginning of the text
         + at import, convert 2+ spaces in tabs (medium difficult)
@@ -21,3 +21,5 @@
 + [ ] triple click to select all line
 + [ ] tab in any part of the text does nothing if not a list, or move list
 + [ ] duplicates the formatting in the following block when created
++ [ ] reduce the markdown text size
+* [ ] reduce tab char size
