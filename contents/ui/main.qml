@@ -105,14 +105,6 @@ Item {
 				onClicked: text = "lModel.get(i).text"//exportMarkdown() //lView.addBlock(0)
 			}
 
-			/*Text {
-				id: hiddenMarkdownRender
-				visible: false
-				font.pixelSize: 18 // add in config TODO
-				textFormat: TextEdit.MarkdownText
-				text: "a"
-			}*/
-
 			ListModel{
 				id: lModel
 			}
@@ -129,6 +121,7 @@ Item {
 					property bool isChecked: false
 					property bool isBullet: false
 					property bool isQuote: false
+					property bool isDivider: false
 					property int spacerNum: 0
 					
 					Format {
@@ -144,6 +137,7 @@ Item {
 						isBullet = f["isBullet"]
 						spacerNum = f["spacerNum"]
 						isQuote = f["isQuote"]
+						isDivider = f["isDivider"]
 					}
 					function setAsCurrentItem(){
 						lView.currentIndex = index
@@ -239,7 +233,6 @@ Item {
 								}
 							}
 							
-
 							Keys.onPressed: {
 								let delKey = 16777219
 								let cancKey = 16777223
@@ -290,11 +283,35 @@ Item {
 								width: 4 + 20 * spacerNum
 								height: 1
 								color: null
+								visible: !isDivider
 								
 							}
+							Rectangle {
+								id: divider // can surely be improved
+								visible: isDivider
+								//anchors.fill: block
+								//anchors.horizontalCenter: root.right
+								height: 10
+								width: root.width
+								//Layout.fillWidth: true
+								//Layout.fillHeight: true
+								color: null
+								Rectangle {
+									
+									anchors.verticalCenter: parent.verticalCenter
+									anchors.horizontalCenter: parent.horizontalCenter
+									//anchors.fill: parent
+									width: parent.width*0.99
+									//width: 100
+									height: 1.5
+									color: textColor
+									
+								}
+							}
+						
 							Row {
 								id: quote
-								visible: isQuote
+								visible: isQuote && !isDivider
 								anchors.verticalCenter: parent.verticalCenter
 								height: parent.height
 								width: 4

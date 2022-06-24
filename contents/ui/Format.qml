@@ -92,7 +92,8 @@ Rectangle {
 			"isChecked": isChecked,
 			"isBullet": isBullet,
 			"spacerNum": spacerNum,
-			"isQuote": isQuote
+			"isQuote": isQuote,
+			"isDivider": isDivider
 		};
 	}
 }
