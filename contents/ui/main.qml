@@ -225,13 +225,13 @@ Item {
 								exportMarkdown()
 							}
 
-							Keys.onReturnPressed: { // add kp_enter too!
+							/*Keys.onReturnPressed: { // add kp_enter too!
 								if (lView.currentIndex + 1 < lView.model.count){
 									lView.addBlock(lView.currentIndex + 1)
 								} else {
 									lView.addBlock(-1)
 								}
-							}
+							}*/
 							
 							Keys.onPressed: {
 								let delKey = 16777219
@@ -239,8 +239,10 @@ Item {
 								let tabKey = 16777217
 								let shiftTabKey = 16777218
 								let escKey = 16777216
+								let kp_enterKey = 16777221
+								let enterKey = 16777220
 
-								//butt.text = event.key
+								//saveFile("/home/tubbadu/log.txt", event.key)
 								if (event.key == delKey){
 									if(cursorPosition == 0){
 										event.accepted = true;
@@ -259,6 +261,14 @@ Item {
 									tEdit.text = tEdit.text.replace(/^\t/g, "")
 								} else if (event.key == escKey){
 									//focus = false
+								} else if (event.key == enterKey || event.key == kp_enterKey){
+									// on enter pressed
+									event.accepted = true
+									if (lView.currentIndex + 1 < lView.model.count){
+										lView.addBlock(lView.currentIndex + 1)
+									} else {
+										lView.addBlock(-1)
+									}
 								}
 							}
 
