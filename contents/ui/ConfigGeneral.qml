@@ -12,6 +12,7 @@ Kirigami.FormLayout {
 	property alias cfg_textColor: textColor.text
 	property alias cfg_textBackground: textBackground.text
 	property alias cfg_textSelectionBackground: textSelectionBackground.text
+	property alias cfg_activeBlockBackground: activeBlockBackground.text
 	property alias cfg_textSize: textSize.value
 	property alias cfg_customIcon: customIcon.text
 
@@ -61,7 +62,11 @@ Kirigami.FormLayout {
 	}
 	TextField {
 		id: textSelectionBackground
-		Kirigami.FormData.label: i18n("Text selection background color:")
+		Kirigami.FormData.label: i18n("Text selection highlight color:")
+	}
+	TextField {
+		id: activeBlockBackground
+		Kirigami.FormData.label: i18n("Active block background color:")
 	}
 	TextField {
 		id: customIcon

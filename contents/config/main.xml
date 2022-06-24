@@ -25,6 +25,9 @@
 			<default>#2A2E32</default>
 		</entry>
 		<entry name="textSelectionBackground" type="String">
+			<default>#3DAEE9</default>
+		</entry>
+		<entry name="activeBlockBackground" type="String">
 			<default>#31363B</default>
 		</entry>
 		<entry name="customIcon" type="String">

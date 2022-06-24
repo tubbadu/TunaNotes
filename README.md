@@ -24,3 +24,4 @@
 + [ ] reduce the markdown text size
 * [ ] reduce tab char size (difficult)
 * [ ] ctl+Z for multiple lines?
+* [ ] make different bullets depending on the indent

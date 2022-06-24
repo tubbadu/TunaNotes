@@ -30,6 +30,7 @@ Item {
 	property string textColor: Plasmoid.configuration.textColor
 	property string textBackground: Plasmoid.configuration.textBackground
 	property string textSelectionBackground: Plasmoid.configuration.textSelectionBackground
+	property string activeBlockBackground: Plasmoid.configuration.activeBlockBackground
 	property string customIcon: Plasmoid.configuration.customIcon
 	property int textSize: Plasmoid.configuration.textSize
 
@@ -122,7 +123,7 @@ Item {
 					default property alias data: col.data
 					implicitWidth: colLay.width 
 					implicitHeight: col.implicitHeight
-					color: (tEdit.focus ? textSelectionBackground : textBackground) // change colors
+					color: (tEdit.focus ? activeBlockBackground : textBackground) // change colors
 					property string formatted: ""
 					property bool isCheckbox: false
 					property bool isChecked: false
@@ -203,8 +204,10 @@ Item {
 							id: tEdit
 							property string ssetText: setText
 							width: parent.width
+							selectByMouse: true
+							selectionColor: textSelectionBackground
 							text: setText
-							font.pixelSize: textSize //TEMPORARY! //(hiddenMarkdownRender.height / tView.lineCount) * 0.75
+							font.pixelSize: textSize
 							color: textColor
 							wrapMode: TextEdit.Wrap
 
