@@ -25,31 +25,35 @@ import QtAudioEngine 1.15
 Item {
 	id: root
 	property string filePath: Plasmoid.configuration.filePath
-	property string fullHeight: Plasmoid.configuration.fullHeight
-	property string fullWidth: Plasmoid.configuration.fullWidth
+	property int fullHeight: Plasmoid.configuration.fullHeight
+	property int fullWidth: Plasmoid.configuration.fullWidth
 	property string textColor: Plasmoid.configuration.textColor
 	property string textBackground: Plasmoid.configuration.textBackground
 	property string textSelectionBackground: Plasmoid.configuration.textSelectionBackground
+	property string customIcon: Plasmoid.configuration.customIcon
+	property int textSize: Plasmoid.configuration.textSize
+
+	PlasmaCore.IconItem{
+		id: iconItem
+		Plasmoid.icon: customIcon
+	}
 
 	Component.onCompleted: {
 		//onStartup();
 		openMarkdown()
-		plasmoid.addEventListener('ConfigChanged', configChanged);
+		//Plasmoid.addEventListener('ConfigChanged', configChanged);
 	}
-	/*focus: plasmoid.expanded
-	onFocusChanged: {
-
-		lView.currentItem.setText("diocan")
-	}*/
 	
-	function configChanged(){ // dont know if useful or not
+	/*function configChanged(){ // dont know if useful or not
 		root.filePath = plasmoid.readConfig("filePath");
 		root.fullHeight = plasmoid.readConfig("fullHeight");
 		root.fullWidth = plasmoid.readConfig("fullWidth");
 		root.textColor = plasmoid.readConfig("textColor");
 		root.textBackground = plasmoid.readConfig("textBackground");
 		root.textSelectionBackground = plasmoid.readConfig("textSelectionBackground");
-	}
+		root.textSize = plasmoid.readConfig("textSize")
+		root.customIcon = plasmoid.readConfig("customIcon")
+	}*/
 
 	function openFile(fileUrl) {
 		var request = new XMLHttpRequest();
@@ -200,7 +204,7 @@ Item {
 							property string ssetText: setText
 							width: parent.width
 							text: setText
-							font.pixelSize: 18 //TEMPORARY! //(hiddenMarkdownRender.height / tView.lineCount) * 0.75
+							font.pixelSize: textSize //TEMPORARY! //(hiddenMarkdownRender.height / tView.lineCount) * 0.75
 							color: textColor
 							wrapMode: TextEdit.Wrap
 
@@ -264,7 +268,7 @@ Item {
 
 							Timer {
 								interval: 100
-								running: tEdit.focus && plasmoid.expanded
+								running: tEdit.focus && Plasmoid.expanded
 								repeat: true
 								onTriggered: {
 									textFormat(tEdit.text) //formatted=tEdit.text // CHANGE TODO
@@ -326,13 +330,13 @@ Item {
 								anchors.verticalCenter: parent.verticalCenter
 								visible: isBullet
 								text: "  •  "
-								color: "white" //TODO CHANGE
-								font.pixelSize: 18 //change
+								color: textColor 
+								font.pixelSize: textSize
 							}
 							Text {
 								id: htmlView
 								anchors.verticalCenter: parent.verticalCenter
-								font.pixelSize: 18 // TEMPORARY! //hiddenMarkdownRender.font.pixelSize
+								font.pixelSize: textSize
 								textFormat: Text.RichText
 								text: formatted
 								width: root.width
@@ -353,10 +357,12 @@ Item {
 					}
 				}
 			}
-
 			ListView{
 				id: lView
-				anchors.fill: parent
+				anchors.left: parent.left
+				anchors.right: parent.right
+				anchors.top: parent.top
+				anchors.bottom: parent.bottom
 				model: lModel
 				delegate: block
 				snapMode: ListView.NoSnap
@@ -384,6 +390,19 @@ Item {
 						lView.addBlock(0)
 					}
 				}
+
+				MouseArea{
+						anchors.bottom: parent.bottom
+						anchors.left: parent.left
+						anchors.right: parent.right
+
+						height: lView.height - lView.contentHeight
+						onClicked: {
+							// give focus to the last element
+							lView.currentIndex = lView.count-1
+						}
+					}
+
 			}
 		}
 	}

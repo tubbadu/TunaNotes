@@ -12,25 +12,39 @@ Kirigami.FormLayout {
 	property alias cfg_textColor: textColor.text
 	property alias cfg_textBackground: textBackground.text
 	property alias cfg_textSelectionBackground: textSelectionBackground.text
+	property alias cfg_textSize: textSize.value
+	property alias cfg_customIcon: customIcon.text
 
 	RowLayout {
 		id: setSize
 		spacing: 6
 		Label{
-			text: i18n("Height")
+			text: i18n("Height:")
 		}
 		SpinBox {
 			id: fullHeight
 			from: 1
 			to: 5000
 		}
+	}
+	RowLayout{
 		Label{
-			text: i18n("Width")
+			text: i18n("Width:")
 		}
 		SpinBox {
 			id: fullWidth
 			from: 1
 			to: 5000
+		}
+	}
+	RowLayout{
+		Label{
+			text: i18n("Font size (px):")
+		}
+		SpinBox {
+			id: textSize
+			from: 1
+			to: 200
 		}
 	}
 	TextField {
@@ -48,6 +62,10 @@ Kirigami.FormLayout {
 	TextField {
 		id: textSelectionBackground
 		Kirigami.FormData.label: i18n("Text selection background color:")
+	}
+	TextField {
+		id: customIcon
+		Kirigami.FormData.label: i18n("Custom icon (name or full path):")
 	}
 	
 }
