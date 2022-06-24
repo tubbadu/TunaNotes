@@ -25,3 +25,5 @@
 * [ ] reduce tab char size (difficult)
 * [ ] ctl+Z for multiple lines?
 * [ ] make different bullets depending on the indent
+* [x] added `` `code` `` format
+* [ ] enter mid-line breaks in half the block

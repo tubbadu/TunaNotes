@@ -1,6 +1,11 @@
 import QtQuick 2.7
+import org.kde.plasma.plasmoid 2.0
 
 Rectangle {
+
+	property string textColor: Plasmoid.configuration.textColor
+	property string textBackground: Plasmoid.configuration.textBackground
+
 	function format(txt){
 		let formatted = txt
 		let isCheckbox = false
@@ -84,7 +89,8 @@ Rectangle {
 		formatted = formatted.replace(/\*\*(.*?)\*\*/gm, "<strong>$1</strong>"); //formatted.match(/\*\*.+\*\*/g)
 		// check for italic in formatted
 		formatted = formatted.replace(/\*(.*?)\*/gm, "<i>$1</i>"); //formatted.match(/\*\*.+\*\*/g)
-		
+		// check for inline code
+		formatted = formatted.replace(/\`(.*?)\`/gm, "<font color='" + textBackground + "'><code style='background-color: " + textColor + "'>$1</code></font>")
 
 		return {
 			"formatted": formatted,

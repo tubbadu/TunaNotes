@@ -358,6 +358,7 @@ Item {
 								anchors.verticalCenter: parent.verticalCenter
 								font.pixelSize: textSize
 								textFormat: Text.RichText
+								wrapMode: TextEdit.Wrap
 								text: formatted
 								width: root.width
 								color: textColor
