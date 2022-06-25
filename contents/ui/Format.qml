@@ -13,6 +13,7 @@ Rectangle {
 		let isBullet = false
 		let isQuote = false
 		let isDivider = false
+		let dividerDouble = false
 		let spacerNum = 0
 
 		let x = null
@@ -78,11 +79,21 @@ Rectangle {
 		// TODO check for ordered list
 
 		// check for horizontal divider
-		x = txt.trim().match(/^(\+|\-|\*|\=){3,}/g)
+		x = txt.trim().match(/^(\+|\-|\*){3,}/g)
 		if (x != null) {
 			//is divider
 			formatted = "<hr>" //doesn't work
 			isDivider = true
+			dividerDouble = false
+		}
+
+		// check for double horizontal divider
+		x = txt.trim().match(/^(\=){3,}/g)
+		if (x != null) {
+			//is divider
+			formatted = "<hr>" //doesn't work
+			isDivider = true
+			dividerDouble = true
 		}
 
  		// check for bold in formatted
@@ -99,7 +110,8 @@ Rectangle {
 			"isBullet": isBullet,
 			"spacerNum": spacerNum,
 			"isQuote": isQuote,
-			"isDivider": isDivider
+			"isDivider": isDivider,
+			"dividerDouble": dividerDouble
 		};
 	}
 }

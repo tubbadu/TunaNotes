@@ -1,7 +1,5 @@
 /*
- *   SPDX-FileCopyrightText: 2014, 2016 Mikhail Ivchenko <ematirov@gmail.com>
- *   SPDX-FileCopyrightText: 2018 Kai Uwe Broulik <kde@privat.broulik.de>
- *   SPDX-FileCopyrightText: 2020 Sora Steenvoort <sora@dillbox.me>
+ *   SPDX-FileCopyrightText: 2022 Tubbadu <tubbadu@gmail.com>
  *
  *   SPDX-License-Identifier: GPL-2.0-or-later
  */
@@ -16,10 +14,6 @@ import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.plasmoid 2.0
 
-//to be removed
-import QtAudioEngine 1.15
-
-//import QtQuick.Controls 2.12 as QQC2
 
 
 Item {
@@ -40,7 +34,6 @@ Item {
 	}
 
 	Component.onCompleted: {
-		//onStartup();
 		openMarkdown()
 		//Plasmoid.addEventListener('ConfigChanged', configChanged);
 	}
@@ -75,12 +68,12 @@ Item {
 		for(let i=1; i<lView.model.count; i++){
 			doc = doc + "\n" + lView.itemAtIndex(i).getText()
 		}
-		saveFile("/home/tubbadu/prova.md", doc)
+		saveFile(filePath, doc)
 	}
 
 	function openMarkdown(){
 		lModel.clear()
-		let doc = openFile("/home/tubbadu/prova.md").split("\n")
+		let doc = openFile(filePath).split("\n")
 		for (let i=0; i<doc.length; i++){
 			lView.addBlock(-1, doc[i])
 			lView.itemAtIndex(i).textFormat(doc[i])
@@ -122,12 +115,12 @@ Item {
 					property bool isBullet: false
 					property bool isQuote: false
 					property bool isDivider: false
+					property bool dividerDouble: false
 					property int spacerNum: 0
 					
 					Format {
 						id: format
 					}
-					
 					
 					function textFormat(txt){
 						let f = format.format(txt)
@@ -138,6 +131,7 @@ Item {
 						spacerNum = f["spacerNum"]
 						isQuote = f["isQuote"]
 						isDivider = f["isDivider"]
+						dividerDouble = f["dividerDouble"]
 					}
 					function setAsCurrentItem(){
 						lView.currentIndex = index
@@ -206,12 +200,9 @@ Item {
 							wrapMode: TextEdit.Wrap
 
 							onFocusChanged: {
-								//tView.visible = !focus
 								row.visible = !focus
 								visible = focus
-								//textFormat(text) //fails, but not necessary
 								if (focus) {
-									//hiddenMarkdownRender.text = formatted
 									setAsCurrentItem()
 								}
 								
@@ -225,14 +216,6 @@ Item {
 								exportMarkdown()
 							}
 
-							/*Keys.onReturnPressed: { // add kp_enter too!
-								if (lView.currentIndex + 1 < lView.model.count){
-									lView.addBlock(lView.currentIndex + 1)
-								} else {
-									lView.addBlock(-1)
-								}
-							}*/
-							
 							Keys.onPressed: {
 								let delKey = 16777219
 								let cancKey = 16777223
@@ -242,7 +225,7 @@ Item {
 								let kp_enterKey = 16777221
 								let enterKey = 16777220
 
-								//saveFile("/home/tubbadu/log.txt", event.key)
+								//saveFile("/home/tubbadu/log.txt", event.key) // I used this just for debug
 								if (event.key == delKey){
 									if(cursorPosition == 0){
 										event.accepted = true;
@@ -277,13 +260,12 @@ Item {
 								running: tEdit.focus && Plasmoid.expanded
 								repeat: true
 								onTriggered: {
-									textFormat(tEdit.text) //formatted=tEdit.text // CHANGE TODO
-									//hiddenMarkdownRender.text = formatted 
-									//saveFile("/home/tubbadu/log.txt", Date().toString())
+									textFormat(tEdit.text) 
 									lView.focus = true
 								}
 							}
 						}
+
 						Row{
 							id: row
 							
@@ -299,23 +281,25 @@ Item {
 							Rectangle {
 								id: divider // can surely be improved
 								visible: isDivider
-								//anchors.fill: block
-								//anchors.horizontalCenter: root.right
 								height: 10
 								width: root.width
-								//Layout.fillWidth: true
-								//Layout.fillHeight: true
-								color: null
+								color: null 
+								
 								Rectangle {
 									
 									anchors.verticalCenter: parent.verticalCenter
 									anchors.horizontalCenter: parent.horizontalCenter
-									//anchors.fill: parent
 									width: parent.width*0.99
-									//width: 100
-									height: 1.5
-									color: textColor
+									height: 2*2
+									color: ( !dividerDouble ? "null" : textColor)
+								}
+								Rectangle {
 									
+									anchors.verticalCenter: parent.verticalCenter
+									anchors.horizontalCenter: parent.horizontalCenter
+									width: parent.width*0.99
+									height: 2
+									color: ( !dividerDouble ? textColor : textBackground)
 								}
 							}
 						

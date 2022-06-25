@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.12
+import QtQuick.Dialogs 1.3
 import org.kde.kirigami 2.4 as Kirigami
 
 Kirigami.FormLayout {
@@ -16,6 +17,16 @@ Kirigami.FormLayout {
 	property alias cfg_textSize: textSize.value
 	property alias cfg_customIcon: customIcon.text
 
+
+	ColorDialog{
+		id: colorPicker
+		onAccepted: {
+
+		}
+
+	}
+
+	///////////////////////////
 	RowLayout {
 		id: setSize
 		spacing: 6
@@ -55,7 +66,15 @@ Kirigami.FormLayout {
 	TextField {
 		id: textColor
 		Kirigami.FormData.label: i18n("Text color:")
+		onFocusChanged: {
+			if (focus){
+				//colorPicker.color = text
+				//colorPicker.open()
+				
+			}
+		}
 	}
+	
 	TextField {
 		id: textBackground
 		Kirigami.FormData.label: i18n("Text background color:")
