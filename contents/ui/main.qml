@@ -111,6 +111,7 @@ Item {
 					color: (tEdit.focus ? activeBlockBackground : textBackground) // change colors
 					property string formatted: ""
 					property bool isCheckbox: false
+					property int titleNum: 0
 					property bool isChecked: false
 					property bool isBullet: false
 					property bool isQuote: false
@@ -132,6 +133,7 @@ Item {
 						isQuote = f["isQuote"]
 						isDivider = f["isDivider"]
 						dividerDouble = f["dividerDouble"]
+						titleNum = f["titleNum"]
 					}
 					function setAsCurrentItem(){
 						lView.currentIndex = index
@@ -192,10 +194,19 @@ Item {
 							id: tEdit
 							property string ssetText: setText
 							width: parent.width
+							height: htmlView.height // this may cause a lot of problem !WARNING!
 							selectByMouse: true
 							selectionColor: textSelectionBackground
 							text: setText
-							font.pixelSize: textSize
+							font.bold: ((titleNum != 0) ? true : false)
+							font.pixelSize: ((titleNum != 0) ? textSize*2*(6-titleNum)/5 : textSize) //htmlView.contentHeight * 0.7//textSize
+							/* title preferred font size multiplications:
+							# x2
+							## x1.5
+							### x1.2
+							#### x1.025
+							##### dunno
+							*/ 
 							color: textColor
 							wrapMode: TextEdit.Wrap
 
@@ -272,7 +283,7 @@ Item {
 							Rectangle {
 								id: spacer
 								anchors.verticalCenter: parent.verticalCenter
-								width: 4 + 20 * spacerNum
+								width: 20 * spacerNum
 								height: 1
 								color: null
 								visible: !isDivider
@@ -388,7 +399,7 @@ Item {
 				property int n: 0
 
 				
-				function addBlock(index, txt=""){
+				function addBlock(index, txt=""){ // to be removed
 					let prop = {"setText": txt, "setMarkdown": "# markdown `prova` " + n, "setFocused": true}
 					if(index == -1) {
 						model.append(prop)

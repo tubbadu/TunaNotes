@@ -14,6 +14,7 @@ Rectangle {
 		let isQuote = false
 		let isDivider = false
 		let dividerDouble = false
+		let titleNum = 0
 		let spacerNum = 0
 
 		let x = null
@@ -25,7 +26,7 @@ Rectangle {
 		x = txt.trim().match(/^#+ /g)
 		if (x != null){
 			// is a title
-			let titleNum = x[0].trim().length
+			titleNum = x[0].trim().length
 			if (titleNum > 0 && titleNum < 6){
 				// is good
 				formatted = "<h" + titleNum + ">" + txt.trim().replace(/^#+ /g, "") + "</h" + titleNum + ">"
@@ -111,7 +112,8 @@ Rectangle {
 			"spacerNum": spacerNum,
 			"isQuote": isQuote,
 			"isDivider": isDivider,
-			"dividerDouble": dividerDouble
+			"dividerDouble": dividerDouble,
+			"titleNum": titleNum
 		};
 	}
 }
