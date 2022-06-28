@@ -1,4 +1,4 @@
-# QtNotes
+# TunaNotes
 
 [description]
 
