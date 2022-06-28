@@ -60,13 +60,19 @@ Kirigami.FormLayout {
 		id: filePath
 		Kirigami.FormData.label: i18n("markdown file path:")
 	}
-	CheckBox{
-		id: useDefault
-		Kirigami.FormData.label: i18n("Use plasma theme default colors:")
+	RowLayout{
+		CheckBox{
+			id: useDefault
+			//Kirigami.FormData.label: i18n("Use plasma theme default colors (works better with a dark theme):")
+		}
+		Label{
+			text: i18n("Use plasma theme default colors (works better with a dark theme):")
+		}
 	}
+	
 	TextField {
 		id: textColor
-		enabled: !useDefault.checked //(useDefault.checkState === Qt.Checked)
+		enabled: !useDefault.checked
 		Kirigami.FormData.label: i18n("Text color:")
 		onFocusChanged: {
 			if (focus){

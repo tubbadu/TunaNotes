@@ -27,3 +27,4 @@
 * [ ] make different bullets depending on the indent
 * [x] added `` `code` `` format
 * [ ] enter mid-line breaks in half the block
+* [ ] make a better config page with color picker

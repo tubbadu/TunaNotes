@@ -18,7 +18,47 @@ import org.kde.plasma.plasmoid 2.0
 
 Item {
 	id: root
+
 	property bool useDefault: Plasmoid.configuration.useDefault
+	property string filePath: Plasmoid.configuration.filePath
+	property int fullHeight: Plasmoid.configuration.fullHeight
+	property int fullWidth: Plasmoid.configuration.fullWidth
+	property string customIcon: Plasmoid.configuration.customIcon
+	property int textSize: Plasmoid.configuration.textSize
+
+	property color textColor: PlasmaCore.Theme.palette.windowText
+	property color textBackground: "transparent" 
+	property color textSelectionBackground: PlasmaCore.Theme.palette.highlight
+	property color activeBlockBackground: PlasmaCore.Theme.palette.mid
+
+	property color xxx: "red"
+
+
+	function getConfig(){
+		useDefault = Plasmoid.configuration.useDefault
+		filePath = Plasmoid.configuration.filePath
+		fullHeight = Plasmoid.configuration.fullHeight
+		fullWidth = Plasmoid.configuration.fullWidth
+
+		if(useDefault){
+			let windowColor = PlasmaCore.Theme.palette.window
+
+			textColor = PlasmaCore.Theme.palette.windowText
+			textBackground = "transparent"
+			textSelectionBackground = PlasmaCore.Theme.palette.highlight
+
+			windowColor.a = 0.25
+			activeBlockBackground = windowColor// Qt.lighter(PlasmaCore.Theme.palette.window, 1.5), 0)
+		} else {
+			textColor = Plasmoid.configuration.textColor
+			textBackground = Plasmoid.configuration.textBackground
+			textSelectionBackground = Plasmoid.configuration.textSelectionBackground
+			activeBlockBackground = Plasmoid.configuration.activeBlockBackground
+		}
+	}
+
+
+	/*property bool useDefault: Plasmoid.configuration.useDefault
 
 	property string filePath: Plasmoid.configuration.filePath
 	property int fullHeight: Plasmoid.configuration.fullHeight
@@ -30,13 +70,13 @@ Item {
 	property string c_activeBlockBackground: Plasmoid.configuration.activeBlockBackground
 
 	property string textColor: ( !useDefault ? c_textColor : PlasmaCore.Theme.palette.windowText )
-	property string textBackground: ( !useDefault ? c_textBackground : PlasmaCore.Theme.palette.window )
+	property string textBackground: "transparent" //( !useDefault ? c_textBackground : PlasmaCore.Theme.palette.window )
 	property string textSelectionBackground: ( !useDefault ? c_textSelectionBackground : PlasmaCore.Theme.palette.highlight )
-	property string activeBlockBackground: ( !useDefault ? c_activeBlockBackground : PlasmaCore.Theme.palette.mid )
+	property string activeBlockBackground: (isDark(PlasmaCore.Theme.palette.window) ? lighter(PlasmaCore.Theme.palette.window) : darker(PlasmaCore.Theme.palette.window)) //( !useDefault ? c_activeBlockBackground : PlasmaCore.Theme.palette.mid )
 	
 
 	property string customIcon: Plasmoid.configuration.customIcon
-	property int textSize: Plasmoid.configuration.textSize
+	property int textSize: Plasmoid.configuration.textSize*/
 	
 
 	PlasmaCore.IconItem{
@@ -48,45 +88,23 @@ Item {
 		target: Plasmoid.configuration
 		onValueChanged: {
 			log.text = "ieee"
-			useDefault = Plasmoid.configuration.useDefault
+			getConfig()
 			log.text = "updated correctly"
 		}
 	}
 
 	Component.onCompleted: {
 		openMarkdown()
-		//Plasmoid.addEventListener("configChanged", configChanged); //don't work
-		configChanged()
+		getConfig()
 		
 	}
 
 	Text {
 		id: log
-		visible: !false
+		visible: false
 		color: "red"
 		text: "no log"
 		z: 100
-	}
-	
-	function configChanged(){ // dont know if useful or not
-	return
-		if(useDefault){
-			textBackground = PlasmaCore.Theme.palette.window
-			textColor = PlasmaCore.Theme.palette.windowText
-			activeBlockBackground =   PlasmaCore.Theme.palette.mid
-			textSelectionBackground =  PlasmaCore.Theme.palette.highlight
-			//textSize = PlasmaCore.Theme.defaultFont.pixelSize
-		}
-		/*
-		root.filePath = plasmoid.readConfig("filePath");
-		root.fullHeight = plasmoid.readConfig("fullHeight");
-		root.fullWidth = plasmoid.readConfig("fullWidth");
-		root.textColor = plasmoid.readConfig("textColor");
-		root.textBackground = plasmoid.readConfig("textBackground");
-		root.textSelectionBackground = plasmoid.readConfig("textSelectionBackground");
-		root.textSize = plasmoid.readConfig("textSize")
-		root.customIcon = plasmoid.readConfig("customIcon")
-		*/
 	}
 
 	function openFile(fileUrl) {
