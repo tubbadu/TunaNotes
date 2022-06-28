@@ -18,27 +18,66 @@ import org.kde.plasma.plasmoid 2.0
 
 Item {
 	id: root
+	property bool useDefault: Plasmoid.configuration.useDefault
+
 	property string filePath: Plasmoid.configuration.filePath
 	property int fullHeight: Plasmoid.configuration.fullHeight
 	property int fullWidth: Plasmoid.configuration.fullWidth
-	property string textColor: Plasmoid.configuration.textColor
-	property string textBackground: Plasmoid.configuration.textBackground
-	property string textSelectionBackground: Plasmoid.configuration.textSelectionBackground
-	property string activeBlockBackground: Plasmoid.configuration.activeBlockBackground
+
+	property string c_textColor: Plasmoid.configuration.textColor
+	property string c_textBackground: Plasmoid.configuration.textBackground
+	property string c_textSelectionBackground: Plasmoid.configuration.textSelectionBackground
+	property string c_activeBlockBackground: Plasmoid.configuration.activeBlockBackground
+
+	property string textColor: ( !useDefault ? c_textColor : PlasmaCore.Theme.palette.windowText )
+	property string textBackground: ( !useDefault ? c_textBackground : PlasmaCore.Theme.palette.window )
+	property string textSelectionBackground: ( !useDefault ? c_textSelectionBackground : PlasmaCore.Theme.palette.highlight )
+	property string activeBlockBackground: ( !useDefault ? c_activeBlockBackground : PlasmaCore.Theme.palette.mid )
+	
+
 	property string customIcon: Plasmoid.configuration.customIcon
 	property int textSize: Plasmoid.configuration.textSize
+	
 
 	PlasmaCore.IconItem{
 		id: iconItem
 		Plasmoid.icon: customIcon
 	}
 
+	Connections{
+		target: Plasmoid.configuration
+		onValueChanged: {
+			log.text = "ieee"
+			useDefault = Plasmoid.configuration.useDefault
+			log.text = "updated correctly"
+		}
+	}
+
 	Component.onCompleted: {
 		openMarkdown()
-		//Plasmoid.addEventListener('ConfigChanged', configChanged);
+		//Plasmoid.addEventListener("configChanged", configChanged); //don't work
+		configChanged()
+		
+	}
+
+	Text {
+		id: log
+		visible: !false
+		color: "red"
+		text: "no log"
+		z: 100
 	}
 	
-	/*function configChanged(){ // dont know if useful or not
+	function configChanged(){ // dont know if useful or not
+	return
+		if(useDefault){
+			textBackground = PlasmaCore.Theme.palette.window
+			textColor = PlasmaCore.Theme.palette.windowText
+			activeBlockBackground =   PlasmaCore.Theme.palette.mid
+			textSelectionBackground =  PlasmaCore.Theme.palette.highlight
+			//textSize = PlasmaCore.Theme.defaultFont.pixelSize
+		}
+		/*
 		root.filePath = plasmoid.readConfig("filePath");
 		root.fullHeight = plasmoid.readConfig("fullHeight");
 		root.fullWidth = plasmoid.readConfig("fullWidth");
@@ -47,7 +86,8 @@ Item {
 		root.textSelectionBackground = plasmoid.readConfig("textSelectionBackground");
 		root.textSize = plasmoid.readConfig("textSize")
 		root.customIcon = plasmoid.readConfig("customIcon")
-	}*/
+		*/
+	}
 
 	function openFile(fileUrl) {
 		var request = new XMLHttpRequest();
@@ -75,7 +115,7 @@ Item {
 		lModel.clear()
 		let doc = openFile(filePath).split("\n")
 		for (let i=0; i<doc.length; i++){
-			lView.addBlock(-1, doc[i])
+			lView.addBlock(-1, doc[i], true)
 			lView.itemAtIndex(i).textFormat(doc[i])
 		}
 	}
@@ -114,10 +154,14 @@ Item {
 					property int titleNum: 0
 					property bool isChecked: false
 					property bool isBullet: false
+					property string isOrdered: "" //change name TODO
 					property bool isQuote: false
 					property bool isDivider: false
-					property bool dividerDouble: false
+					property bool dividerDouble: false 
 					property int spacerNum: 0
+					property int tabNum: 0
+					/**********************/
+					property string autoAddedFormatting: setAutoAddedFormatting
 					
 					Format {
 						id: format
@@ -134,6 +178,8 @@ Item {
 						isDivider = f["isDivider"]
 						dividerDouble = f["dividerDouble"]
 						titleNum = f["titleNum"]
+						isOrdered = f["isOrdered"]
+						tabNum = f["tabNum"]
 					}
 					function setAsCurrentItem(){
 						lView.currentIndex = index
@@ -149,6 +195,9 @@ Item {
 						return tEdit.text
 					}
 					function setCursorPosition(pos){
+						if(pos == -1){
+							tEdit.cursorPosition = tEdit.length
+						}
 						tEdit.cursorPosition = pos
 					}
 					function getLength(){
@@ -182,6 +231,45 @@ Item {
 							// is the last block, do nothing
 						}
 					}
+					function enterPressed(){
+						//format text again
+						textFormat(tEdit.text)
+
+						// check if nothing has been written after creation
+						//log.text = "<" + autoAddedFormatting + ">, <" + tEdit.text + ">"
+						if (autoAddedFormatting != "null" && tEdit.text == autoAddedFormatting && tEdit.text != ""){
+							//then just erase current block text and don't create another
+							tEdit.text = ""
+							return
+						}
+
+						//copy formatting if needed
+						let txt = "\t".repeat(tabNum)
+						if(isBullet){
+							txt += "* "
+						} else if (isCheckbox){
+							txt += "* [ ] "
+						} else if (isQuote){
+							txt += "> "
+						} else if (isOrdered != ""){
+							let x = isOrdered.trim().replace(/^([0-9]+). .+/g, "$1")
+							x++
+							if (!isNaN(x)){
+								txt += x + ""
+								txt += isOrdered.trim().replace(/[0-9]+(.)/g, "$1") + " "
+							} else {
+								console.log("error")
+							}
+						}
+
+						// create block
+						if (lView.currentIndex + 1 < lView.model.count){
+							lView.addBlock(lView.currentIndex + 1, txt)
+						} else {
+							lView.addBlock(-1, txt)
+						}
+					}
+
 					onFocusChanged: {
 						tEdit.focus = true
 					}
@@ -199,7 +287,8 @@ Item {
 							selectionColor: textSelectionBackground
 							text: setText
 							font.bold: ((titleNum != 0) ? true : false)
-							font.pixelSize: ((titleNum != 0) ? textSize*2*(6-titleNum)/5 : textSize) //htmlView.contentHeight * 0.7//textSize
+							//font.pixelSize: ((titleNum != 0) ? textSize*2*(6-titleNum)/5 : textSize) //htmlView.contentHeight * 0.7//textSize
+							font.pixelSize: ((titleNum == 1) ? textSize*2 : ((titleNum == 2) ? textSize*1.5 : ((titleNum == 3) ? textSize*1.2 : ((titleNum == 4) ? textSize*1.025 : ((titleNum == 5) ? textSize*0.75 : textSize)))))
 							/* title preferred font size multiplications:
 							# x2
 							## x1.5
@@ -221,6 +310,7 @@ Item {
 
 							Component.onCompleted:{
 								focus = true
+								//autoAddedFormatting = (text != "" ? text : null) //setText?
 							}
 							onEditingFinished: {
 								// perde fuoco
@@ -235,8 +325,12 @@ Item {
 								let escKey = 16777216
 								let kp_enterKey = 16777221
 								let enterKey = 16777220
+								let upKey = 16777235
+								let downKey = 16777237
+								let leftKey = 16777234
+								let rightKey = 16777236
+								//log.text = event.key
 
-								//saveFile("/home/tubbadu/log.txt", event.key) // I used this just for debug
 								if (event.key == delKey){
 									if(cursorPosition == 0){
 										event.accepted = true;
@@ -258,14 +352,29 @@ Item {
 								} else if (event.key == enterKey || event.key == kp_enterKey){
 									// on enter pressed
 									event.accepted = true
-									if (lView.currentIndex + 1 < lView.model.count){
-										lView.addBlock(lView.currentIndex + 1)
-									} else {
-										lView.addBlock(-1)
+									enterPressed()
+								} else if (event.key == leftKey){
+									if(tEdit.cursorPosition == 0){ // if is at the beginning of the line
+										event.accepted = true
+										if(lView.currentIndex != 0){ // check if is not the first block
+											// then go to the upper block and place cursor at the end
+											lView.decrementCurrentIndex()
+											lView.currentItem.setCursorPosition(-1)
+											log.text = "aaa"
+										}
+									}
+								} else if (event.key == rightKey){
+									if(tEdit.cursorPosition == tEdit.length){ // if is at the end of the line
+										event.accepted = true
+											if(lView.currentIndex != lView.count){ // check if is not the last block
+												// then go to the upper block and place cursor at the end
+												lView.incrementCurrentIndex()
+												lView.currentItem.setCursorPosition(0) //lView.currentItem.tEdit.length											}
+												log.text = "bbb"
+										}
 									}
 								}
 							}
-
 							Timer {
 								interval: 100
 								running: tEdit.focus && Plasmoid.expanded
@@ -283,9 +392,9 @@ Item {
 							Rectangle {
 								id: spacer
 								anchors.verticalCenter: parent.verticalCenter
-								width: 20 * spacerNum
+								width: 30 * spacerNum + (isBullet ? -25 : 0) + (isCheckbox ? -25 : 0) + (isOrdered ? -25 : 0)
 								height: 1
-								color: null
+								color: null //"red"
 								visible: !isDivider
 								
 							}
@@ -359,6 +468,14 @@ Item {
 								font.pixelSize: textSize
 							}
 							Text {
+								id: ordered
+								anchors.verticalCenter: parent.verticalCenter
+								visible: (isOrdered != "")
+								text: "  " + isOrdered.trim() + "  "
+								color: textColor 
+								font.pixelSize: textSize
+							}
+							Text {
 								id: htmlView
 								anchors.verticalCenter: parent.verticalCenter
 								font.pixelSize: textSize
@@ -399,8 +516,8 @@ Item {
 				property int n: 0
 
 				
-				function addBlock(index, txt=""){ // to be removed
-					let prop = {"setText": txt, "setMarkdown": "# markdown `prova` " + n, "setFocused": true}
+				function addBlock(index, txt="", isStartup=false){ // to be removed
+					let prop = {"setText": txt, "setAutoAddedFormatting": (((txt == "") || (isStartup)) ? "null" : txt)}
 					if(index == -1) {
 						model.append(prop)
 					}

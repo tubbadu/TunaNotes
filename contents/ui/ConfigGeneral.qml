@@ -16,15 +16,8 @@ Kirigami.FormLayout {
 	property alias cfg_activeBlockBackground: activeBlockBackground.text
 	property alias cfg_textSize: textSize.value
 	property alias cfg_customIcon: customIcon.text
+	property alias cfg_useDefault: useDefault.checked //(useDefault.checkState === Qt.Checked)
 
-
-	ColorDialog{
-		id: colorPicker
-		onAccepted: {
-
-		}
-
-	}
 
 	///////////////////////////
 	RowLayout {
@@ -60,11 +53,20 @@ Kirigami.FormLayout {
 		}
 	}
 	TextField {
+		id: customIcon
+		Kirigami.FormData.label: i18n("Custom icon (name or full path):")
+	}
+	TextField {
 		id: filePath
 		Kirigami.FormData.label: i18n("markdown file path:")
 	}
+	CheckBox{
+		id: useDefault
+		Kirigami.FormData.label: i18n("Use plasma theme default colors:")
+	}
 	TextField {
 		id: textColor
+		enabled: !useDefault.checked //(useDefault.checkState === Qt.Checked)
 		Kirigami.FormData.label: i18n("Text color:")
 		onFocusChanged: {
 			if (focus){
@@ -77,92 +79,18 @@ Kirigami.FormLayout {
 	
 	TextField {
 		id: textBackground
+		enabled: !(useDefault.checkState === Qt.Checked)
 		Kirigami.FormData.label: i18n("Text background color:")
 	}
 	TextField {
 		id: textSelectionBackground
+		enabled: !(useDefault.checkState === Qt.Checked)
 		Kirigami.FormData.label: i18n("Text selection highlight color:")
 	}
 	TextField {
 		id: activeBlockBackground
+		enabled: !(useDefault.checkState === Qt.Checked)
 		Kirigami.FormData.label: i18n("Active block background color:")
-	}
-	TextField {
-		id: customIcon
-		Kirigami.FormData.label: i18n("Custom icon (name or full path):")
 	}
 	
 }
-
-
-
-/*
-
-
-property alias cfg_filePath: filePath.text
-	property alias cfg_fullHeight: fullHeight.value
-	property alias cfg_fullWidth: fullWidth.value
-	property alias cfg_textColor: textColor.text
-	property alias cfg_textBackground: textBackground.text
-	property alias cfg_textSelectionBackground: textSelectionBackground.text
-
-
-
-
-	RowLayout{
-		Kirigami.FormData.label: i18nc("@title:group", "File path:")
-		QQC2.TextField {
-			id: filePath
-			//editable: true
-			enabled: true
-		}
-	}
-
-	RowLayout {
-		Kirigami.FormData.label: i18nc("@title:group", "Height (px):")
-		QQC2.SpinBox {
-			id: fullHeight
-			editable: true
-			enabled: true
-
-			from: 10
-			to: 5000
-		}
-	}
-
-	RowLayout {
-		Kirigami.FormData.label: i18nc("@title:group", "Width (px):")
-		QQC2.SpinBox {
-			id: fullWidth
-			editable: true
-			enabled: true
-
-			from: 10
-			to: 5000
-		}
-	}
-
-	RowLayout {
-		Kirigami.FormData.label: i18nc("@title:group", "Text color:")
-		QQC2.TextInput {
-			id: textColor
-			editable: true
-			enabled: true
-		}
-	}
-	RowLayout {
-		Kirigami.FormData.label: i18nc("@title:group", "Text background:")
-		QQC2.TextInput {
-			id: textBackground
-			editable: true
-			enabled: true
-		}
-	}
-	RowLayout {
-		Kirigami.FormData.label: i18nc("@title:group", "Text selection background:")
-		QQC2.TextInput {
-			id: textSelectionBackground
-			editable: true
-			enabled: true
-		}
-	}*/

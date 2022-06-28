@@ -33,5 +33,8 @@
 		<entry name="customIcon" type="String">
 			<default>knotes</default>
 		</entry>
+		<entry name="useDefault" type="Bool">
+			<default>true</default>
+		</entry>
 	</group>
 </kcfg>

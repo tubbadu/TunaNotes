@@ -11,10 +11,12 @@ Rectangle {
 		let isCheckbox = false
 		let isChecked = false
 		let isBullet = false
+		let isOrdered = ""
 		let isQuote = false
 		let isDivider = false
 		let dividerDouble = false
 		let titleNum = 0
+		let tabNum = 0
 		let spacerNum = 0
 
 		let x = null
@@ -38,9 +40,9 @@ Rectangle {
 		// check for initial tabs (\t)
 		x = txt.match(/^\t+/g)
 		if (x != null){
-			// is a title
-			let tabNum = x[0].trim().length
-			spacerNum = 2//spacerNum + tabNum
+			// has tabs
+			tabNum = txt.match(/\t/g).length // this counts also non beginning tabs
+			spacerNum += tabNum
 		}
 
 		// check for quotes
@@ -79,6 +81,14 @@ Rectangle {
 		}
 		// TODO check for ordered list
 
+		// check for ordered list EXPERIMENTAL
+		x = txt.trim().match(/^[0-9]+ *(.|\)) /g)
+		if (x != null){
+			isOrdered = txt.trim().match(/^[0-9]+ *(.|\)) /g)[0]
+			formatted = txt.trim().replace(/^[0-9]+ *(.|\)) /g, "")
+			spacerNum++
+		}
+
 		// check for horizontal divider
 		x = txt.trim().match(/^(\+|\-|\*){3,}/g)
 		if (x != null) {
@@ -109,11 +119,13 @@ Rectangle {
 			"isCheckbox": isCheckbox,
 			"isChecked": isChecked,
 			"isBullet": isBullet,
+			"isOrdered": isOrdered,
 			"spacerNum": spacerNum,
 			"isQuote": isQuote,
 			"isDivider": isDivider,
 			"dividerDouble": dividerDouble,
-			"titleNum": titleNum
+			"titleNum": titleNum,
+			"tabNum": tabNum
 		};
 	}
 }
