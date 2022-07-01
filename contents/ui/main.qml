@@ -19,6 +19,8 @@ import org.kde.plasma.plasmoid 2.0
 Item {
 	id: root
 
+	property bool debug: false
+
 	property bool useDefault: Plasmoid.configuration.useDefault
 	property string filePath: Plasmoid.configuration.filePath
 	property int fullHeight: Plasmoid.configuration.fullHeight
@@ -101,7 +103,7 @@ Item {
 
 	Text {
 		id: log
-		visible: false
+		visible: debug
 		color: "red"
 		text: "no log"
 		z: 100
@@ -280,6 +282,25 @@ Item {
 							}
 						}
 
+						// check if the cursor is at the end of the line
+						if(tEdit.cursorPosition != tEdit.length){
+							let startIndex = txt.length
+							log.text = "splitting line!"
+							txt += tEdit.text.slice(tEdit.cursorPosition, tEdit.length)
+							tEdit.text = tEdit.text.slice(0, tEdit.cursorPosition)
+							textFormat(tEdit.text)
+							// create block
+							if (lView.currentIndex + 1 < lView.model.count){
+								lView.addBlock(lView.currentIndex + 1, txt, true)
+							} else {
+								lView.addBlock(-1, txt, true)
+							}
+
+							// set now cursor at the beginning of the line
+							lView.currentItem.setCursorPosition(startIndex)
+							return
+						}
+
 						// create block
 						if (lView.currentIndex + 1 < lView.model.count){
 							lView.addBlock(lView.currentIndex + 1, txt)
@@ -347,6 +368,8 @@ Item {
 								let downKey = 16777237
 								let leftKey = 16777234
 								let rightKey = 16777236
+								let pageUpKey = 16777238
+								let pageDownKey = 16777239
 								//log.text = event.key
 
 								if (event.key == delKey){
@@ -378,7 +401,6 @@ Item {
 											// then go to the upper block and place cursor at the end
 											lView.decrementCurrentIndex()
 											lView.currentItem.setCursorPosition(-1)
-											log.text = "aaa"
 										}
 									}
 								} else if (event.key == rightKey){
@@ -388,9 +410,14 @@ Item {
 												// then go to the upper block and place cursor at the end
 												lView.incrementCurrentIndex()
 												lView.currentItem.setCursorPosition(0) //lView.currentItem.tEdit.length											}
-												log.text = "bbb"
 										}
 									}
+								} else if (event.key == pageUpKey){
+									event.accepted = true
+									lView.setCurrentIndex(0)
+								} else if (event.key == pageDownKey){
+									event.accepted = true
+									lView.setCurrentIndex(-1)
 								}
 							}
 							Timer {
@@ -534,7 +561,7 @@ Item {
 				property int n: 0
 
 				
-				function addBlock(index, txt="", isStartup=false){ // to be removed
+				function addBlock(index, txt="", isStartup=false){ 
 					let prop = {"setText": txt, "setAutoAddedFormatting": (((txt == "") || (isStartup)) ? "null" : txt)}
 					if(index == -1) {
 						model.append(prop)
@@ -544,6 +571,14 @@ Item {
 					let setIndex = currentItem.getLength()
 					currentItem.setCursorPosition(setIndex)
 					n=n+1
+				}
+
+				function setCurrentIndex(i){
+					if(i == -1){
+						currentIndex = model.count - 1
+					} else {
+						currentIndex = i
+					}
 				}
 
 				Component.onCompleted: {
@@ -563,8 +598,24 @@ Item {
 							lView.currentIndex = lView.count-1
 						}
 					}
-
 			}
+			Item{
+				anchors.top: lView.top
+				anchors.right: lView.right
+				width: 35//Math.round(PlasmaCore.Units.gridUnit * 1.25)
+        		height: width
+				
+				PlasmaComponents.ToolButton {
+					id: pin
+					checkable: true
+					iconSource: "pin"
+					anchors.fill: parent
+					z: 10
+					visible: plasmoid.compactRepresentationItem && plasmoid.compactRepresentationItem.visible
+					onCheckedChanged: plasmoid.hideOnWindowDeactivate = !checked
+				}
+			}
+			
 		}
 	}
 }
