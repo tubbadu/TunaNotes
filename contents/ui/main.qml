@@ -13,6 +13,7 @@ import org.kde.plasma.components 3.0 as PlasmaComponents3
 import org.kde.plasma.core 2.0 as PlasmaCore
 import org.kde.plasma.extras 2.0 as PlasmaExtras
 import org.kde.plasma.plasmoid 2.0
+import QtQml 2.15
 
 
 
@@ -28,77 +29,18 @@ Item {
 	property string customIcon: Plasmoid.configuration.customIcon
 	property int textSize: Plasmoid.configuration.textSize
 
-	property color textColor: PlasmaCore.Theme.palette.windowText
-	property color textBackground: "transparent" 
-	property color textSelectionBackground: PlasmaCore.Theme.palette.highlight
-	property color activeBlockBackground: PlasmaCore.Theme.palette.mid
-
-	property color xxx: "red"
-
-
-	function getConfig(){
-		useDefault = Plasmoid.configuration.useDefault
-		filePath = Plasmoid.configuration.filePath
-		fullHeight = Plasmoid.configuration.fullHeight
-		fullWidth = Plasmoid.configuration.fullWidth
-
-		if(useDefault){
-			let windowColor = PlasmaCore.Theme.palette.window
-
-			textColor = PlasmaCore.Theme.palette.windowText
-			textBackground = "transparent"
-			textSelectionBackground = PlasmaCore.Theme.palette.highlight
-
-			windowColor.a = 0.25
-			activeBlockBackground = windowColor// Qt.lighter(PlasmaCore.Theme.palette.window, 1.5), 0)
-		} else {
-			textColor = Plasmoid.configuration.textColor
-			textBackground = Plasmoid.configuration.textBackground
-			textSelectionBackground = Plasmoid.configuration.textSelectionBackground
-			activeBlockBackground = Plasmoid.configuration.activeBlockBackground
-		}
-	}
-
-
-	/*property bool useDefault: Plasmoid.configuration.useDefault
-
-	property string filePath: Plasmoid.configuration.filePath
-	property int fullHeight: Plasmoid.configuration.fullHeight
-	property int fullWidth: Plasmoid.configuration.fullWidth
-
-	property string c_textColor: Plasmoid.configuration.textColor
-	property string c_textBackground: Plasmoid.configuration.textBackground
-	property string c_textSelectionBackground: Plasmoid.configuration.textSelectionBackground
-	property string c_activeBlockBackground: Plasmoid.configuration.activeBlockBackground
-
-	property string textColor: ( !useDefault ? c_textColor : PlasmaCore.Theme.palette.windowText )
-	property string textBackground: "transparent" //( !useDefault ? c_textBackground : PlasmaCore.Theme.palette.window )
-	property string textSelectionBackground: ( !useDefault ? c_textSelectionBackground : PlasmaCore.Theme.palette.highlight )
-	property string activeBlockBackground: (isDark(PlasmaCore.Theme.palette.window) ? lighter(PlasmaCore.Theme.palette.window) : darker(PlasmaCore.Theme.palette.window)) //( !useDefault ? c_activeBlockBackground : PlasmaCore.Theme.palette.mid )
-	
-
-	property string customIcon: Plasmoid.configuration.customIcon
-	property int textSize: Plasmoid.configuration.textSize*/
-	
+	property color textColor: (useDefault? PlasmaCore.Theme.palette.windowText : Plasmoid.configuration.textColor)
+	property color textBackground: (useDefault? "transparent" : Plasmoid.configuration.textBackground)
+	property color textSelectionBackground: (useDefault? PlasmaCore.Theme.palette.highlight : Plasmoid.configuration.textSelectionBackground)
+	property color activeBlockBackground: (useDefault? Qt.rgba(1-PlasmaCore.Theme.backgroundColor.r, 1-PlasmaCore.Theme.backgroundColor.g, 1-PlasmaCore.Theme.backgroundColor.b, 0.2) : Plasmoid.configuration.activeBlockBackground)
 
 	PlasmaCore.IconItem{
 		id: iconItem
 		Plasmoid.icon: customIcon
 	}
 
-	Connections{
-		target: Plasmoid.configuration
-		onValueChanged: {
-			log.text = "ieee"
-			getConfig()
-			log.text = "updated correctly"
-		}
-	}
-
 	Component.onCompleted: {
-		openMarkdown()
-		getConfig()
-		
+		openMarkdown()		
 	}
 
 	Text {
