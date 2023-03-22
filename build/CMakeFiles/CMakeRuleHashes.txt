@@ -1,0 +1,6 @@
+# Hashes of file build rules.
+a4b21aec774c0849f2146f762db85844 CMakeFiles/fetch-translations
+f6a0ffd32f44fca4a28646825070dd91 CMakeFiles/uninstall
+9a08aaf35189ffe445f1ee95331df4b9 releaseme
+b77cdb279fa7fd1ba4811f3e05f83cf4 src/CMakeFiles/helloworld_autogen
+a8bfabbc3f4f254e27ed394348123b91 src/helloworld_autogen/EWIEGA46WW/qrc_resources.cpp

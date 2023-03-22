@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file alias="main.qml">contents/ui/main.qml</file>
+		<file alias="Document.qml">contents/ui/Document.qml</file>
+		<file alias="Block.qml">contents/ui/Block.qml</file>
+		<file alias="CheckBoxElement.qml">contents/ui/CheckBoxElement.qml</file>
+		<file alias="QuoteElement.qml">contents/ui/QuoteElement.qml</file>
+		<file alias="DotListElement.qml">contents/ui/DotListElement.qml</file>
+		<file alias="IndentElement.qml">contents/ui/IndentElement.qml</file>
+		<file alias="parser.js">contents/ui/parser.js</file>
+    </qresource>
+</RCC>
