@@ -22,5 +22,10 @@ Item{
 		contentItem: Item{
 			width: 0
 		}
+
+		onToggled:{
+			console.warn("toggled")
+			document.currentItem.forceFocus()
+		}
 	}
 }

@@ -9,5 +9,5 @@ Item{
 	property int tabSize: 20
 	property int tabNum: 0
 	height: 1
-	width: tabSize * tabNum
+	Layout.preferredWidth: (tabSize * tabNum) + 2
 }

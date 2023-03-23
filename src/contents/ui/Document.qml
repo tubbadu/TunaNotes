@@ -19,6 +19,9 @@ Item{
 	function itemAtIndex(i){
 		listView.itemAtIndex(i)
 	}
+	function remove(i){
+		blockModel.remove(i)
+	}
 	
 	Component.onCompleted:{
 		readFile()
@@ -29,10 +32,11 @@ Item{
 		let lines = Parser.splitStringExceptInCodeBlocks(file)
 		for(let i=0; i<lines.length; i++){
 			//addBlock(lines[i])
-			blockModel.append({set_text: lines[i]})
+			blockModel.append({set_text: lines[i], set_type: -1})
 		}
 		document.currentIndex = 0
 		document.currentItem.forceFocus()
+		document.currentItem.setCursorPosition(-1)
 	}
 
 	ListModel {
@@ -44,6 +48,7 @@ Item{
 		Block{
 			id: blk
 			setText: set_text
+			setType: set_type
 			width: parent? parent.width : 0
 		}
     }
@@ -72,6 +77,13 @@ Item{
    		highlightFollowsCurrentItem: true
 		highlightMoveDuration: 0
 		highlightResizeDuration: 0
+		rebound: Transition {
+			NumberAnimation {
+				properties: "x,y"
+				duration: 0
+				easing.type: Easing.Linear
+			}
+		}
     }
 	Text{
 		text: "->"
