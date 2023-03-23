@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tubbadu/code/Kirigami/prova
+CMAKE_SOURCE_DIR = /home/tubbadu/code/Kirigami/TunaNotes
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tubbadu/code/Kirigami/prova/build
+CMAKE_BINARY_DIR = /home/tubbadu/code/Kirigami/TunaNotes/build
 
 # Utility rule file for fetch-translations.
 
@@ -67,14 +67,14 @@ include CMakeFiles/fetch-translations.dir/compiler_depend.make
 include CMakeFiles/fetch-translations.dir/progress.make
 
 CMakeFiles/fetch-translations: releaseme
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tubbadu/code/Kirigami/prova/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Downloading translations for helloworld branch trunk..."
-	git -C /home/tubbadu/code/Kirigami/prova/build/releaseme pull
-	cmake -E remove_directory /home/tubbadu/code/Kirigami/prova/build/po
-	cmake -E remove_directory /home/tubbadu/code/Kirigami/prova/build/poqm
-	ruby /home/tubbadu/code/Kirigami/prova/build/releaseme/fetchpo.rb --origin trunk --project helloworld --output-dir /home/tubbadu/code/Kirigami/prova/build/po --output-poqm-dir /home/tubbadu/code/Kirigami/prova/build/poqm /home/tubbadu/code/Kirigami/prova
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tubbadu/code/Kirigami/TunaNotes/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Downloading translations for tunanotes branch trunk..."
+	git -C /home/tubbadu/code/Kirigami/TunaNotes/build/releaseme pull
+	cmake -E remove_directory /home/tubbadu/code/Kirigami/TunaNotes/build/po
+	cmake -E remove_directory /home/tubbadu/code/Kirigami/TunaNotes/build/poqm
+	ruby /home/tubbadu/code/Kirigami/TunaNotes/build/releaseme/fetchpo.rb --origin trunk --project tunanotes --output-dir /home/tubbadu/code/Kirigami/TunaNotes/build/po --output-poqm-dir /home/tubbadu/code/Kirigami/TunaNotes/build/poqm /home/tubbadu/code/Kirigami/TunaNotes
 
 releaseme:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tubbadu/code/Kirigami/prova/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Fetching releaseme scripts to download translations..."
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/tubbadu/code/Kirigami/TunaNotes/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Fetching releaseme scripts to download translations..."
 	git clone --depth 1 https://invent.kde.org/sdk/releaseme.git
 
 fetch-translations: CMakeFiles/fetch-translations
@@ -91,6 +91,6 @@ CMakeFiles/fetch-translations.dir/clean:
 .PHONY : CMakeFiles/fetch-translations.dir/clean
 
 CMakeFiles/fetch-translations.dir/depend:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tubbadu/code/Kirigami/prova /home/tubbadu/code/Kirigami/prova /home/tubbadu/code/Kirigami/prova/build /home/tubbadu/code/Kirigami/prova/build /home/tubbadu/code/Kirigami/prova/build/CMakeFiles/fetch-translations.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/tubbadu/code/Kirigami/TunaNotes /home/tubbadu/code/Kirigami/TunaNotes /home/tubbadu/code/Kirigami/TunaNotes/build /home/tubbadu/code/Kirigami/TunaNotes/build /home/tubbadu/code/Kirigami/TunaNotes/build/CMakeFiles/fetch-translations.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/fetch-translations.dir/depend
 

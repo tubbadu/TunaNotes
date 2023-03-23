@@ -11,18 +11,15 @@ import Launcher 1.0
 import FileManager 1.0
 
 Kirigami.ApplicationWindow {
-	// ID provides unique identifier to reference this element
 	id: window
-	onActiveFocusItemChanged: {
-		console.warn("activeFocusItem", activeFocusItem)
+	/*onActiveFocusItemChanged: {
+		//console.warn("activeFocusItem", activeFocusItem)
 		if(activeFocusItem === page){
 			console.warn("now!!!")
 			document.currentIndex = 5
 		}
-	}
+	}*/
 
-	// Window title
-	// i18nc is useful for adding context for translators, also lets strings be changed for different languages
 	title: i18nc("@title:window", "Hello World")
 	Launcher {
         id: launcher

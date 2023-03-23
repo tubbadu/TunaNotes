@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tubbadu/code/Kirigami/prova
+CMAKE_SOURCE_DIR = /home/tubbadu/code/Kirigami/TunaNotes
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tubbadu/code/Kirigami/prova/build
+CMAKE_BINARY_DIR = /home/tubbadu/code/Kirigami/TunaNotes/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,9 +97,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tubbadu/code/Kirigami/prova/build/CMakeFiles /home/tubbadu/code/Kirigami/prova/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tubbadu/code/Kirigami/TunaNotes/build/CMakeFiles /home/tubbadu/code/Kirigami/TunaNotes/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tubbadu/code/Kirigami/prova/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tubbadu/code/Kirigami/TunaNotes/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -153,30 +153,30 @@ fetch-translations/fast:
 .PHONY : fetch-translations/fast
 
 #=============================================================================
-# Target rules for targets named helloworld
+# Target rules for targets named tunanotes
 
 # Build rule for target.
-helloworld: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 helloworld
-.PHONY : helloworld
+tunanotes: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tunanotes
+.PHONY : tunanotes
 
 # fast build rule for target.
-helloworld/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/build
-.PHONY : helloworld/fast
+tunanotes/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/build
+.PHONY : tunanotes/fast
 
 #=============================================================================
-# Target rules for targets named helloworld_autogen
+# Target rules for targets named tunanotes_autogen
 
 # Build rule for target.
-helloworld_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 helloworld_autogen
-.PHONY : helloworld_autogen
+tunanotes_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tunanotes_autogen
+.PHONY : tunanotes_autogen
 
 # fast build rule for target.
-helloworld_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld_autogen.dir/build.make src/CMakeFiles/helloworld_autogen.dir/build
-.PHONY : helloworld_autogen/fast
+tunanotes_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes_autogen.dir/build.make src/CMakeFiles/tunanotes_autogen.dir/build
+.PHONY : tunanotes_autogen/fast
 
 # Help Target
 help:
@@ -188,9 +188,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... fetch-translations"
-	@echo "... helloworld_autogen"
+	@echo "... tunanotes_autogen"
 	@echo "... uninstall"
-	@echo "... helloworld"
+	@echo "... tunanotes"
 .PHONY : help
 
 

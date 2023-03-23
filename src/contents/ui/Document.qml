@@ -32,6 +32,7 @@ Item{
 			blockModel.append({set_text: lines[i]})
 		}
 		document.currentIndex = 0
+		document.currentItem.forceFocus()
 	}
 
 	ListModel {
@@ -60,7 +61,11 @@ Item{
 
 	ListView {
 		id: listView
-        anchors.fill: parent
+        anchors.fill: parent // todo remove
+		anchors.top: parent.top
+		anchors.right: parent.right
+		anchors.left: parent.left
+		//height: 5000
         model: blockModel
         delegate: blockDelegate
 		highlight: highlight
@@ -68,4 +73,11 @@ Item{
 		highlightMoveDuration: 0
 		highlightResizeDuration: 0
     }
+	Text{
+		text: "->"
+		Rectangle{
+			anchors.fill: parent
+			z: -1
+		}
+	}
 }

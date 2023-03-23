@@ -1,0 +1,29 @@
+{
+	"BUILD_DIR" : "/home/tubbadu/code/Kirigami/TunaNotes/build/src/tunanotes_autogen",
+	"CMAKE_BINARY_DIR" : "/home/tubbadu/code/Kirigami/TunaNotes/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/home/tubbadu/code/Kirigami/TunaNotes/build/src",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/home/tubbadu/code/Kirigami/TunaNotes/src",
+	"CMAKE_SOURCE_DIR" : "/home/tubbadu/code/Kirigami/TunaNotes",
+	"INCLUDE_DIR" : "/home/tubbadu/code/Kirigami/TunaNotes/build/src/tunanotes_autogen/include",
+	"INPUTS" : 
+	[
+		"/home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/CheckBoxElement.qml",
+		"/home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/DotListElement.qml",
+		"/home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/IndentElement.qml",
+		"/home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/Document.qml",
+		"/home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/Block.qml",
+		"/home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/parser.js",
+		"/home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/QuoteElement.qml",
+		"/home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/main.qml"
+	],
+	"LOCK_FILE" : "/home/tubbadu/code/Kirigami/TunaNotes/build/src/CMakeFiles/tunanotes_autogen.dir/AutoRcc_resources_EWIEGA46WW_Lock.lock",
+	"MULTI_CONFIG" : false,
+	"OPTIONS" : [ "-name", "resources" ],
+	"OUTPUT_CHECKSUM" : "EWIEGA46WW",
+	"OUTPUT_NAME" : "qrc_resources.cpp",
+	"RCC_EXECUTABLE" : "/usr/lib64/qt5/bin/rcc",
+	"RCC_LIST_OPTIONS" : [ "--list" ],
+	"SETTINGS_FILE" : "/home/tubbadu/code/Kirigami/TunaNotes/build/src/CMakeFiles/tunanotes_autogen.dir/AutoRcc_resources_EWIEGA46WW_Used.txt",
+	"SOURCE" : "/home/tubbadu/code/Kirigami/TunaNotes/src/resources.qrc",
+	"VERBOSITY" : 0
+}

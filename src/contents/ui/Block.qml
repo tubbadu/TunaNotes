@@ -26,6 +26,7 @@ RowLayout{
 	property bool checked: false
 	property int headerNum: 0
 	property var parseResult: Parser.parseMarkdownLine(setText)
+	property bool isActiveItem: (document.currentIndex === index)
 
 	function getType(){
 		text = parseResult.plainText
@@ -57,19 +58,49 @@ RowLayout{
 	}
 
 	function newBlock(){
-		blockModel.insert(index+1, {set_text: "new block!!!!"}) // TODO set type
+		blockModel.insert(index+1, {set_text: ""}) // TODO set type
+		down()
+	}
+
+	function setCursorPosition(pos){
+		if(pos === -1){
+			txt.cursorPosition = txt.length
+		} else if (pos < txt.length){
+			txt.cursorPosition = pos
+		} else {
+			txt.cursorPosition = txt.length
+		}
+	}
+
+	function forceFocus(){
+		txt.forceActiveFocus()
+		setCursorPosition(-1)
+		console.warn("forced focus on active object")
 	}
 
 	function up(){
 		if(index > 0){
 			document.currentIndex = index-1
+			document.currentItem.setCursorPosition(calculateNextCursorPosition())
 		}
 	}
 
 	function down(){
 		if(index + 1 < listView.count){
 			document.currentIndex = index + 1
+			document.currentItem.setCursorPosition(calculateNextCursorPosition())
 		}
+	}
+
+	function calculateNextCursorPosition(){
+		let cursor_index = txt.cursorPosition
+		console.warn(txt.cursorPosition)
+		if(txt.cursorPosition == txt.length){
+			cursor_index = -1
+		} else if(txt.cursorPosition == 0){
+			cursor_index = 0
+		}
+		return cursor_index
 	}
 
 	Component.onCompleted:{
@@ -101,7 +132,7 @@ RowLayout{
 		font.pixelSize: 15
 		text: "ciao"
 		color: "#fcfcfc"
-		focus: true
+		tabStopDistance: checkboxelement.width
 		textFormat: block.Type === Block.Type.CodeBlock ? TextEdit.PlainText : TextEdit.MarkdownText
 
 		Keys.onPressed: (event) => {
@@ -121,13 +152,18 @@ RowLayout{
 		}
 
 		onFocusChanged: {
-			if(focus)
+			// needed to set the current item on the clicked element
+			if(focus && (document.currentIndex !== index)){
 				document.currentIndex = index
+			}
 		}
+
 	}
 
 	onFocusChanged: {
-		if(focus)
+		// needed to set text focus when selecting block with arrows
+		if(focus && !txt.focus){
 			txt.focus = true
+		}
 	}
 }

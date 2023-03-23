@@ -7,12 +7,12 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/home/tubbadu/code/Kirigami/prova/CMakeLists.txt"
+  "/home/tubbadu/code/Kirigami/TunaNotes/CMakeLists.txt"
   "CMakeFiles/3.26.0/CMakeCCompiler.cmake"
   "CMakeFiles/3.26.0/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.26.0/CMakeSystem.cmake"
-  "/home/tubbadu/code/Kirigami/prova/src/CMakeLists.txt"
-  "/home/tubbadu/code/Kirigami/prova/src/resources.qrc"
+  "/home/tubbadu/code/Kirigami/TunaNotes/src/CMakeLists.txt"
+  "/home/tubbadu/code/Kirigami/TunaNotes/src/resources.qrc"
   "/usr/lib64/cmake/KF5CoreAddons/KF5CoreAddonsConfig.cmake"
   "/usr/lib64/cmake/KF5CoreAddons/KF5CoreAddonsConfigVersion.cmake"
   "/usr/lib64/cmake/KF5CoreAddons/KF5CoreAddonsMacros.cmake"
@@ -179,8 +179,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "prefix.sh"
   "ecm_uninstall.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
-  "src/CMakeFiles/helloworld_autogen.dir/AutogenInfo.json"
-  "src/CMakeFiles/helloworld_autogen.dir/AutoRcc_resources_EWIEGA46WW_Info.json"
+  "src/CMakeFiles/tunanotes_autogen.dir/AutogenInfo.json"
+  "src/CMakeFiles/tunanotes_autogen.dir/AutoRcc_resources_EWIEGA46WW_Info.json"
   "src/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
@@ -188,6 +188,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/uninstall.dir/DependInfo.cmake"
   "CMakeFiles/fetch-translations.dir/DependInfo.cmake"
-  "src/CMakeFiles/helloworld.dir/DependInfo.cmake"
-  "src/CMakeFiles/helloworld_autogen.dir/DependInfo.cmake"
+  "src/CMakeFiles/tunanotes.dir/DependInfo.cmake"
+  "src/CMakeFiles/tunanotes_autogen.dir/DependInfo.cmake"
   )

@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/tubbadu/code/Kirigami/prova
+CMAKE_SOURCE_DIR = /home/tubbadu/code/Kirigami/TunaNotes
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/tubbadu/code/Kirigami/prova/build
+CMAKE_BINARY_DIR = /home/tubbadu/code/Kirigami/TunaNotes/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -97,14 +97,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/tubbadu/code/Kirigami/prova/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tubbadu/code/Kirigami/prova/build/CMakeFiles /home/tubbadu/code/Kirigami/prova/build/src//CMakeFiles/progress.marks
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/tubbadu/code/Kirigami/prova/build/CMakeFiles 0
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/tubbadu/code/Kirigami/TunaNotes/build/CMakeFiles /home/tubbadu/code/Kirigami/TunaNotes/build/src//CMakeFiles/progress.marks
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tubbadu/code/Kirigami/TunaNotes/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -113,53 +113,53 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-src/CMakeFiles/helloworld.dir/rule:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/helloworld.dir/rule
-.PHONY : src/CMakeFiles/helloworld.dir/rule
+src/CMakeFiles/tunanotes.dir/rule:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/tunanotes.dir/rule
+.PHONY : src/CMakeFiles/tunanotes.dir/rule
 
 # Convenience name for target.
-helloworld: src/CMakeFiles/helloworld.dir/rule
-.PHONY : helloworld
+tunanotes: src/CMakeFiles/tunanotes.dir/rule
+.PHONY : tunanotes
 
 # fast build rule for target.
-helloworld/fast:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/build
-.PHONY : helloworld/fast
+tunanotes/fast:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/build
+.PHONY : tunanotes/fast
 
 # Convenience name for target.
-src/CMakeFiles/helloworld_autogen.dir/rule:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/helloworld_autogen.dir/rule
-.PHONY : src/CMakeFiles/helloworld_autogen.dir/rule
+src/CMakeFiles/tunanotes_autogen.dir/rule:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 src/CMakeFiles/tunanotes_autogen.dir/rule
+.PHONY : src/CMakeFiles/tunanotes_autogen.dir/rule
 
 # Convenience name for target.
-helloworld_autogen: src/CMakeFiles/helloworld_autogen.dir/rule
-.PHONY : helloworld_autogen
+tunanotes_autogen: src/CMakeFiles/tunanotes_autogen.dir/rule
+.PHONY : tunanotes_autogen
 
 # fast build rule for target.
-helloworld_autogen/fast:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld_autogen.dir/build.make src/CMakeFiles/helloworld_autogen.dir/build
-.PHONY : helloworld_autogen/fast
+tunanotes_autogen/fast:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes_autogen.dir/build.make src/CMakeFiles/tunanotes_autogen.dir/build
+.PHONY : tunanotes_autogen/fast
 
 fileManager.o: fileManager.cpp.o
 .PHONY : fileManager.o
 
 # target to build an object file
 fileManager.cpp.o:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/fileManager.cpp.o
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/fileManager.cpp.o
 .PHONY : fileManager.cpp.o
 
 fileManager.i: fileManager.cpp.i
@@ -167,7 +167,7 @@ fileManager.i: fileManager.cpp.i
 
 # target to preprocess a source file
 fileManager.cpp.i:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/fileManager.cpp.i
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/fileManager.cpp.i
 .PHONY : fileManager.cpp.i
 
 fileManager.s: fileManager.cpp.s
@@ -175,63 +175,15 @@ fileManager.s: fileManager.cpp.s
 
 # target to generate assembly for a file
 fileManager.cpp.s:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/fileManager.cpp.s
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/fileManager.cpp.s
 .PHONY : fileManager.cpp.s
-
-helloworld_autogen/EWIEGA46WW/qrc_resources.o: helloworld_autogen/EWIEGA46WW/qrc_resources.cpp.o
-.PHONY : helloworld_autogen/EWIEGA46WW/qrc_resources.o
-
-# target to build an object file
-helloworld_autogen/EWIEGA46WW/qrc_resources.cpp.o:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/helloworld_autogen/EWIEGA46WW/qrc_resources.cpp.o
-.PHONY : helloworld_autogen/EWIEGA46WW/qrc_resources.cpp.o
-
-helloworld_autogen/EWIEGA46WW/qrc_resources.i: helloworld_autogen/EWIEGA46WW/qrc_resources.cpp.i
-.PHONY : helloworld_autogen/EWIEGA46WW/qrc_resources.i
-
-# target to preprocess a source file
-helloworld_autogen/EWIEGA46WW/qrc_resources.cpp.i:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/helloworld_autogen/EWIEGA46WW/qrc_resources.cpp.i
-.PHONY : helloworld_autogen/EWIEGA46WW/qrc_resources.cpp.i
-
-helloworld_autogen/EWIEGA46WW/qrc_resources.s: helloworld_autogen/EWIEGA46WW/qrc_resources.cpp.s
-.PHONY : helloworld_autogen/EWIEGA46WW/qrc_resources.s
-
-# target to generate assembly for a file
-helloworld_autogen/EWIEGA46WW/qrc_resources.cpp.s:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/helloworld_autogen/EWIEGA46WW/qrc_resources.cpp.s
-.PHONY : helloworld_autogen/EWIEGA46WW/qrc_resources.cpp.s
-
-helloworld_autogen/mocs_compilation.o: helloworld_autogen/mocs_compilation.cpp.o
-.PHONY : helloworld_autogen/mocs_compilation.o
-
-# target to build an object file
-helloworld_autogen/mocs_compilation.cpp.o:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/helloworld_autogen/mocs_compilation.cpp.o
-.PHONY : helloworld_autogen/mocs_compilation.cpp.o
-
-helloworld_autogen/mocs_compilation.i: helloworld_autogen/mocs_compilation.cpp.i
-.PHONY : helloworld_autogen/mocs_compilation.i
-
-# target to preprocess a source file
-helloworld_autogen/mocs_compilation.cpp.i:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/helloworld_autogen/mocs_compilation.cpp.i
-.PHONY : helloworld_autogen/mocs_compilation.cpp.i
-
-helloworld_autogen/mocs_compilation.s: helloworld_autogen/mocs_compilation.cpp.s
-.PHONY : helloworld_autogen/mocs_compilation.s
-
-# target to generate assembly for a file
-helloworld_autogen/mocs_compilation.cpp.s:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/helloworld_autogen/mocs_compilation.cpp.s
-.PHONY : helloworld_autogen/mocs_compilation.cpp.s
 
 launcher.o: launcher.cpp.o
 .PHONY : launcher.o
 
 # target to build an object file
 launcher.cpp.o:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/launcher.cpp.o
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/launcher.cpp.o
 .PHONY : launcher.cpp.o
 
 launcher.i: launcher.cpp.i
@@ -239,7 +191,7 @@ launcher.i: launcher.cpp.i
 
 # target to preprocess a source file
 launcher.cpp.i:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/launcher.cpp.i
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/launcher.cpp.i
 .PHONY : launcher.cpp.i
 
 launcher.s: launcher.cpp.s
@@ -247,7 +199,7 @@ launcher.s: launcher.cpp.s
 
 # target to generate assembly for a file
 launcher.cpp.s:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/launcher.cpp.s
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/launcher.cpp.s
 .PHONY : launcher.cpp.s
 
 main.o: main.cpp.o
@@ -255,7 +207,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/main.cpp.o
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -263,7 +215,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/main.cpp.i
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -271,8 +223,56 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/helloworld.dir/build.make src/CMakeFiles/helloworld.dir/main.cpp.s
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+tunanotes_autogen/EWIEGA46WW/qrc_resources.o: tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o
+.PHONY : tunanotes_autogen/EWIEGA46WW/qrc_resources.o
+
+# target to build an object file
+tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o
+.PHONY : tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o
+
+tunanotes_autogen/EWIEGA46WW/qrc_resources.i: tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.i
+.PHONY : tunanotes_autogen/EWIEGA46WW/qrc_resources.i
+
+# target to preprocess a source file
+tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.i:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.i
+.PHONY : tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.i
+
+tunanotes_autogen/EWIEGA46WW/qrc_resources.s: tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.s
+.PHONY : tunanotes_autogen/EWIEGA46WW/qrc_resources.s
+
+# target to generate assembly for a file
+tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.s:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.s
+.PHONY : tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.s
+
+tunanotes_autogen/mocs_compilation.o: tunanotes_autogen/mocs_compilation.cpp.o
+.PHONY : tunanotes_autogen/mocs_compilation.o
+
+# target to build an object file
+tunanotes_autogen/mocs_compilation.cpp.o:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/tunanotes_autogen/mocs_compilation.cpp.o
+.PHONY : tunanotes_autogen/mocs_compilation.cpp.o
+
+tunanotes_autogen/mocs_compilation.i: tunanotes_autogen/mocs_compilation.cpp.i
+.PHONY : tunanotes_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+tunanotes_autogen/mocs_compilation.cpp.i:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/tunanotes_autogen/mocs_compilation.cpp.i
+.PHONY : tunanotes_autogen/mocs_compilation.cpp.i
+
+tunanotes_autogen/mocs_compilation.s: tunanotes_autogen/mocs_compilation.cpp.s
+.PHONY : tunanotes_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+tunanotes_autogen/mocs_compilation.cpp.s:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/tunanotes_autogen/mocs_compilation.cpp.s
+.PHONY : tunanotes_autogen/mocs_compilation.cpp.s
 
 # Help Target
 help:
@@ -283,23 +283,23 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... helloworld_autogen"
-	@echo "... helloworld"
+	@echo "... tunanotes_autogen"
+	@echo "... tunanotes"
 	@echo "... fileManager.o"
 	@echo "... fileManager.i"
 	@echo "... fileManager.s"
-	@echo "... helloworld_autogen/EWIEGA46WW/qrc_resources.o"
-	@echo "... helloworld_autogen/EWIEGA46WW/qrc_resources.i"
-	@echo "... helloworld_autogen/EWIEGA46WW/qrc_resources.s"
-	@echo "... helloworld_autogen/mocs_compilation.o"
-	@echo "... helloworld_autogen/mocs_compilation.i"
-	@echo "... helloworld_autogen/mocs_compilation.s"
 	@echo "... launcher.o"
 	@echo "... launcher.i"
 	@echo "... launcher.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... tunanotes_autogen/EWIEGA46WW/qrc_resources.o"
+	@echo "... tunanotes_autogen/EWIEGA46WW/qrc_resources.i"
+	@echo "... tunanotes_autogen/EWIEGA46WW/qrc_resources.s"
+	@echo "... tunanotes_autogen/mocs_compilation.o"
+	@echo "... tunanotes_autogen/mocs_compilation.i"
+	@echo "... tunanotes_autogen/mocs_compilation.s"
 .PHONY : help
 
 
@@ -311,6 +311,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/tubbadu/code/Kirigami/prova/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
