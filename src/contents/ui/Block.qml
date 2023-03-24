@@ -5,10 +5,11 @@ import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.13 as Kirigami
 import org.kde.syntaxhighlighting 1.0
 import "parser.js" as Parser
+import "keyHandler.js" as KeyHandler
 
 RowLayout{
 	id: block
-	//width: parent.width
+	width: parent.width
 	spacing: 0
 
 	enum Type{
@@ -31,8 +32,10 @@ RowLayout{
 	property alias cursorPosition: txt.cursorPosition
 	property alias length: txt.length
 
-	function getType(){
+	function getType(t = setText){
+		parseResult =  Parser.parseMarkdownLine(t)
 		text = parseResult.plainText
+		//console.warn(text + "!!!")
 		if(parseResult.isChecklist){
 			type = Block.Type.CheckList
 			checked = parseResult.isChecked
@@ -47,12 +50,11 @@ RowLayout{
 			type = Block.Type.CodeBlock
 			return
 		} else if(parseResult.isHeader){
-			//type = Block.Type.Header
 			headerNum = parseResult.headerNumber
 			return
 		}
 
-		type = Block.Type.PlainText
+		type = Block.Type.PlainText;
 	}
 
 	function newBlock(set_text=""){
@@ -110,99 +112,6 @@ RowLayout{
 		return cursor_index
 	}
 
-	function keyHandler(event){
-		var key = event.key
-		if (key == Qt.Key_Enter || key == Qt.Key_Return) {
-			enableTextFormat = false
-			console.warn("enter");
-			event.accepted = true;
-			let subtext = text.substr(txt.cursorPosition, text.length)
-			text = text.substr(0, txt.cursorPosition)
-			newBlock(subtext);
-			enableTextFormat = false
-		} else if (key == Qt.Key_Down) {
-			event.accepted = true;
-			down();
-		} else if (key == Qt.Key_Up) {
-			event.accepted = true;
-			up();
-		} else if (key == Qt.Key_Delete) {
-			if(txt.cursorPosition == txt.length && index < document.count-1){
-				event.accepted = true;
-				console.warn("marging this block to the previous one");
-				mergeBlocks(index+1, index)
-			}
-		} else if (key == Qt.Key_Backspace) {
-			console.warn("type: " + type)
-			console.warn("cursorPosition: " + txt.cursorPosition)
-			if(txt.cursorPosition == 0){
-				event.accepted = true;
-				if ((type == Block.Type.PlainText) && (headerNum > 0)){
-					headerNum--
-				}else if(type !== Block.Type.PlainText){
-					type = Block.Type.PlainText
-					console.warn("removing formatting");
-				} else if(index > 0){
-					console.warn("marging this block to the previous one");
-					mergeBlocks(index, index-1)
-				}
-			}
-		} else if(key == Qt.Key_Tab) {
-			// todo add codeblock support
-			event.accepted = true;
-			tabNum++
-		} else if(key == Qt.Key_Backtab) {
-			// todo add codeblock support
-			event.accepted = true;
-			if(tabNum > 0){
-				tabNum--
-			}
-		} else if(key == Qt.Key_NumberSign && cursorPosition == 0){
-			if(type == Block.Type.PlainText){
-				event.accepted = true;
-				//type = Block.Type.Header
-				if(headerNum < 6){
-					headerNum++
-				}
-			}
-		} else if(key == Qt.Key_Greater && cursorPosition == 0){
-			// ignore the current formatting, just set it to quote or plaintext
-			if(type == Block.Type.Quote){
-				type = Block.Type.PlainText
-			} else {
-				type = Block.Type.Quote
-			}
-			event.accepted = true
-		} else if((key == Qt.Key_Minus || key == Qt.Key_Plus || key == Qt.Key_Asterisk) && cursorPosition == 0){
-			// ignore the current formatting, just set it to quote or plaintext
-			if(type == Block.Type.DotList){
-				type = Block.Type.PlainText
-			} else {
-				type = Block.Type.DotList
-			}
-			event.accepted = true
-		} else if(key == Qt.Key_BracketRight && cursorPosition == 1 && text[0] == "["){
-			// ignore the current formatting, just set it to quote or plaintext
-			type = Block.Type.CheckList
-			text = text.replace(/^\[/, "")
-			event.accepted = true
-		} else if(key == Qt.Key_Space){
-			// parse
-		} else if(key == Qt.Key_Left){
-			if(cursorPosition == 0 && index > 0){
-				document.currentIndex--
-				document.currentItem.setCursorPosition(-1)
-				event.accepted = true
-			}
-		} else if(key == Qt.Key_Right){
-			if(cursorPosition == txt.length && index < document.count-1){
-				document.currentIndex++
-				document.currentItem.setCursorPosition(0)
-				event.accepted = true
-			}
-		}
-	}
-
 	function mergeBlocks(i1, i2){ // b1 is removed and attached to b2 (i is the index)
 		let extext = listView.itemAtIndex(i2).text.replace(/\n\n$/g, "") // TODO remove problem at the source (parser probably) (no, probably it's more difficult)
 		let pos = listView.itemAtIndex(i2).length
@@ -230,7 +139,7 @@ RowLayout{
 
 	Component.onCompleted:{
 		if(setType == -1){
-			// no type specified, calculate type
+			console.warn("no type specified, calculate type")
 			getType()
 		} else {
 			text = parseResult.plainText
@@ -239,7 +148,6 @@ RowLayout{
 		
 	}
 
-	
 	IndentElement{
 		id: indentelement
 		tabSize: checkboxelement.width
@@ -271,9 +179,9 @@ RowLayout{
 		color: "#fcfcfc"
 		wrapMode: TextEdit.Wrap
 		tabStopDistance: checkboxelement.width
-		textFormat: enableTextFormat? (block.Type === Block.Type.CodeBlock ? TextEdit.PlainText : TextEdit.MarkdownText) : TextEdit.PlainText
+		textFormat: TextEdit.PlainText //enableTextFormat? (block.Type === Block.Type.CodeBlock ? TextEdit.PlainText : TextEdit.MarkdownText) : TextEdit.PlainText
 
-		Keys.onPressed: (event) => keyHandler(event)
+		Keys.onPressed: (event) => KeyHandler.key(event)
 
 		onFocusChanged: {
 			// needed to set the current item on the clicked element

@@ -8,5 +8,6 @@
 		<file alias="DotListElement.qml">contents/ui/DotListElement.qml</file>
 		<file alias="IndentElement.qml">contents/ui/IndentElement.qml</file>
 		<file alias="parser.js">contents/ui/parser.js</file>
+		<file alias="keyHandler.js">contents/ui/keyHandler.js</file>
     </qresource>
 </RCC>
