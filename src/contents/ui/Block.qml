@@ -127,18 +127,20 @@ RowLayout{
 			event.accepted = true;
 			up();
 		} else if (key == Qt.Key_Delete) {
-			console.warn("canc");
 			if(txt.cursorPosition == txt.length && index < document.count-1){
 				event.accepted = true;
 				console.warn("marging this block to the previous one");
 				mergeBlocks(index+1, index)
 			}
 		} else if (key == Qt.Key_Backspace) {
-			console.warn("backspace");
-			
 			if(txt.cursorPosition == 0){
 				event.accepted = true;
-				if(type !== Block.Type.PlainText){
+				
+				if (type == Block.Type.Header || type == Block.Type.PlainText ){
+					if(headerNum > 0){
+						headerNum--
+					}
+				}else if(type !== Block.Type.PlainText){
 					type = Block.Type.PlainText
 					console.warn("removing formatting");
 				} else if(index > 0){
@@ -156,6 +158,38 @@ RowLayout{
 			if(tabNum > 0){
 				tabNum--
 			}
+		} else if(key == Qt.Key_NumberSign && cursorPosition == 0){
+			if(type == Block.Type.PlainText || type == Block.Type.Header){
+				event.accepted = true;
+				type = Block.Type.Header
+				if(headerNum < 6){
+					headerNum++
+				}
+			}
+		} else if(key == Qt.Key_Greater && cursorPosition == 0){
+			// ignore the current formatting, just set it to quote or plaintext
+			if(type == Block.Type.Quote){
+				type = Block.Type.PlainText
+			} else {
+				type = Block.Type.Quote
+			}
+			event.accepted = true
+		} else if((key == Qt.Key_Minus || key == Qt.Key_Plus || key == Qt.Key_Asterisk) && cursorPosition == 0){
+			// ignore the current formatting, just set it to quote or plaintext
+			if(type == Block.Type.DotList){
+				type = Block.Type.PlainText
+			} else {
+				type = Block.Type.DotList
+			}
+			event.accepted = true
+		} else if(key == Qt.Key_BracketRight && cursorPosition == 1 && text[0] == "["){
+			// ignore the current formatting, just set it to quote or plaintext
+			type = Block.Type.CheckList
+			text = text.replace(/^\[/, "")
+			event.accepted = true
+		} 
+		else if(key == Qt.Key_Space){
+			// parse
 		}
 	}
 
@@ -167,6 +201,21 @@ RowLayout{
 		listView.itemAtIndex(i2).setCursorPosition(pos)
 		
 		document.remove(i1)
+	}
+
+	function textSize(){
+		let x = [34, 26, 23, 20, 18, 17]
+		let n = headerNum - 1
+		if(n < 0){
+			return 15
+		}
+
+		let ret = x[n]
+		if(ret == undefined){
+			return x[x.length-1]
+		}
+
+		return ret
 	}
 
 	Component.onCompleted:{
@@ -206,9 +255,11 @@ RowLayout{
 		Layout.alignment: Qt.AlignTop
 		Layout.topMargin: 2
 		Layout.leftMargin: 3
-		font.pixelSize: 15
+		font.pixelSize: textSize()
+		font.bold: headerNum > 0
 		text: "ciao"
 		color: "#fcfcfc"
+		wrapMode: TextEdit.Wrap
 		tabStopDistance: checkboxelement.width
 		textFormat: enableTextFormat? (block.Type === Block.Type.CodeBlock ? TextEdit.PlainText : TextEdit.MarkdownText) : TextEdit.PlainText
 
@@ -220,7 +271,6 @@ RowLayout{
 				document.currentIndex = index
 			}
 		}
-
 	}
 
 	onFocusChanged: {

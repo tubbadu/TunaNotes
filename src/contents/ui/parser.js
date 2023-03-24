@@ -16,7 +16,7 @@ function getPlainText(line){
 	const codeBlockRegex = /^```+|```+$/;
 
 	const plainText = line.trim()
-		//.replace(headerRegex, '')
+		.replace(headerRegex, '')
 		.replace(checklistRegex, '')
 		.replace(dotListRegex, '')
 		.replace(quoteRegex, '')

@@ -85,11 +85,4 @@ Item{
 			}
 		}
     }
-	Text{
-		text: "->"
-		Rectangle{
-			anchors.fill: parent
-			z: -1
-		}
-	}
 }
