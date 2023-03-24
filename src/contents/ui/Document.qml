@@ -28,8 +28,8 @@ Item{
 	}
 
 	function readFile(){
-		let file = filemanager.read("/home/tubbadu/Desktop/TODO.md")
-		let lines = Parser.splitStringExceptInCodeBlocks(file)
+		let file = filemanager.read("/home/tubbadu/Desktop/TODO.md");
+		let lines = Parser.splitStringExceptInCodeBlocks(file);
 		for(let i=0; i<lines.length; i++){
 			//addBlock(lines[i])
 			blockModel.append({set_text: lines[i], set_type: -1})
@@ -57,9 +57,9 @@ Item{
 		id: highlight
 		Rectangle {
 			width: 180; height: 40
-			color: "#30586E";
+			color: window.active? "#30586E" : "transparent";
 			radius: 5
-			border.color: "#3DAEE9"
+			border.color: window.active? "#3DAEE9" : "transparent";
 			border.width: 1
 		}
 	}

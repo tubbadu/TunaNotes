@@ -13,7 +13,7 @@ RowLayout{
 
 	enum Type{
 		PlainText,
-		Header,
+		//Header, // remove
 		Quote,
 		DotList,
 		CheckList,
@@ -47,7 +47,7 @@ RowLayout{
 			type = Block.Type.CodeBlock
 			return
 		} else if(parseResult.isHeader){
-			type = Block.Type.Header
+			//type = Block.Type.Header
 			headerNum = parseResult.headerNumber
 			return
 		}
@@ -133,13 +133,12 @@ RowLayout{
 				mergeBlocks(index+1, index)
 			}
 		} else if (key == Qt.Key_Backspace) {
+			console.warn("type: " + type)
+			console.warn("cursorPosition: " + txt.cursorPosition)
 			if(txt.cursorPosition == 0){
 				event.accepted = true;
-				
-				if (type == Block.Type.Header || type == Block.Type.PlainText ){
-					if(headerNum > 0){
-						headerNum--
-					}
+				if ((type == Block.Type.PlainText) && (headerNum > 0)){
+					headerNum--
 				}else if(type !== Block.Type.PlainText){
 					type = Block.Type.PlainText
 					console.warn("removing formatting");
@@ -159,9 +158,9 @@ RowLayout{
 				tabNum--
 			}
 		} else if(key == Qt.Key_NumberSign && cursorPosition == 0){
-			if(type == Block.Type.PlainText || type == Block.Type.Header){
+			if(type == Block.Type.PlainText){
 				event.accepted = true;
-				type = Block.Type.Header
+				//type = Block.Type.Header
 				if(headerNum < 6){
 					headerNum++
 				}
@@ -187,9 +186,20 @@ RowLayout{
 			type = Block.Type.CheckList
 			text = text.replace(/^\[/, "")
 			event.accepted = true
-		} 
-		else if(key == Qt.Key_Space){
+		} else if(key == Qt.Key_Space){
 			// parse
+		} else if(key == Qt.Key_Left){
+			if(cursorPosition == 0 && index > 0){
+				document.currentIndex--
+				document.currentItem.setCursorPosition(-1)
+				event.accepted = true
+			}
+		} else if(key == Qt.Key_Right){
+			if(cursorPosition == txt.length && index < document.count-1){
+				document.currentIndex++
+				document.currentItem.setCursorPosition(0)
+				event.accepted = true
+			}
 		}
 	}
 
