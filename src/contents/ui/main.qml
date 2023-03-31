@@ -29,9 +29,10 @@ Kirigami.ApplicationWindow {
 	}
 
 	// Initial page to be loaded on app load
-	pageStack.initialPage: Kirigami.Page {
+	pageStack.initialPage: Kirigami.ScrollablePage { // scrollablepage does not successfully set focus at the beginning (fixable probably)
 		id: page
 		Layout.fillWidth: true
+		keyboardNavigationEnabled: true
 		
 		//Layout.fillHeight: true
 

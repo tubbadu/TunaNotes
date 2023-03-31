@@ -35,7 +35,6 @@ RowLayout{
 	function getType(t = setText){
 		parseResult =  Parser.parseMarkdownLine(t)
 		text = parseResult.plainText
-		//console.warn(text + "!!!")
 		if(parseResult.isChecklist){
 			type = Block.Type.CheckList
 			checked = parseResult.isChecked
@@ -95,7 +94,7 @@ RowLayout{
 	}
 
 	function down(){
-		if(index + 1 < listView.count){
+		if(index + 1 < document.count){
 			document.currentIndex = index + 1
 			document.currentItem.setCursorPosition(calculateNextCursorPosition())
 		}
@@ -103,7 +102,6 @@ RowLayout{
 
 	function calculateNextCursorPosition(){
 		let cursor_index = txt.cursorPosition
-		console.warn(txt.cursorPosition)
 		if(txt.cursorPosition == txt.length){
 			cursor_index = -1
 		} else if(txt.cursorPosition == 0){
@@ -113,11 +111,11 @@ RowLayout{
 	}
 
 	function mergeBlocks(i1, i2){ // b1 is removed and attached to b2 (i is the index)
-		let extext = listView.itemAtIndex(i2).text.replace(/\n\n$/g, "") // TODO remove problem at the source (parser probably) (no, probably it's more difficult)
-		let pos = listView.itemAtIndex(i2).length
-		listView.itemAtIndex(i2).text = extext + listView.itemAtIndex(i1).text.replace(/\n\n$/g, "")
-		listView.itemAtIndex(i2).forceFocus()
-		listView.itemAtIndex(i2).setCursorPosition(pos)
+		let extext = document.itemAtIndex(i2).text.replace(/\n\n$/g, "") // TODO remove problem at the source (parser probably) (no, probably it's more difficult)
+		let pos = document.itemAtIndex(i2).length
+		document.itemAtIndex(i2).text = extext + document.itemAtIndex(i1).text.replace(/\n\n$/g, "")
+		document.itemAtIndex(i2).forceFocus()
+		document.itemAtIndex(i2).setCursorPosition(pos)
 		
 		document.remove(i1)
 	}
@@ -139,7 +137,7 @@ RowLayout{
 
 	Component.onCompleted:{
 		if(setType == -1){
-			console.warn("no type specified, calculate type")
+			//console.warn("no type specified, calculate type ", document.itemAtIndex(0))
 			getType()
 		} else {
 			text = parseResult.plainText

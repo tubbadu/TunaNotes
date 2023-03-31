@@ -18,8 +18,8 @@
 			"isDirty" : false,
 			"major" : 3,
 			"minor" : 26,
-			"patch" : 0,
-			"string" : "3.26.0",
+			"patch" : 1,
+			"string" : "3.26.1",
 			"suffix" : ""
 		}
 	},
@@ -35,7 +35,7 @@
 			}
 		},
 		{
-			"jsonFile" : "cmakeFiles-v1-13742b1631984509cb67.json",
+			"jsonFile" : "cmakeFiles-v1-563b1f2395c3d86f5062.json",
 			"kind" : "cmakeFiles",
 			"version" : 
 			{
@@ -73,7 +73,7 @@
 						}
 					},
 					{
-						"jsonFile" : "cmakeFiles-v1-13742b1631984509cb67.json",
+						"jsonFile" : "cmakeFiles-v1-563b1f2395c3d86f5062.json",
 						"kind" : "cmakeFiles",
 						"version" : 
 						{

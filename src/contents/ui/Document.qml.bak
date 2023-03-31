@@ -12,14 +12,19 @@ import FileManager 1.0
 Item{
 	width: parent.width
 	height: parent.height
-	//height: listView.contentHeight
 
 	property alias currentIndex: listView.currentIndex
 	property alias currentItem: listView.currentItem
 	property alias count: listView.count
 	property var itemAtIndex: listView.itemAtIndex
 	property var remove: blockModel.remove
-	
+	/*function itemAtIndex(i){
+		listView.itemAtIndex(i)
+	}
+	function remove(i){
+		blockModel.remove(i)
+	}*/
+
 	Component.onCompleted:{
 		readFile()
 	}
@@ -38,6 +43,7 @@ Item{
 
 	ListModel {
 		id: blockModel
+		onRefreshDone: console.warn("aaa")
 	}
 
 	Component {
