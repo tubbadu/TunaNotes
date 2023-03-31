@@ -9,15 +9,39 @@ import "parser.js" as Parser
 import Launcher 1.0
 import FileManager 1.0
 
-Item{
+
+
+ListView {
+	id: listView
 	width: parent.width
 	height: parent.height
 	//height: listView.contentHeight
 
-	property alias currentIndex: listView.currentIndex
+	model: blockModel
+	delegate: blockDelegate
+	highlight: highlight
+	highlightFollowsCurrentItem: true
+	highlightMoveDuration: 0
+	highlightResizeDuration: 0
+	rebound: Transition {
+		//enabled: false
+		NumberAnimation {
+			id: xx
+			properties: "x,y"
+			duration: 0
+			//easing.type: Easing.Linear
+			easing.amplitude: 0
+			easing.overshoot: 0
+			easing.period: 0
+		}
+	}
+
+	
+
+	/*property alias currentIndex: listView.currentIndex
 	property alias currentItem: listView.currentItem
 	property alias count: listView.count
-	property var itemAtIndex: listView.itemAtIndex
+	property var itemAtIndex: listView.itemAtIndex*/
 	property var remove: blockModel.remove
 	
 	Component.onCompleted:{
@@ -53,38 +77,14 @@ Item{
 	Component {
 		id: highlight
 		Rectangle {
-			width: 180; height: 40
-			color: window.active? "#30586E" : "transparent";
+			width: 180
+			height: 40
+			color: window.active? Kirigami.Theme.activeBackgroundColor : "transparent";
 			radius: 5
-			border.color: window.active? "#3DAEE9" : "transparent";
-			border.width: 1
+			//border.color: window.active? Kirigami.Theme.hoverColor : "transparent";
+			//border.width: 1
 		}
 	}
 
-	ListView {
-		id: listView
-        anchors.fill: parent // todo remove
-		anchors.top: parent.top
-		anchors.right: parent.right
-		anchors.left: parent.left
-		//height: 5000
-        model: blockModel
-        delegate: blockDelegate
-		highlight: highlight
-   		highlightFollowsCurrentItem: true
-		highlightMoveDuration: 0
-		highlightResizeDuration: 0
-		rebound: Transition {
-			//enabled: false
-			NumberAnimation {
-				id: xx
-				properties: "x,y"
-				duration: 0
-				//easing.type: Easing.Linear
-				easing.amplitude: 0
-				easing.overshoot: 0
-				easing.period: 0
-			}
-		}
-    }
+	
 }

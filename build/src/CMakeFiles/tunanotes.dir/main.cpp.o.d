@@ -555,6 +555,8 @@ src/CMakeFiles/tunanotes.dir/main.cpp.o: \
  /usr/include/qt5/QtCore/QString /usr/include/qt5/QtCore/QStringList \
  /usr/include/KF5/KI18n/kuitmarkup.h /usr/include/qt5/QtCore/QHash \
  /usr/include/KF5/KI18n/klocalizedcontext.h \
+ /usr/include/qt5/QtGui/QFontDatabase \
+ /usr/include/qt5/QtGui/qfontdatabase.h /usr/include/qt5/QtGui/qfont.h \
  /home/tubbadu/code/Kirigami/TunaNotes/src/launcher.h \
  /usr/include/qt5/QtCore/QProcess \
  /home/tubbadu/code/Kirigami/TunaNotes/src/fileManager.h \
@@ -570,7 +572,7 @@ src/CMakeFiles/tunanotes.dir/main.cpp.o: \
  /usr/include/qt5/QtGui/qpolygon.h /usr/include/qt5/QtGui/qregion.h \
  /usr/include/qt5/QtCore/qline.h /usr/include/qt5/QtGui/qtransform.h \
  /usr/include/qt5/QtGui/qimage.h /usr/include/qt5/QtGui/qpixelformat.h \
- /usr/include/qt5/QtGui/qpixmap.h /usr/include/qt5/QtGui/qfont.h \
- /usr/include/qt5/QtGui/qfontmetrics.h /usr/include/qt5/QtGui/qfontinfo.h \
+ /usr/include/qt5/QtGui/qpixmap.h /usr/include/qt5/QtGui/qfontmetrics.h \
+ /usr/include/qt5/QtGui/qfontinfo.h \
  /usr/include/qt5/QtWidgets/qsizepolicy.h \
  /usr/include/qt5/QtGui/qkeysequence.h

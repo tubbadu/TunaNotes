@@ -76,6 +76,7 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/IndentElement.qml
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/Document.qml
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/keyHandler.js
+src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/blockFunctions.js
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/Block.qml
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/parser.js
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/QuoteElement.qml

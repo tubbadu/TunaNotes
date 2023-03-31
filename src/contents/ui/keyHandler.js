@@ -30,6 +30,8 @@ function key(event){
 		leftPressed(event)
 	} else if(key == Qt.Key_Right){
 		rightPressed(event)
+	} else if(key == Qt.Key_QuoteLeft&& cursorPosition == 0){
+		backtickPressed(event)
 	}
 }
 
@@ -89,6 +91,15 @@ function leftPressed(event){
 	}
 }
 
+function backtickPressed(event){
+	if(type == Block.Type.CodeBlock){
+		type = Block.Type.PlainText
+	} else {
+		type = Block.Type.CodeBlock
+	}
+	event.accepted = true
+}
+
 function hashtagPressed(event){
 	if(type == Block.Type.PlainText || true){
 		event.accepted = true;
@@ -137,7 +148,6 @@ function spacePressed(event){
 }
 
 function enterPressed(event){
-	enableTextFormat = false // todo remove
 	console.warn("enter");
 	event.accepted = true;
 	if(text.length < 1 && type != Block.Type.PlainText){
@@ -148,6 +158,4 @@ function enterPressed(event){
 		text = text.substr(0, cursorPosition)
 		newBlock(subtext);
 	}
-	
-	enableTextFormat = false // todo remove
 }

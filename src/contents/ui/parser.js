@@ -13,15 +13,26 @@ function getPlainText(line){
 	const checklistRegex = /^- \[( |x)\]/;
 	const dotListRegex = /^([-*+])\s/;
 	const quoteRegex = /^>\s/;
-	const codeBlockRegex = /^```+|```+$/;
+	const codeBlockRegexEnd = /```+/;
+	const codeBlockRegexStart = /^```/;
 
 	const plainText = line.trim()
 		.replace(headerRegex, '')
 		.replace(checklistRegex, '')
 		.replace(dotListRegex, '')
 		.replace(quoteRegex, '')
-		.replace(codeBlockRegex, '');
+		.replace(codeBlockRegexStart, '')
+		.replace(codeBlockRegexEnd, '');
 	return plainText.trim()
+}
+
+function getSyntaxHighlightning(line){
+	const regex = /```(.+)\n/g;
+	const matches = regex.exec(line);
+	if (matches && !matches[1].includes(" ")) {
+		return matches[1];
+	}
+	return '';
 }
 
 function parseMarkdownLine(line) {
@@ -33,7 +44,10 @@ function parseMarkdownLine(line) {
 	//const tableRegex = /^\|(.*)\|$/;
 	const codeBlockRegex = /^```(.*)/;
 
-	const plainText = getPlainText(line)
+	
+	const syntaxHighlightning = getSyntaxHighlightning(line)
+	//console.warn(syntaxHighlightning)
+	const plainText = getPlainText(line).replace(syntaxHighlightning, "").trim()
 
 	let isChecklist = false;
 	let isChecked = false;

@@ -4,6 +4,7 @@
 #include <QUrl>
 #include <KLocalizedContext>
 #include <KLocalizedString>
+#include <QFontDatabase>
 
 #include "launcher.h"
 #include "fileManager.h"
@@ -20,6 +21,9 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<Launcher>("Launcher", 1, 0, "Launcher");
 	qmlRegisterType<FileManager>("FileManager", 1, 0, "FileManager");
+
+	const QFont fixedFont = QFontDatabase::systemFont(QFontDatabase::FixedFont);
+    engine.rootContext()->setContextProperty("fixedFont", fixedFont);
 
     engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
