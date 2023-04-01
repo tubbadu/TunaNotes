@@ -1,7 +1,7 @@
-src/CMakeFiles/tunanotes.dir/launcher.cpp.o: \
- /home/tubbadu/code/Kirigami/TunaNotes/src/launcher.cpp \
+src/CMakeFiles/tunanotes.dir/syntaxHighlighter.cpp.o: \
+ /home/tubbadu/code/Kirigami/TunaNotes/src/syntaxHighlighter.cpp \
  /usr/include/stdc-predef.h \
- /home/tubbadu/code/Kirigami/TunaNotes/src/launcher.h \
+ /home/tubbadu/code/Kirigami/TunaNotes/src/syntaxHighlighter.h \
  /usr/include/qt5/QtCore/QObject /usr/include/qt5/QtCore/qobject.h \
  /usr/include/qt5/QtCore/qobjectdefs.h \
  /usr/include/qt5/QtCore/qnamespace.h /usr/include/qt5/QtCore/qglobal.h \
@@ -197,60 +197,4 @@ src/CMakeFiles/tunanotes.dir/launcher.cpp.o: \
  /usr/include/c++/12/bits/parse_numbers.h \
  /usr/include/qt5/QtCore/QProcess /usr/include/qt5/QtCore/qprocess.h \
  /usr/include/qt5/QtCore/qiodevice.h /usr/include/qt5/QtCore/qobject.h \
- /usr/include/qt5/QtCore/qshareddata.h /usr/include/qt5/QtCore/qhash.h \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Definition \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/definition.h \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/ksyntaxhighlighting_export.h \
- /usr/include/qt5/QtCore/QPair /usr/include/qt5/QtCore/qpair.h \
- /usr/include/qt5/QtCore/QVector /usr/include/qt5/QtCore/qvector.h \
- /usr/include/c++/12/memory \
- /usr/include/c++/12/bits/stl_raw_storage_iter.h \
- /usr/include/c++/12/bits/align.h /usr/include/c++/12/bits/unique_ptr.h \
- /usr/include/c++/12/bits/shared_ptr.h \
- /usr/include/c++/12/bits/shared_ptr_base.h \
- /usr/include/c++/12/ext/concurrence.h \
- /usr/include/c++/12/bits/shared_ptr_atomic.h \
- /usr/include/c++/12/backward/auto_ptr.h \
- /usr/include/c++/12/pstl/glue_memory_defs.h \
- /usr/include/qt5/QtCore/qobjectdefs.h \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Repository \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/repository.h \
- /usr/include/qt5/QtCore/QtGlobal /usr/include/qt5/QtCore/qglobal.h \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/SyntaxHighlighter \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/syntaxhighlighter.h \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/abstracthighlighter.h \
- /usr/include/qt5/QtGui/QSyntaxHighlighter \
- /usr/include/qt5/QtGui/qsyntaxhighlighter.h \
- /usr/include/qt5/QtGui/qtguiglobal.h \
- /usr/include/qt5/QtGui/qtgui-config.h \
- /usr/include/qt5/QtGui/qtextobject.h \
- /usr/include/qt5/QtGui/qtextformat.h /usr/include/qt5/QtGui/qcolor.h \
- /usr/include/qt5/QtGui/qrgb.h /usr/include/qt5/QtGui/qrgba64.h \
- /usr/include/qt5/QtGui/qfont.h /usr/include/qt5/QtGui/qwindowdefs.h \
- /usr/include/qt5/QtCore/qsharedpointer.h \
- /usr/include/qt5/QtCore/qsharedpointer_impl.h \
- /usr/include/qt5/QtCore/qvariant.h /usr/include/qt5/QtCore/qmap.h \
- /usr/include/c++/12/variant /usr/include/qt5/QtGui/qpen.h \
- /usr/include/qt5/QtGui/qbrush.h /usr/include/qt5/QtCore/qpoint.h \
- /usr/include/qt5/QtGui/qmatrix.h /usr/include/qt5/QtGui/qpolygon.h \
- /usr/include/qt5/QtCore/qrect.h /usr/include/qt5/QtCore/qmargins.h \
- /usr/include/qt5/QtCore/qsize.h /usr/include/qt5/QtGui/qregion.h \
- /usr/include/qt5/QtCore/qdatastream.h /usr/include/qt5/QtCore/qline.h \
- /usr/include/qt5/QtGui/qtransform.h /usr/include/qt5/QtGui/qimage.h \
- /usr/include/qt5/QtGui/qpaintdevice.h \
- /usr/include/qt5/QtGui/qpixelformat.h /usr/include/qt5/QtGui/qpixmap.h \
- /usr/include/qt5/QtGui/qtextoption.h \
- /usr/include/qt5/QtGui/qtextlayout.h /usr/include/qt5/QtGui/qevent.h \
- /usr/include/qt5/QtGui/qkeysequence.h \
- /usr/include/qt5/QtCore/qcoreevent.h /usr/include/qt5/QtCore/qset.h \
- /usr/include/qt5/QtCore/qurl.h /usr/include/qt5/QtCore/qfile.h \
- /usr/include/qt5/QtCore/qfiledevice.h /usr/include/qt5/QtGui/qvector2d.h \
- /usr/include/qt5/QtGui/qtouchdevice.h /usr/include/qt5/QtGui/qglyphrun.h \
- /usr/include/qt5/QtGui/qrawfont.h /usr/include/qt5/QtGui/qfontdatabase.h \
- /usr/include/qt5/QtGui/qtextcursor.h \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Theme \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/theme.h \
- /usr/include/qt5/QtGui/QColor /usr/include/qt5/QtGui/qcolor.h \
- /usr/include/qt5/QtCore/QExplicitlySharedDataPointer \
- /usr/include/qt5/QtCore/qshareddata.h /usr/include/qt5/QtCore/QTypeInfo \
- /usr/include/qt5/QtCore/qtypeinfo.h
+ /usr/include/qt5/QtCore/qshareddata.h /usr/include/qt5/QtCore/qhash.h

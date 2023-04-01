@@ -1,20 +1,25 @@
 function key(event){
 	var key = event.key
-	if (key == Qt.Key_Enter || key == Qt.Key_Return) {
+	if ((key == Qt.Key_Enter || key == Qt.Key_Return) && type != Block.Type.CodeBlock) {
 		enterPressed(event)
 	} else if (key == Qt.Key_Down) {
-		event.accepted = true;
-		down();
-	} else if (key == Qt.Key_Up) {
-		event.accepted = true;
+		if(cursorPosition == length && index == document.count-1){
+			newBlock()
+			if(event) {event.accepted = true;}
+		}else if(type != Block.Type.CodeBlock){
+			if(event) {event.accepted = true;}
+			down();
+		}		
+	} else if (key == Qt.Key_Up && type != Block.Type.CodeBlock) {
+		if(event) {event.accepted = true;}
 		up();
-	} else if (key == Qt.Key_Delete) {
+	} else if (key == Qt.Key_Delete && selectedText.length == 0) {
 		delPressed(event)
-	} else if (key == Qt.Key_Backspace) {
+	} else if (key == Qt.Key_Backspace && selectedText.length == 0) {
 		backspacePressed(event)
-	} else if(key == Qt.Key_Tab) {
+	} else if(key == Qt.Key_Tab && type != Block.Type.CodeBlock) {
 		tabPressed(event)
-	} else if(key == Qt.Key_Backtab) {
+	} else if(key == Qt.Key_Backtab && type != Block.Type.CodeBlock) {
 		backtabPressed(event)
 	} else if(key == Qt.Key_NumberSign && cursorPosition == 0){
 		hashtagPressed(event)
@@ -35,19 +40,24 @@ function key(event){
 	}
 }
 
+function globalKey(event){
+	var key = event.key
+	var modifiers = event.modifiers
+	if(modifiers == Qt.ControlModifier && key == Qt.Key_S){
+		// Ctrl+S
+		document.save()
+	}
+}
+
 function backspacePressed(event){
-	console.warn("type: " + type)
-	console.warn("cursorPosition: " + cursorPosition)
-	console.warn("headerNum: " + headerNum)
 	if(cursorPosition == 0){
-		event.accepted = true;
+		if(event) {if(event) {event.accepted = true;}}
 		if ((type != Block.Type.CodeBlock) && (headerNum > 0)){
 			headerNum--
 		}else if(type !== Block.Type.PlainText){
 			type = Block.Type.PlainText
 			console.warn("removing formatting");
 		} else if(index > 0){
-			console.warn("marging this block to the previous one");
 			mergeBlocks(index, index-1)
 		}
 	}
@@ -55,21 +65,20 @@ function backspacePressed(event){
 
 function delPressed(event){
 	if(cursorPosition == txt.length && index < document.count-1){
-		event.accepted = true;
-		console.warn("marging this block to the previous one");
+		if(event) {event.accepted = true;}
 		mergeBlocks(index+1, index)
 	}
 }
 
 function tabPressed(event){
 	// todo add codeblock support
-	event.accepted = true;
+	if(event) {event.accepted = true;}
 	tabNum++
 }
 
 function backtabPressed(event){
 	// todo add codeblock support
-	event.accepted = true;
+	if(event) {event.accepted = true;}
 	if(tabNum > 0){
 		tabNum--
 	}
@@ -97,12 +106,12 @@ function backtickPressed(event){
 	} else {
 		type = Block.Type.CodeBlock
 	}
-	event.accepted = true
+	if(event) {event.accepted = true;}
 }
 
 function hashtagPressed(event){
 	if(type == Block.Type.PlainText || true){
-		event.accepted = true;
+		if(event) {event.accepted = true;}
 		if(headerNum < 6){
 			headerNum++
 		}
@@ -116,7 +125,7 @@ function quotePressed(event){
 	} else {
 		type = Block.Type.Quote
 	}
-	event.accepted = true
+	if(event) {event.accepted = true;}
 }
 
 function dotPressed(event){
@@ -126,30 +135,30 @@ function dotPressed(event){
 	} else {
 		type = Block.Type.DotList
 	}
-	event.accepted = true
+	if(event) {event.accepted = true;}
 }
 
 function bracketPressed(event){
 	// ignore the current formatting, just set it to quote or plaintext
 	type = Block.Type.CheckList
 	text = text.replace(/^\[/, "")
-	event.accepted = true
+	if(event) {event.accepted = true;}
 }
 
-function spacePressed(event){
+function spacePressed(event){ // perhaps remove
+	return
 	// parse
 	if(type == Block.Type.PlainText && headerNum == 0){
 		let extext = text
 		getType(text.slice(0, cursorPosition) + " " + text.slice(cursorPosition))
 		if(text != extext){
-			event.accepted = true
+			if(event) {event.accepted = true;}
 		}
 	}
 }
 
 function enterPressed(event){
-	console.warn("enter");
-	event.accepted = true;
+	if(event) {event.accepted = true;}
 	if(text.length < 1 && type != Block.Type.PlainText){
 		// empty formatted text: remove formatting
 		type = Block.Type.PlainText
@@ -157,5 +166,21 @@ function enterPressed(event){
 		let subtext = text.substr(cursorPosition, text.length)
 		text = text.substr(0, cursorPosition)
 		newBlock(subtext);
+	}
+}
+
+function removeFormatting(){
+	if(type != Block.Type.PlainText){
+		type = Block.Type.PlainText
+	} else if(headerNum > 0){
+		headerNum--
+	}
+}
+
+function checkListToggle(){
+	if(type == Block.Type.CheckList){
+		type = Block.Type.PlainText
+	} else {
+		type = Block.Type.CheckList
 	}
 }

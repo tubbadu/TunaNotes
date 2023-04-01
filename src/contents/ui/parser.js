@@ -32,7 +32,7 @@ function getSyntaxHighlightning(line){
 	if (matches && !matches[1].includes(" ")) {
 		return matches[1];
 	}
-	return '';
+	return 'text';
 }
 
 function parseMarkdownLine(line) {
@@ -90,7 +90,8 @@ function parseMarkdownLine(line) {
 		isQuote: isQuote,
 		//isTable: isTable,
 		isCodeBlock: isCodeBlock,
-		numTabs: numTabs
+		numTabs: numTabs,
+		syntaxHighlightning: syntaxHighlightning
 	};
 }
 
@@ -112,4 +113,44 @@ function splitStringExceptInCodeBlocks(str) {
 	}
 
 	return lines;
+}
+
+function exportMarkdown(){
+	console.warn("saving...")
+	let doc = ""
+	for(let i=0; i<document.count; i++){
+		let block = document.itemAtIndex(i)
+		if(block){
+			let line = ""
+		
+			if(block.type == Block.Type.PlainText){
+
+			}else if(block.type == Block.Type.Quote){
+				line = "> "
+			}else if(block.type == Block.Type.DotList){
+				line = "- "
+			}else if(block.type == Block.Type.CheckList){
+				if(block.checked){
+					line= "- [x] "
+				}else{
+					line= "- [ ] "
+				}
+			}else if(block.type == Block.Type.CodeBlock){
+				line = "```" + block.syntaxHighlightning + "\n"
+			}
+
+			line += "#".repeat(block.headerNum) + " "
+
+			line += block.text
+
+			if(block.type == Block.Type.CodeBlock){
+				line += "\n```"
+			}
+
+			doc += line + "\n\n"
+		}	
+	}
+
+	console.warn(doc)
+	return doc;
 }

@@ -12,6 +12,7 @@ class FileManager : public QObject
 public:
     explicit FileManager(QObject *parent = 0);
     Q_INVOKABLE QString read(const QString &filename);
+	Q_INVOKABLE void write(const QString &filename, const QString &filecontent);
     Q_INVOKABLE QString getProva();
 
 

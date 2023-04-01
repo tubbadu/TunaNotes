@@ -421,6 +421,9 @@ KF5I18n_DIR:PATH=/usr/lib64/cmake/KF5I18n
 //The directory containing a CMake configuration file for KF5Kirigami2.
 KF5Kirigami2_DIR:PATH=/usr/lib64/cmake/KF5Kirigami2
 
+//The directory containing a CMake configuration file for KF5SyntaxHighlighting.
+KF5SyntaxHighlighting_DIR:PATH=/usr/lib64/cmake/KF5SyntaxHighlighting
+
 //Path to a program.
 KI18N_PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3
 

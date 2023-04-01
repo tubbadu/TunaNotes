@@ -234,4 +234,34 @@ src/CMakeFiles/tunanotes.dir/tunanotes_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt5/QtGui/qcursor.h /usr/include/qt5/QtGui/qkeysequence.h \
  /home/tubbadu/code/Kirigami/TunaNotes/build/src/tunanotes_autogen/EWIEGA46WW/moc_launcher.cpp \
  /home/tubbadu/code/Kirigami/TunaNotes/build/src/tunanotes_autogen/EWIEGA46WW/../../../../src/launcher.h \
- /usr/include/qt5/QtCore/QProcess /usr/include/qt5/QtCore/qprocess.h
+ /usr/include/qt5/QtCore/QProcess /usr/include/qt5/QtCore/qprocess.h \
+ /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Definition \
+ /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/definition.h \
+ /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/ksyntaxhighlighting_export.h \
+ /usr/include/qt5/QtCore/QPair /usr/include/qt5/QtCore/qpair.h \
+ /usr/include/qt5/QtCore/QVector /usr/include/qt5/QtCore/qvector.h \
+ /usr/include/qt5/QtCore/qobjectdefs.h \
+ /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Repository \
+ /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/repository.h \
+ /usr/include/qt5/QtCore/QtGlobal /usr/include/qt5/QtCore/qglobal.h \
+ /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/SyntaxHighlighter \
+ /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/syntaxhighlighter.h \
+ /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/abstracthighlighter.h \
+ /usr/include/qt5/QtGui/QSyntaxHighlighter \
+ /usr/include/qt5/QtGui/qsyntaxhighlighter.h \
+ /usr/include/qt5/QtGui/qtextobject.h \
+ /usr/include/qt5/QtGui/qtextformat.h /usr/include/qt5/QtGui/qpen.h \
+ /usr/include/qt5/QtGui/qtextoption.h \
+ /usr/include/qt5/QtGui/qtextlayout.h /usr/include/qt5/QtGui/qevent.h \
+ /usr/include/qt5/QtCore/qcoreevent.h /usr/include/qt5/QtCore/qset.h \
+ /usr/include/qt5/QtCore/qurl.h /usr/include/qt5/QtCore/qfile.h \
+ /usr/include/qt5/QtGui/qvector2d.h /usr/include/qt5/QtGui/qtouchdevice.h \
+ /usr/include/qt5/QtGui/qglyphrun.h /usr/include/qt5/QtGui/qrawfont.h \
+ /usr/include/qt5/QtGui/qfontdatabase.h \
+ /usr/include/qt5/QtGui/qtextcursor.h \
+ /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Theme \
+ /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/theme.h \
+ /usr/include/qt5/QtGui/QColor /usr/include/qt5/QtGui/qcolor.h \
+ /usr/include/qt5/QtCore/QExplicitlySharedDataPointer \
+ /usr/include/qt5/QtCore/qshareddata.h /usr/include/qt5/QtCore/QTypeInfo \
+ /usr/include/qt5/QtCore/qtypeinfo.h

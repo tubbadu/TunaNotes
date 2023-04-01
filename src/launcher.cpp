@@ -1,5 +1,12 @@
 #include "launcher.h"
 
+
+#include <KSyntaxHighlighting/Definition>
+#include <KSyntaxHighlighting/Repository>
+#include <KSyntaxHighlighting/SyntaxHighlighter>
+#include <KSyntaxHighlighting/Theme>
+
+
 Launcher::Launcher(QObject *parent) :
     QObject(parent),
     m_process(new QProcess(this))
@@ -15,9 +22,11 @@ QString Launcher::launch(const QString &program)
     return output;
 }
 
-QString Launcher::getProva()
+QVector<KSyntaxHighlighting::Definition> Launcher::getProva()
 {
-    QString cmd = "ciao a tutti quanti";
+	static KSyntaxHighlighting::Repository *m_repository;
+	m_repository = new KSyntaxHighlighting::Repository();
+    //QString cmd = "ciao a tutti quanti";
 
-    return cmd;
+    return m_repository->definitions();
 }

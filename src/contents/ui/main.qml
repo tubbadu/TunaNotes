@@ -12,15 +12,9 @@ import FileManager 1.0
 
 Kirigami.ApplicationWindow {
 	id: window
-	/*onActiveFocusItemChanged: {
-		//console.warn("activeFocusItem", activeFocusItem)
-		if(activeFocusItem === page){
-			console.warn("now!!!")
-			document.currentIndex = 5
-		}
-	}*/
 
-	title: i18nc("@title:window", "Hello World")
+
+	title: i18nc("@title:window", "TunaNotes")
 	Launcher {
         id: launcher
     }
@@ -28,13 +22,57 @@ Kirigami.ApplicationWindow {
 		id: filemanager
 	}
 
-	// Initial page to be loaded on app load
+	Kirigami.ActionToolBar { // top left toolbar
+		//anchors.top: parent.top
+		actions: [
+			Kirigami.Action { 
+				icon.name: "irc-operator" 
+				onTriggered: document.currentItem.keyHandler.hashtagPressed()
+			},  
+			Kirigami.Action { 
+				icon.name: "format-list-unordered" 
+				onTriggered: document.currentItem.keyHandler.dotPressed()
+			}, 
+			Kirigami.Action { 
+				icon.name: "format-text-blockquote" 
+				onTriggered: document.currentItem.keyHandler.quotePressed()
+			}, 
+			Kirigami.Action { 
+				icon.name: "format-text-code" 
+				onTriggered: document.currentItem.keyHandler.backtickPressed()
+			}, 
+			Kirigami.Action { 
+				icon.name: "gnumeric-object-checkbox" 
+				onTriggered: document.currentItem.keyHandler.checkListToggle()
+			}, 
+			Kirigami.Action { 
+				icon.name: "format-indent-more" 
+				onTriggered: document.currentItem.keyHandler.tabPressed()
+			}, 
+			Kirigami.Action { 
+				icon.name: "format-indent-less" 
+				onTriggered: document.currentItem.keyHandler.backtabPressed()
+			},
+			Kirigami.Action { 
+				icon.name: "edit-clear" 
+				onTriggered: document.currentItem.keyHandler.removeFormatting()
+			}
+		]
+	}
+
+	Kirigami.ActionToolBar { // top right toolbar
+			anchors.right: parent.right
+			actions: [
+				Kirigami.Action {
+				text: "Save" 
+				icon.name: "document-save" 
+				onTriggered: document.save()
+			}]
+		}
+
 	pageStack.initialPage: Kirigami.ScrollablePage { // scrollablepage does not successfully set focus at the beginning (fixable probably)
 		id: page
 		Layout.fillWidth: true
-		keyboardNavigationEnabled: true
-		
-		//Layout.fillHeight: true
 
 		Document{
 			id: document

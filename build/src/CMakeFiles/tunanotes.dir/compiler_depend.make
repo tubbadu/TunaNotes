@@ -630,7 +630,87 @@ src/CMakeFiles/tunanotes.dir/launcher.cpp.o: /home/tubbadu/code/Kirigami/TunaNot
   /usr/include/qt5/QtCore/qiodevice.h \
   /usr/include/qt5/QtCore/qobject.h \
   /usr/include/qt5/QtCore/qshareddata.h \
-  /usr/include/qt5/QtCore/qhash.h
+  /usr/include/qt5/QtCore/qhash.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Definition \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/definition.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/ksyntaxhighlighting_export.h \
+  /usr/include/qt5/QtCore/QPair \
+  /usr/include/qt5/QtCore/qpair.h \
+  /usr/include/qt5/QtCore/QVector \
+  /usr/include/qt5/QtCore/qvector.h \
+  /usr/include/c++/12/memory \
+  /usr/include/c++/12/bits/stl_raw_storage_iter.h \
+  /usr/include/c++/12/bits/align.h \
+  /usr/include/c++/12/bits/unique_ptr.h \
+  /usr/include/c++/12/bits/shared_ptr.h \
+  /usr/include/c++/12/bits/shared_ptr_base.h \
+  /usr/include/c++/12/ext/concurrence.h \
+  /usr/include/c++/12/bits/shared_ptr_atomic.h \
+  /usr/include/c++/12/backward/auto_ptr.h \
+  /usr/include/c++/12/pstl/glue_memory_defs.h \
+  /usr/include/qt5/QtCore/qobjectdefs.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Repository \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/repository.h \
+  /usr/include/qt5/QtCore/QtGlobal \
+  /usr/include/qt5/QtCore/qglobal.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/SyntaxHighlighter \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/syntaxhighlighter.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/abstracthighlighter.h \
+  /usr/include/qt5/QtGui/QSyntaxHighlighter \
+  /usr/include/qt5/QtGui/qsyntaxhighlighter.h \
+  /usr/include/qt5/QtGui/qtguiglobal.h \
+  /usr/include/qt5/QtGui/qtgui-config.h \
+  /usr/include/qt5/QtGui/qtextobject.h \
+  /usr/include/qt5/QtGui/qtextformat.h \
+  /usr/include/qt5/QtGui/qcolor.h \
+  /usr/include/qt5/QtGui/qrgb.h \
+  /usr/include/qt5/QtGui/qrgba64.h \
+  /usr/include/qt5/QtGui/qfont.h \
+  /usr/include/qt5/QtGui/qwindowdefs.h \
+  /usr/include/qt5/QtCore/qsharedpointer.h \
+  /usr/include/qt5/QtCore/qsharedpointer_impl.h \
+  /usr/include/qt5/QtCore/qvariant.h \
+  /usr/include/qt5/QtCore/qmap.h \
+  /usr/include/c++/12/variant \
+  /usr/include/qt5/QtGui/qpen.h \
+  /usr/include/qt5/QtGui/qbrush.h \
+  /usr/include/qt5/QtCore/qpoint.h \
+  /usr/include/qt5/QtGui/qmatrix.h \
+  /usr/include/qt5/QtGui/qpolygon.h \
+  /usr/include/qt5/QtCore/qrect.h \
+  /usr/include/qt5/QtCore/qmargins.h \
+  /usr/include/qt5/QtCore/qsize.h \
+  /usr/include/qt5/QtGui/qregion.h \
+  /usr/include/qt5/QtCore/qdatastream.h \
+  /usr/include/qt5/QtCore/qline.h \
+  /usr/include/qt5/QtGui/qtransform.h \
+  /usr/include/qt5/QtGui/qimage.h \
+  /usr/include/qt5/QtGui/qpaintdevice.h \
+  /usr/include/qt5/QtGui/qpixelformat.h \
+  /usr/include/qt5/QtGui/qpixmap.h \
+  /usr/include/qt5/QtGui/qtextoption.h \
+  /usr/include/qt5/QtGui/qtextlayout.h \
+  /usr/include/qt5/QtGui/qevent.h \
+  /usr/include/qt5/QtGui/qkeysequence.h \
+  /usr/include/qt5/QtCore/qcoreevent.h \
+  /usr/include/qt5/QtCore/qset.h \
+  /usr/include/qt5/QtCore/qurl.h \
+  /usr/include/qt5/QtCore/qfile.h \
+  /usr/include/qt5/QtCore/qfiledevice.h \
+  /usr/include/qt5/QtGui/qvector2d.h \
+  /usr/include/qt5/QtGui/qtouchdevice.h \
+  /usr/include/qt5/QtGui/qglyphrun.h \
+  /usr/include/qt5/QtGui/qrawfont.h \
+  /usr/include/qt5/QtGui/qfontdatabase.h \
+  /usr/include/qt5/QtGui/qtextcursor.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Theme \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/theme.h \
+  /usr/include/qt5/QtGui/QColor \
+  /usr/include/qt5/QtGui/qcolor.h \
+  /usr/include/qt5/QtCore/QExplicitlySharedDataPointer \
+  /usr/include/qt5/QtCore/qshareddata.h \
+  /usr/include/qt5/QtCore/QTypeInfo \
+  /usr/include/qt5/QtCore/qtypeinfo.h
 
 src/CMakeFiles/tunanotes.dir/main.cpp.o: /home/tubbadu/code/Kirigami/TunaNotes/src/main.cpp \
   /usr/include/stdc-predef.h \
@@ -1364,6 +1444,53 @@ src/CMakeFiles/tunanotes.dir/main.cpp.o: /home/tubbadu/code/Kirigami/TunaNotes/s
   /usr/include/qt5/QtGui/qfont.h \
   /home/tubbadu/code/Kirigami/TunaNotes/src/launcher.h \
   /usr/include/qt5/QtCore/QProcess \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Definition \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/definition.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/ksyntaxhighlighting_export.h \
+  /usr/include/qt5/QtCore/QPair \
+  /usr/include/qt5/QtCore/QVector \
+  /usr/include/qt5/QtCore/qobjectdefs.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Repository \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/repository.h \
+  /usr/include/qt5/QtCore/QtGlobal \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/SyntaxHighlighter \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/syntaxhighlighter.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/abstracthighlighter.h \
+  /usr/include/qt5/QtGui/QSyntaxHighlighter \
+  /usr/include/qt5/QtGui/qsyntaxhighlighter.h \
+  /usr/include/qt5/QtGui/qtextobject.h \
+  /usr/include/qt5/QtGui/qtextformat.h \
+  /usr/include/qt5/QtGui/qcolor.h \
+  /usr/include/qt5/QtGui/qrgb.h \
+  /usr/include/qt5/QtGui/qrgba64.h \
+  /usr/include/qt5/QtGui/qpen.h \
+  /usr/include/qt5/QtGui/qbrush.h \
+  /usr/include/qt5/QtGui/qmatrix.h \
+  /usr/include/qt5/QtGui/qpolygon.h \
+  /usr/include/qt5/QtCore/qrect.h \
+  /usr/include/qt5/QtGui/qregion.h \
+  /usr/include/qt5/QtCore/qline.h \
+  /usr/include/qt5/QtGui/qtransform.h \
+  /usr/include/qt5/QtGui/qimage.h \
+  /usr/include/qt5/QtGui/qpaintdevice.h \
+  /usr/include/qt5/QtGui/qpixelformat.h \
+  /usr/include/qt5/QtGui/qpixmap.h \
+  /usr/include/qt5/QtGui/qtextoption.h \
+  /usr/include/qt5/QtGui/qtextlayout.h \
+  /usr/include/qt5/QtGui/qevent.h \
+  /usr/include/qt5/QtGui/qkeysequence.h \
+  /usr/include/qt5/QtGui/qvector2d.h \
+  /usr/include/qt5/QtGui/qtouchdevice.h \
+  /usr/include/qt5/QtGui/qglyphrun.h \
+  /usr/include/qt5/QtGui/qrawfont.h \
+  /usr/include/qt5/QtGui/qfontdatabase.h \
+  /usr/include/qt5/QtGui/qtextcursor.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Theme \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/theme.h \
+  /usr/include/qt5/QtGui/QColor \
+  /usr/include/qt5/QtGui/qcolor.h \
+  /usr/include/qt5/QtCore/QExplicitlySharedDataPointer \
+  /usr/include/qt5/QtCore/QTypeInfo \
   /home/tubbadu/code/Kirigami/TunaNotes/src/fileManager.h \
   /usr/include/qt5/QtCore/QFile \
   /usr/include/qt5/QtCore/QTextStream \
@@ -1371,25 +1498,10 @@ src/CMakeFiles/tunanotes.dir/main.cpp.o: /home/tubbadu/code/Kirigami/TunaNotes/s
   /usr/include/qt5/QtWidgets/qmessagebox.h \
   /usr/include/qt5/QtWidgets/qdialog.h \
   /usr/include/qt5/QtWidgets/qwidget.h \
-  /usr/include/qt5/QtGui/qpaintdevice.h \
-  /usr/include/qt5/QtCore/qrect.h \
   /usr/include/qt5/QtGui/qpalette.h \
-  /usr/include/qt5/QtGui/qcolor.h \
-  /usr/include/qt5/QtGui/qrgb.h \
-  /usr/include/qt5/QtGui/qrgba64.h \
-  /usr/include/qt5/QtGui/qbrush.h \
-  /usr/include/qt5/QtGui/qmatrix.h \
-  /usr/include/qt5/QtGui/qpolygon.h \
-  /usr/include/qt5/QtGui/qregion.h \
-  /usr/include/qt5/QtCore/qline.h \
-  /usr/include/qt5/QtGui/qtransform.h \
-  /usr/include/qt5/QtGui/qimage.h \
-  /usr/include/qt5/QtGui/qpixelformat.h \
-  /usr/include/qt5/QtGui/qpixmap.h \
   /usr/include/qt5/QtGui/qfontmetrics.h \
   /usr/include/qt5/QtGui/qfontinfo.h \
-  /usr/include/qt5/QtWidgets/qsizepolicy.h \
-  /usr/include/qt5/QtGui/qkeysequence.h
+  /usr/include/qt5/QtWidgets/qsizepolicy.h
 
 src/CMakeFiles/tunanotes.dir/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o: src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp \
   /usr/include/stdc-predef.h
@@ -1739,7 +1851,48 @@ src/CMakeFiles/tunanotes.dir/tunanotes_autogen/mocs_compilation.cpp.o: src/tunan
   src/tunanotes_autogen/EWIEGA46WW/moc_launcher.cpp \
   /home/tubbadu/code/Kirigami/TunaNotes/src/launcher.h \
   /usr/include/qt5/QtCore/QProcess \
-  /usr/include/qt5/QtCore/qprocess.h
+  /usr/include/qt5/QtCore/qprocess.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Definition \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/definition.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/ksyntaxhighlighting_export.h \
+  /usr/include/qt5/QtCore/QPair \
+  /usr/include/qt5/QtCore/qpair.h \
+  /usr/include/qt5/QtCore/QVector \
+  /usr/include/qt5/QtCore/qvector.h \
+  /usr/include/qt5/QtCore/qobjectdefs.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Repository \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/repository.h \
+  /usr/include/qt5/QtCore/QtGlobal \
+  /usr/include/qt5/QtCore/qglobal.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/SyntaxHighlighter \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/syntaxhighlighter.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/abstracthighlighter.h \
+  /usr/include/qt5/QtGui/QSyntaxHighlighter \
+  /usr/include/qt5/QtGui/qsyntaxhighlighter.h \
+  /usr/include/qt5/QtGui/qtextobject.h \
+  /usr/include/qt5/QtGui/qtextformat.h \
+  /usr/include/qt5/QtGui/qpen.h \
+  /usr/include/qt5/QtGui/qtextoption.h \
+  /usr/include/qt5/QtGui/qtextlayout.h \
+  /usr/include/qt5/QtGui/qevent.h \
+  /usr/include/qt5/QtCore/qcoreevent.h \
+  /usr/include/qt5/QtCore/qset.h \
+  /usr/include/qt5/QtCore/qurl.h \
+  /usr/include/qt5/QtCore/qfile.h \
+  /usr/include/qt5/QtGui/qvector2d.h \
+  /usr/include/qt5/QtGui/qtouchdevice.h \
+  /usr/include/qt5/QtGui/qglyphrun.h \
+  /usr/include/qt5/QtGui/qrawfont.h \
+  /usr/include/qt5/QtGui/qfontdatabase.h \
+  /usr/include/qt5/QtGui/qtextcursor.h \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Theme \
+  /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/theme.h \
+  /usr/include/qt5/QtGui/QColor \
+  /usr/include/qt5/QtGui/qcolor.h \
+  /usr/include/qt5/QtCore/QExplicitlySharedDataPointer \
+  /usr/include/qt5/QtCore/qshareddata.h \
+  /usr/include/qt5/QtCore/QTypeInfo \
+  /usr/include/qt5/QtCore/qtypeinfo.h
 
 
 src/tunanotes_autogen/EWIEGA46WW/moc_launcher.cpp:
@@ -1747,8 +1900,6 @@ src/tunanotes_autogen/EWIEGA46WW/moc_launcher.cpp:
 src/tunanotes_autogen/mocs_compilation.cpp:
 
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
-
-/usr/include/qt5/QtGui/qfontdatabase.h:
 
 /usr/include/qt5/QtGui/QFontDatabase:
 
@@ -1790,8 +1941,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtQml/qqmlcomponent.h:
 
-/usr/include/qt5/QtQml/qqmlabstracturlinterceptor.h:
-
 /usr/include/qt5/QtQml/qjsvalueiterator.h:
 
 /usr/include/qt5/QtQml/qtqmlcompilerglobal.h:
@@ -1810,8 +1959,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtNetwork/qsslcipher.h:
 
-/usr/include/qt5/QtNetwork/qsslcertificateextension.h:
-
 /usr/include/qt5/QtNetwork/qsctpserver.h:
 
 /usr/include/qt5/QtNetwork/qnetworkinterface.h:
@@ -1829,8 +1976,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 /usr/include/qt5/QtNetwork/qsslpresharedkeyauthenticator.h:
 
 /usr/include/qt5/QtNetwork/QSslPreSharedKeyAuthenticator:
-
-/usr/include/qt5/QtCore/QVector:
 
 /usr/include/qt5/QtCore/QIODevice:
 
@@ -1856,6 +2001,42 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtCore/QVariant:
 
+/usr/include/qt5/QtCore/QSharedDataPointer:
+
+/usr/include/qt5/QtNetwork/QtNetwork:
+
+/usr/include/qt5/QtCore/qtcoreversion.h:
+
+/usr/include/qt5/QtCore/qwaitcondition.h:
+
+/usr/include/qt5/QtCore/qurlquery.h:
+
+/usr/include/qt5/QtCore/qtypetraits.h:
+
+/usr/include/qt5/QtCore/qtimezone.h:
+
+/usr/include/qt5/QtCore/qtimeline.h:
+
+/usr/include/qt5/QtCore/qthreadstorage.h:
+
+/usr/include/qt5/QtCore/qthreadpool.h:
+
+/usr/include/c++/12/bits/std_thread.h:
+
+/usr/include/c++/12/condition_variable:
+
+/usr/include/qt5/QtCore/qthread.h:
+
+/usr/include/qt5/QtCore/qtemporaryfile.h:
+
+/usr/include/qt5/QtCore/qtemporarydir.h:
+
+/usr/include/qt5/QtNetwork/qsslconfiguration.h:
+
+/usr/include/qt5/QtCore/qsystemsemaphore.h:
+
+/usr/include/qt5/QtCore/qstringlistmodel.h:
+
 /usr/include/assert.h:
 
 /usr/include/c++/12/list:
@@ -1863,6 +2044,10 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 /usr/include/c++/12/bits/enable_special_members.h:
 
 /usr/include/c++/12/compare:
+
+/usr/include/qt5/QtCore/QDeadlineTimer:
+
+/usr/include/c++/12/array:
 
 /usr/include/qt5/QtCore/qregexp.h:
 
@@ -1918,13 +2103,9 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/bits/wchar.h:
 
-/usr/include/qt5/QtCore/qwaitcondition.h:
-
 /usr/include/bits/setjmp.h:
 
 /usr/include/bits/types/struct_tm.h:
-
-/usr/include/qt5/QtCore/qtemporarydir.h:
 
 /usr/include/bits/cpu-set.h:
 
@@ -1946,6 +2127,8 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/bits/types/struct_timeval.h:
 
+/usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Theme:
+
 /usr/include/KF5/KI18n/KLocalizedContext:
 
 /usr/include/qt5/QtCore/qanimationgroup.h:
@@ -1962,8 +2145,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/asm-generic/errno.h:
 
-/usr/include/qt5/QtCore/qtimezone.h:
-
 /usr/include/linux/errno.h:
 
 /usr/include/qt5/QtCore/qabstracttransition.h:
@@ -1977,8 +2158,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 /usr/include/qt5/QtQml/qqmldebug.h:
 
 /usr/include/c++/12/bits/alloc_traits.h:
-
-/usr/include/qt5/QtNetwork/QtNetwork:
 
 /usr/include/c++/12/ext/string_conversions.h:
 
@@ -2008,9 +2187,11 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/c++/12/backward/binders.h:
 
-/usr/include/qt5/QtCore/qstringview.h:
-
 /usr/include/qt5/QtCore/qjsonvalue.h:
+
+/usr/include/qt5/QtNetwork/qsslcertificateextension.h:
+
+/usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/abstracthighlighter.h:
 
 /usr/include/bits/types/mbstate_t.h:
 
@@ -2021,6 +2202,14 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 /usr/include/qt5/QtCore/qstringlist.h:
 
 /usr/include/qt5/QtGui/qpaintdevice.h:
+
+/usr/include/qt5/QtGui/qfontdatabase.h:
+
+/usr/include/qt5/QtNetwork/QtNetworkDepends:
+
+/usr/include/c++/12/bits/atomic_futex.h:
+
+/usr/include/qt5/QtCore/qversionnumber.h:
 
 /usr/include/qt5/QtCore/qplugin.h:
 
@@ -2054,8 +2243,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/bits/types/wint_t.h:
 
-/usr/include/qt5/QtCore/QObject:
-
 /usr/include/wchar.h:
 
 /usr/include/bits/posix1_lim.h:
@@ -2079,6 +2266,10 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 /usr/include/c++/12/bits/stl_pair.h:
 
 /usr/include/c++/12/bits/unique_lock.h:
+
+/usr/include/qt5/QtCore/qtimer.h:
+
+/usr/include/c++/12/bits/stringfwd.h:
 
 /usr/include/bits/xopen_lim.h:
 
@@ -2114,13 +2305,15 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtGui/qkeysequence.h:
 
-/usr/include/c++/12/array:
+/usr/include/qt5/QtNetwork/qnetworkrequest.h:
 
-/usr/include/qt5/QtCore/QDeadlineTimer:
-
-/usr/include/c++/12/bits/locale_classes.tcc:
+/usr/include/c++/12/bits/std_mutex.h:
 
 /usr/include/c++/12/bits/exception.h:
+
+/usr/include/qt5/QtQml/qqmlabstracturlinterceptor.h:
+
+/usr/include/qt5/QtGui/QSyntaxHighlighter:
 
 /usr/include/c++/12/bits/utility.h:
 
@@ -2152,13 +2345,13 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtCore/qcborstreamreader.h:
 
-/usr/include/qt5/QtCore/qtcoreversion.h:
-
 /usr/include/c++/12/stdlib.h:
 
-/usr/include/c++/12/pstl/execution_defs.h:
+/usr/include/qt5/QtCore/qtextcodec.h:
 
-/usr/include/c++/12/bits/random.tcc:
+/usr/include/bits/waitflags.h:
+
+/usr/include/c++/12/pstl/execution_defs.h:
 
 /usr/include/c++/12/bits/string_view.tcc:
 
@@ -2211,8 +2404,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 /usr/include/bits/stdint-intn.h:
 
 /usr/include/bits/types/clockid_t.h:
-
-/usr/include/qt5/QtCore/qthreadstorage.h:
 
 /usr/include/bits/endianness.h:
 
@@ -2276,6 +2467,10 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtCore/qhash.h:
 
+/usr/include/qt5/QtCore/qwineventnotifier.h:
+
+/usr/include/c++/12/cstdint:
+
 /usr/include/qt5/QtGui/qrgba64.h:
 
 /usr/include/qt5/QtCore/qfileselector.h:
@@ -2298,7 +2493,13 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/c++/12/bits/atomic_base.h:
 
-/usr/include/bits/time.h:
+/usr/include/KF5/KI18n/KLocalizedString:
+
+/usr/include/qt5/QtNetwork/qtcpserver.h:
+
+/usr/include/qt5/QtNetwork/qabstractnetworkcache.h:
+
+/usr/include/bits/stdio_lim.h:
 
 /usr/include/bits/types/__mbstate_t.h:
 
@@ -2332,13 +2533,15 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/c++/12/bits/stl_algo.h:
 
+/usr/include/qt5/QtGui/qtouchdevice.h:
+
 /usr/include/c++/12/atomic:
 
 /usr/include/c++/12/bits/stl_algobase.h:
 
-/usr/include/qt5/QtNetwork/QSslConfiguration:
+/usr/include/qt5/QtGui/qpen.h:
 
-/usr/include/bits/types/__locale_t.h:
+/usr/include/qt5/QtGui/qrawfont.h:
 
 /usr/include/bits/sched.h:
 
@@ -2420,8 +2623,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/bits/stdlib-float.h:
 
-/usr/include/qt5/QtCore/qstringlistmodel.h:
-
 /usr/include/c++/12/x86_64-redhat-linux/bits/os_defines.h:
 
 /usr/include/c++/12/debug/assertions.h:
@@ -2464,8 +2665,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/bits/timex.h:
 
-/usr/include/qt5/QtCore/qtemporaryfile.h:
-
 /usr/include/KF5/KI18n/ki18n_export.h:
 
 /usr/include/qt5/QtCore/qbasicatomic.h:
@@ -2495,6 +2694,8 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 /usr/include/qt5/QtCore/qbytearray.h:
 
 /usr/include/qt5/QtCore/qarraydata.h:
+
+/usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/repository.h:
 
 /usr/include/c++/12/string:
 
@@ -2536,8 +2737,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtGui/qtguiglobal.h:
 
-/usr/include/c++/12/condition_variable:
-
 /usr/include/qt5/QtCore/qobject_impl.h:
 
 src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
@@ -2546,8 +2745,6 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 
 /usr/include/c++/12/chrono:
 
-/usr/include/c++/12/ratio:
-
 /usr/include/qt5/QtCore/qdatastream.h:
 
 /usr/include/c++/12/limits:
@@ -2555,6 +2752,8 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 /usr/include/c++/12/bits/parse_numbers.h:
 
 /usr/include/qt5/QtCore/qfile.h:
+
+/usr/include/qt5/QtGui/qsyntaxhighlighter.h:
 
 /usr/include/qt5/QtNetwork/qtnetwork-config.h:
 
@@ -2567,6 +2766,10 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 /usr/include/qt5/QtCore/qiodevice.h:
 
 /usr/include/qt5/QtCore/QTextStream:
+
+/usr/include/qt5/QtCore/qtranslator.h:
+
+/usr/include/qt5/QtGui/qmatrix.h:
 
 /usr/include/qt5/QtCore/qlocale.h:
 
@@ -2598,8 +2801,6 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 
 /usr/include/qt5/QtWidgets/qtwidgets-config.h:
 
-/usr/include/qt5/QtCore/QSharedDataPointer:
-
 /usr/include/qt5/QtCore/qstack.h:
 
 /usr/include/qt5/QtWidgets/qwidget.h:
@@ -2615,10 +2816,6 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 /usr/include/qt5/QtCore/qsize.h:
 
 /usr/include/qt5/QtGui/qfontinfo.h:
-
-/usr/include/c++/12/bits/stringfwd.h:
-
-/usr/include/qt5/QtCore/qtimer.h:
 
 /usr/include/qt5/QtNetwork/qlocalsocket.h:
 
@@ -2655,6 +2852,10 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 /usr/include/c++/12/bits/stl_raw_storage_iter.h:
 
 /usr/include/qt5/QtCore/qmimetype.h:
+
+/usr/include/qt5/QtCore/qxmlstream.h:
+
+/usr/include/c++/12/bits/align.h:
 
 /usr/include/c++/12/tr1/bessel_function.tcc:
 
@@ -2698,11 +2899,77 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 
 /home/tubbadu/code/Kirigami/TunaNotes/src/launcher.h:
 
+/usr/include/c++/12/bits/locale_classes.tcc:
+
+/usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Definition:
+
 /usr/include/qt5/QtCore/qlinkedlist.h:
 
 /usr/include/c++/12/tr1/poly_laguerre.tcc:
 
 /usr/include/qt5/QtCore/qprocess.h:
+
+/usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/definition.h:
+
+/usr/include/qt5/QtNetwork/QSslConfiguration:
+
+/usr/include/bits/types/__locale_t.h:
+
+/usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/ksyntaxhighlighting_export.h:
+
+/usr/include/qt5/QtGui/QColor:
+
+/usr/include/qt5/QtCore/QExplicitlySharedDataPointer:
+
+/usr/include/c++/12/bits/random.tcc:
+
+/usr/include/qt5/QtCore/QPair:
+
+/usr/include/qt5/QtCore/QVector:
+
+/usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Repository:
+
+/usr/include/qt5/QtCore/QtGlobal:
+
+/usr/include/c++/12/ratio:
+
+/usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/SyntaxHighlighter:
+
+/usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/syntaxhighlighter.h:
+
+/usr/include/c++/12/tr1/poly_hermite.tcc:
+
+/usr/include/qt5/QtGui/qtextobject.h:
+
+/usr/include/qt5/QtCore/QObject:
+
+/usr/include/qt5/QtGui/qtextformat.h:
+
+/usr/include/qt5/QtQml/qqmlengine.h:
+
+/usr/include/bits/time.h:
+
+/usr/include/qt5/QtGui/qtextoption.h:
+
+/usr/include/qt5/QtCore/qmath.h:
+
+/usr/include/qt5/QtCore/qpluginloader.h:
+
+/usr/include/qt5/QtGui/qevent.h:
+
+/usr/include/qt5/QtCore/qcoreevent.h:
+
+/usr/include/qt5/QtCore/qset.h:
+
+/usr/include/qt5/QtGui/qvector2d.h:
+
+/usr/include/qt5/QtCore/qstringview.h:
+
+/usr/include/qt5/QtGui/qglyphrun.h:
+
+/usr/include/qt5/QtCore/qdiriterator.h:
+
+/usr/include/qt5/QtCore/QTypeInfo:
 
 /home/tubbadu/code/Kirigami/TunaNotes/src/main.cpp:
 
@@ -2710,13 +2977,9 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 
 /usr/include/qt5/QtWidgets/qapplication.h:
 
-/usr/include/qt5/QtCore/qcoreevent.h:
-
 /usr/include/qt5/QtGui/qguiapplication.h:
 
 /usr/include/qt5/QtGui/qinputmethod.h:
-
-/usr/include/qt5/QtQml/qqmlengine.h:
 
 /usr/include/qt5/QtCore/QLatin1Char:
 
@@ -2733,8 +2996,6 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 /usr/include/qt5/QtCore/qlogging.h:
 
 /usr/include/qt5/QtCore/qpointer.h:
-
-/usr/include/qt5/QtCore/qset.h:
 
 /usr/include/qt5/QtQml/QtQml:
 
@@ -2816,8 +3077,6 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 
 /usr/include/c++/12/tr1/riemann_zeta.tcc:
 
-/usr/include/qt5/QtCore/qdiriterator.h:
-
 /usr/include/qt5/QtNetwork/qabstractsocket.h:
 
 /usr/include/qt5/QtCore/qeasingcurve.h:
@@ -2840,6 +3099,10 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 
 /usr/include/qt5/QtCore/qfutureinterface.h:
 
+/usr/include/qt5/QtCore/qtextboundaryfinder.h:
+
+/usr/include/qt5/QtCore/qmutex.h:
+
 /usr/include/qt5/QtCore/qresultstore.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/12/include/syslimits.h:
@@ -2858,10 +3121,6 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 
 /usr/include/qt5/QtCore/qlibraryinfo.h:
 
-/usr/include/c++/12/cstdint:
-
-/usr/include/qt5/QtCore/qwineventnotifier.h:
-
 /usr/include/c++/12/bits/basic_string.h:
 
 /usr/include/stdc-predef.h:
@@ -2870,11 +3129,11 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 
 /usr/include/bits/libm-simd-decl-stubs.h:
 
+/usr/include/qt5/QtGui/qtextlayout.h:
+
 /usr/include/bits/flt-eval-method.h:
 
 /usr/include/bits/mathcalls-helper-functions.h:
-
-/usr/include/c++/12/bits/std_thread.h:
 
 /usr/include/bits/mathcalls.h:
 
@@ -2887,8 +3146,6 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 /usr/include/c++/12/tr1/exp_integral.tcc:
 
 /usr/include/c++/12/tr1/legendre_function.tcc:
-
-/usr/include/c++/12/tr1/poly_hermite.tcc:
 
 /usr/include/qt5/QtCore/qbuffer.h:
 
@@ -2908,10 +3165,6 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 
 /usr/include/qt5/QtCore/qparallelanimationgroup.h:
 
-/usr/include/qt5/QtCore/qmath.h:
-
-/usr/include/qt5/QtCore/qpluginloader.h:
-
 /usr/include/qt5/QtQml/qqmlpropertyvaluesource.h:
 
 /usr/include/qt5/QtCore/qpropertyanimation.h:
@@ -2921,6 +3174,8 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 /usr/include/qt5/QtCore/qrandom.h:
 
 /usr/include/c++/12/random:
+
+/usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/theme.h:
 
 /usr/include/c++/12/bits/random.h:
 
@@ -2936,15 +3191,13 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 
 /usr/include/qt5/QtCore/qscopeguard.h:
 
+/usr/include/qt5/QtGui/qtextcursor.h:
+
 /usr/include/qt5/QtCore/qsemaphore.h:
 
 /usr/include/c++/12/algorithm:
 
 /usr/include/qt5/QtCore/qsharedmemory.h:
-
-/usr/include/c++/12/bits/align.h:
-
-/usr/include/qt5/QtCore/qxmlstream.h:
 
 /usr/include/qt5/QtCore/qsignaltransition.h:
 
@@ -2959,47 +3212,3 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 /usr/include/c++/12/bits/uses_allocator.h:
 
 /usr/include/qt5/QtCore/qstate.h:
-
-/usr/include/qt5/QtNetwork/qsslconfiguration.h:
-
-/usr/include/qt5/QtCore/qsystemsemaphore.h:
-
-/usr/include/qt5/QtCore/qmutex.h:
-
-/usr/include/qt5/QtCore/qtextboundaryfinder.h:
-
-/usr/include/bits/waitflags.h:
-
-/usr/include/qt5/QtCore/qtextcodec.h:
-
-/usr/include/qt5/QtCore/qthread.h:
-
-/usr/include/qt5/QtCore/qversionnumber.h:
-
-/usr/include/qt5/QtNetwork/QtNetworkDepends:
-
-/usr/include/c++/12/bits/atomic_futex.h:
-
-/usr/include/qt5/QtCore/qthreadpool.h:
-
-/usr/include/qt5/QtCore/qtimeline.h:
-
-/usr/include/qt5/QtGui/qmatrix.h:
-
-/usr/include/qt5/QtCore/qtranslator.h:
-
-/usr/include/qt5/QtCore/qtypetraits.h:
-
-/usr/include/qt5/QtCore/qurlquery.h:
-
-/usr/include/KF5/KI18n/KLocalizedString:
-
-/usr/include/qt5/QtNetwork/qtcpserver.h:
-
-/usr/include/bits/stdio_lim.h:
-
-/usr/include/qt5/QtNetwork/qabstractnetworkcache.h:
-
-/usr/include/c++/12/bits/std_mutex.h:
-
-/usr/include/qt5/QtNetwork/qnetworkrequest.h:

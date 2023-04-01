@@ -23,6 +23,16 @@ QString FileManager::read(const QString &filename)
 	return content;
 }
 
+void FileManager::write(const QString &filename, const QString &filecontent)
+{
+	QFile file(filename);
+	if(file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+		QTextStream out(&file);
+		out << filecontent;
+	}
+	file.close();
+}
+
 QString FileManager::getProva()
 {
 	QString cmd = "ciao a tutti quanti";

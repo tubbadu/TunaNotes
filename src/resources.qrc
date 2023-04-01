@@ -10,5 +10,6 @@
 		<file alias="parser.js">contents/ui/parser.js</file>
 		<file alias="keyHandler.js">contents/ui/keyHandler.js</file>
 		<file alias="blockFunctions.js">contents/ui/blockFunctions.js</file>
+		<file alias="syntaxDefinition.js">contents/ui/syntaxDefinition.js</file>
     </qresource>
 </RCC>

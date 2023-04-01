@@ -1,6 +1,10 @@
 function getType(t = setText){
-	parseResult =  Parser.parseMarkdownLine(t)
+	if(parseResult == undefined){
+		parseResult =  Parser.parseMarkdownLine(t)
+	}
 	text = parseResult.plainText
+	syntaxHighlightning = parseResult.syntaxHighlightning
+
 	if(parseResult.isChecklist){
 		type = Block.Type.CheckList
 		checked = parseResult.isChecked
@@ -49,7 +53,6 @@ function setCursorPosition(pos){
 
 function forceFocus(){
 	txt.forceActiveFocus()
-	console.warn("forced focus on active object")
 }
 
 function up(){

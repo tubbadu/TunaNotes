@@ -5,11 +5,10 @@ import QtQuick.Layouts 1.2
 import org.kde.kirigami 2.13 as Kirigami
 import org.kde.syntaxhighlighting 1.0
 import "parser.js" as Parser
+import "keyHandler.js" as KeyHandler
 
 import Launcher 1.0
 import FileManager 1.0
-
-
 
 ListView {
 	id: listView
@@ -17,31 +16,16 @@ ListView {
 	height: parent.height
 	//height: listView.contentHeight
 
+	property string fileName: "/home/tubbadu/Desktop/TODO.md"
+
 	model: blockModel
 	delegate: blockDelegate
 	highlight: highlight
 	highlightFollowsCurrentItem: true
 	highlightMoveDuration: 0
 	highlightResizeDuration: 0
-	rebound: Transition {
-		//enabled: false
-		NumberAnimation {
-			id: xx
-			properties: "x,y"
-			duration: 0
-			//easing.type: Easing.Linear
-			easing.amplitude: 0
-			easing.overshoot: 0
-			easing.period: 0
-		}
-	}
+	cacheBuffer: 999999999//*999999999
 
-	
-
-	/*property alias currentIndex: listView.currentIndex
-	property alias currentItem: listView.currentItem
-	property alias count: listView.count
-	property var itemAtIndex: listView.itemAtIndex*/
 	property var remove: blockModel.remove
 	
 	Component.onCompleted:{
@@ -49,7 +33,7 @@ ListView {
 	}
 
 	function readFile(){
-		let file = filemanager.read("/home/tubbadu/Desktop/TODO.md");
+		let file = filemanager.read(fileName);
 		let lines = Parser.splitStringExceptInCodeBlocks(file);
 		for(let i=0; i<lines.length; i++){
 			//addBlock(lines[i])
@@ -58,6 +42,10 @@ ListView {
 		document.currentIndex = 0
 		document.currentItem.forceFocus()
 		document.currentItem.setCursorPosition(-1)
+	}
+
+	function save(){
+		filemanager.write(fileName, Parser.exportMarkdown())
 	}
 
 	ListModel {
@@ -70,7 +58,8 @@ ListView {
 			id: blk
 			setText: set_text
 			setType: set_type
-			width: parent? parent.width : 0
+			//width: parent? parent.width : 0
+			//height: parent? parent.height : 0
 		}
     }
 
@@ -79,12 +68,11 @@ ListView {
 		Rectangle {
 			width: 180
 			height: 40
-			color: window.active? Kirigami.Theme.activeBackgroundColor : "transparent";
-			radius: 5
+			color: window.active? Kirigami.Theme.alternateBackgroundColor : "transparent";
 			//border.color: window.active? Kirigami.Theme.hoverColor : "transparent";
 			//border.width: 1
 		}
 	}
 
-	
+	Keys.onPressed: (event) => KeyHandler.globalKey(event)
 }

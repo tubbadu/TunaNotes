@@ -1,20 +1,19 @@
 import QtQuick 2.15
-import QtQuick.Controls 2.0
+import QtQuick.Controls 2.5
 import QtQuick.Dialogs 1.3
-import QtQuick.Layouts 1.2
+import QtQuick.Layouts 1.12
 import org.kde.kirigami 2.13 as Kirigami
 import org.kde.syntaxhighlighting 1.0
+
 import "parser.js" as Parser
 import "keyHandler.js" as KeyHandler
 import "blockFunctions.js" as BlockFunctions
+import "syntaxDefinition.js" as SyntaxDefinition
 
-
-Rectangle{
+Item{
 	id: block
-	width: parent.width
-	height: row.height
-	color: type == Block.Type.CodeBlock? Qt.rgba(0.5, 0.5, 0.5, 0.15) : "transparent"
-	radius: 5
+	width: parent? parent.width : 0
+	height: (type == Block.Type.CodeBlock)? background.height + syntaxNameField.height/2 + 5 : background.height
 
 	enum Type{
 		PlainText,
@@ -29,11 +28,14 @@ Rectangle{
 	property int setType: -1
 	property int tabNum: 0
 	property bool checked: false
-	//property bool enableTextFormat: true
 	property int headerNum: 0
-	property var parseResult: Parser.parseMarkdownLine(setText)
+	property alias syntaxHighlightning: syntaxNameField.text
+	property var parseResult//: Parser.parseMarkdownLine(setText)
 	property alias cursorPosition: txt.cursorPosition
+	property alias selectedText: txt.selectedText
 	property alias length: txt.length
+	property var keyHandler: KeyHandler
+	property int delta: 0
 
 	property font normalFont
 	normalFont.pixelSize: BlockFunctions.textSize()
@@ -44,72 +46,132 @@ Rectangle{
 	property var up: BlockFunctions.up 
 	property var down: BlockFunctions.down 
 	property var mergeBlocks: BlockFunctions.mergeBlocks 
-	property var newBlock: BlockFunctions.newBlock 
-
-	
+	property var newBlock: BlockFunctions.newBlock
+	property var getType: BlockFunctions.getType
 
 	Component.onCompleted:{
+		text = setText
 		if(setType == -1){
 			BlockFunctions.getType()
 		} else {
-			text = parseResult.plainText
+			//text = parseResult.plainText
 			block.type = block.setType
 		}
-		
 	}
-	RowLayout{
-		id: row
-		width: parent.width
-		spacing: 0
 
-		IndentElement{
-			id: indentelement
-			tabSize: checkboxelement.width
-			tabNum: block.tabNum
+	TextField{
+		id: syntaxNameField
+		visible: (type == Block.Type.CodeBlock)
+		text: "text"
+		anchors.right: parent.right
+		anchors.rightMargin: height/2
+		z: 10
+		horizontalAlignment: TextInput.AlignHCenter
+		onTextChanged: {
+			syntaxHighlightning = text.trim()
 		}
-		CheckBoxElement{
-			id: checkboxelement // I'll use this element's width as referiment, because it's the largest
-			Layout.maximumHeight: txt.lineHeight
+		onFocusChanged: {
+			if(focus){
+				selectAll()
+			}
 		}
-		DotListElement{
-			width: checkboxelement.width
-			Layout.maximumHeight: txt.lineHeight
+		onEditingFinished: {
+			if(text.trim().length < 1){
+				text = "text"
+			}
 		}
-		QuoteElement{
-			width: checkboxelement.width
-			Layout.maximumHeight: txt.lineHeight
-		}	
-		
-		TextEdit{
-			id: txt
-			property int lineHeight: height / lineCount
-			Layout.fillWidth: true
-			Layout.alignment: Qt.AlignTop
-			Layout.topMargin: 2
-			Layout.leftMargin: 3
-			font: type == Block.Type.CodeBlock? fixedFont : normalFont
-			text: "ciao"
-			color: Kirigami.Theme.textColor
-			wrapMode: TextEdit.Wrap
-			tabStopDistance: checkboxelement.width
-			textFormat: TextEdit.PlainText //enableTextFormat? (block.Type === Block.Type.CodeBlock ? TextEdit.PlainText : TextEdit.MarkdownText) : TextEdit.PlainText
+		onAccepted: {
+			forceFocus()
+		}
+		onVisibleChanged: {
+			if(visible){
+				delta = 30
+			} else {
+				delta = 0
+			}
+		}
+	}
 
-			Keys.onPressed: (event) => KeyHandler.key(event)
+	Rectangle{
+		id: background
+		//width: parent.width
+		height: (type == Block.Type.CodeBlock)? txt.height + syntaxNameField.height/2 + 5 : txt.height
+		color: type == Block.Type.CodeBlock? Qt.rgba(0.5, 0.5, 0.5, 0.15) : "transparent"
+		border.color: type == Block.Type.CodeBlock? Qt.rgba(0.5, 0.5, 0.5, 0.75) : "transparent"
+		border.width: 1
+		radius: 5
+		y: (type == Block.Type.CodeBlock)? syntaxNameField.height/2 : 0
+		anchors.right: parent.right
+		anchors.left: parent.left
+		anchors.rightMargin: 5
+		anchors.leftMargin: 5
 
-			onFocusChanged: {
-				// needed to set the current item on the clicked element
-				if(focus && (document.currentIndex !== index)){
-					document.currentIndex = index
+		RowLayout{
+			y: (type == Block.Type.CodeBlock)? syntaxNameField.height/2 : 0
+			id: row
+			width: block.width
+			height: txt.height
+			spacing: 0
+
+			IndentElement{
+				id: indentelement
+				tabSize: checkboxelement.width
+				tabNum: block.tabNum
+			}
+			CheckBoxElement{
+				id: checkboxelement // I'll use this element's width as referiment, because it's the largest
+				Layout.maximumHeight: txt.lineHeight
+			}
+			DotListElement{
+				width: checkboxelement.width
+				Layout.maximumHeight: txt.lineHeight
+			}
+			QuoteElement{
+				width: checkboxelement.width
+				//Layout.maximumHeight: txt.lineHeight
+				Layout.fillHeight: true
+			}	
+			
+			TextEdit{
+				id: txt
+				property int lineHeight: height / lineCount
+				Layout.fillWidth: true
+				Layout.leftMargin: 5
+				Layout.rightMargin: 5
+				font: type == Block.Type.CodeBlock? fixedFont : normalFont
+				color: Kirigami.Theme.textColor
+				selectionColor: Kirigami.Theme.highlightColor
+				selectedTextColor: Kirigami.Theme.highlightedTextColor
+				selectByMouse: true
+				wrapMode: (type == Block.Type.CodeBlock)? TextEdit.Wrap : TextEdit.Wrap // TODO implement scrollable codeblocks
+				tabStopDistance: checkboxelement.width
+				//textFormat: TextEdit.RichText
+
+				Keys.onPressed: (event) => KeyHandler.key(event)
+
+				onFocusChanged: {
+					// needed to set the current item on the clicked element
+					if(focus && (document.currentIndex !== index)){
+						document.currentIndex = index
+					}
+				}
+
+				SyntaxHighlighter{
+					property string defName: SyntaxDefinition.getLanguageName(syntaxHighlightning)
+					textEdit: ((type == Block.Type.CodeBlock) && (defName != "None") && (defName != undefined))? txt : dump
+					definition: defName
+				}
+				TextEdit{
+					id: dump
+					visible: false
 				}
 			}
 		}
-
-		
 	}
 	onFocusChanged: {
-			// needed to set text focus when selecting block with arrows
-			if(focus && !txt.focus){
-				txt.focus = true
-			}
+		// needed to set text focus when selecting block with arrows
+		if(focus && !txt.focus){
+			txt.focus = true
 		}
+	}
 }
