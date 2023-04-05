@@ -38,7 +38,9 @@ function key(event){
 	
 	if (modifiers == Qt.ControlModifier && key == Qt.Key_C && document.selection != document.noSelection) {
 		copySelected(event)
-	} else if ((key == Qt.Key_Enter || key == Qt.Key_Return) && type != Block.Type.CodeBlock) {
+	} else if (modifiers == Qt.ControlModifier && key == Qt.Key_V) {
+		paste(event)
+	}  else if ((key == Qt.Key_Enter || key == Qt.Key_Return) && type != Block.Type.CodeBlock) {
 		enterPressed(event)
 	} else if (key == Qt.Key_Down) {
 		if(cursorPosition == length && index == document.count-1){
@@ -96,6 +98,16 @@ function copySelected(event){
 	let sel = Parser.exportMarkdown(document.selection)
 	console.warn(sel)
 	clipboard.copy(sel)
+}
+
+function paste(event){ // TODO
+	if(clipboard.paste().includes("\n")){
+		accept(event)
+		console.warn("multiline paste!")
+	} else if(text.trim().length == 0){
+		console.warn("parsing pasted text!")
+		accept(event)
+	}
 }
 
 function backspacePressed(event){

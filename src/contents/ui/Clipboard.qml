@@ -8,6 +8,12 @@ Item{
 		clip.selectAll()
 		clip.copy()
 	}
+
+	function paste(){
+		clip.text = ""
+		clip.paste()
+		return clip.text
+	}
 	TextEdit{
 		id: clip
 		visible: false

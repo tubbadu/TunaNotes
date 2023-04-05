@@ -146,8 +146,10 @@ function exportMarkdown(interval=document.noSelected){
 				if(block.type == Block.Type.CodeBlock){
 					line += "\n```"
 				}
-
-				doc += line + "\n\n"
+				if(doc.length > 0) {
+					doc += "\n\n"
+				} 
+				doc += line
 			}	
 		}
 	}
