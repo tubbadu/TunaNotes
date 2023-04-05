@@ -114,40 +114,42 @@ function splitStringExceptInCodeBlocks(str) {
 	return lines;
 }
 
-function exportMarkdown(){
+function exportMarkdown(interval=document.noSelected){
 	let doc = ""
 	for(let i=0; i<document.count; i++){
-		let block = document.itemAtIndex(i)
+		if(interval == document.noSelected || (interval[0] <= i && i <= interval[1])){
+			let block = document.itemAtIndex(i)
 
-		if(block){
-			let line = "\t".repeat(block.tabNum)
+			if(block){
+				let line = "\t".repeat(block.tabNum)
 
-			if(block.type == Block.Type.PlainText){
+				if(block.type == Block.Type.PlainText){
 
-			}else if(block.type == Block.Type.Quote){
-				line += "> "
-			}else if(block.type == Block.Type.DotList){
-				line += "- "
-			}else if(block.type == Block.Type.CheckList){
-				if(block.checked){
-					line += "- [x] "
-				}else{
-					line += "- [ ] "
+				}else if(block.type == Block.Type.Quote){
+					line += "> "
+				}else if(block.type == Block.Type.DotList){
+					line += "- "
+				}else if(block.type == Block.Type.CheckList){
+					if(block.checked){
+						line += "- [x] "
+					}else{
+						line += "- [ ] "
+					}
+				}else if(block.type == Block.Type.CodeBlock){
+					line += "```" + block.syntaxHighlightning + "\n"
 				}
-			}else if(block.type == Block.Type.CodeBlock){
-				line += "```" + block.syntaxHighlightning + "\n"
-			}
 
-			line += "#".repeat(block.headerNum) + " "
+				line += "#".repeat(block.headerNum) + " "
 
-			line += block.text
+				line += block.text
 
-			if(block.type == Block.Type.CodeBlock){
-				line += "\n```"
-			}
+				if(block.type == Block.Type.CodeBlock){
+					line += "\n```"
+				}
 
-			doc += line + "\n\n"
-		}	
+				doc += line + "\n\n"
+			}	
+		}
 	}
 
 	//console.warn(doc)

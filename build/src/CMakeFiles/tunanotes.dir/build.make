@@ -74,6 +74,7 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: src/CMakeFiles/tunanotes_aut
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/CheckBoxElement.qml
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/DotListElement.qml
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/IndentElement.qml
+src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/Clipboard.qml
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/syntaxDefinition.js
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/Document.qml
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/keyHandler.js

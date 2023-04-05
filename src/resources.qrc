@@ -7,6 +7,7 @@
 		<file alias="QuoteElement.qml">contents/ui/QuoteElement.qml</file>
 		<file alias="DotListElement.qml">contents/ui/DotListElement.qml</file>
 		<file alias="IndentElement.qml">contents/ui/IndentElement.qml</file>
+		<file alias="Clipboard.qml">contents/ui/Clipboard.qml</file>
 		<file alias="parser.js">contents/ui/parser.js</file>
 		<file alias="keyHandler.js">contents/ui/keyHandler.js</file>
 		<file alias="blockFunctions.js">contents/ui/blockFunctions.js</file>

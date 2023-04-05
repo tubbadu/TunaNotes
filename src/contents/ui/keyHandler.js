@@ -4,7 +4,7 @@ function key(event){
 
 	if(modifiers == Qt.ShiftModifier && key == Qt.Key_Up){
 		// Shift+Up
-		event.accepted = true
+		accept(event)
 		if(document.selection === document.noSelection){
 			document.selection = [index, index]
 		} else if (document.selection[1] == index){
@@ -19,7 +19,7 @@ function key(event){
 		return
 	} else if(modifiers == Qt.ShiftModifier && key == Qt.Key_Down){
 		// Shift+Down
-		event.accepted = true
+		accept(event)
 		if(document.selection === document.noSelection){
 			document.selection = [index, index]
 		} else if (document.selection[0] == index){
@@ -32,21 +32,24 @@ function key(event){
 		}
 		return
 	} else if(modifiers == Qt.NoModifier && key != Qt.Key_Backspace && key != Qt.Key_Delete){
+		console.warn("unselecting")
 		document.selection = document.noSelection
 	}
 	
-	if ((key == Qt.Key_Enter || key == Qt.Key_Return) && type != Block.Type.CodeBlock) {
+	if (modifiers == Qt.ControlModifier && key == Qt.Key_C && document.selection != document.noSelection) {
+		copySelected(event)
+	} else if ((key == Qt.Key_Enter || key == Qt.Key_Return) && type != Block.Type.CodeBlock) {
 		enterPressed(event)
 	} else if (key == Qt.Key_Down) {
 		if(cursorPosition == length && index == document.count-1){
 			newBlock()
-			if(event) {event.accepted = true;}
+			accept(event)
 		}else if(type != Block.Type.CodeBlock){
-			if(event) {event.accepted = true;}
+			accept(event)
 			down();
 		}		
 	} else if (key == Qt.Key_Up && type != Block.Type.CodeBlock) {
-		if(event) {event.accepted = true;}
+		accept(event)
 		up();
 	} else if (key == Qt.Key_Delete && selectedText.length == 0) {
 		delPressed(event)
@@ -88,6 +91,13 @@ function globalKey(event){
 	}
 }
 
+function copySelected(event){
+	accept(event)
+	let sel = Parser.exportMarkdown(document.selection)
+	console.warn(sel)
+	clipboard.copy(sel)
+}
+
 function backspacePressed(event){
 	if(document.selection === document.noSelection){
 		if(selectedText.length == 0){
@@ -102,12 +112,12 @@ function backspacePressed(event){
 				} else if(index > 0){
 					mergeBlocks(index, index-1)
 				}
-				if(event) {if(event) {event.accepted = true;}}
+				accept(event)
 			}
 		}
 	} else {
+		accept(event)
 		for(let i=count-1; i>=0; i--){ // at reverse so removing elements does not cause selected elements to change
-			if(event) {if(event) {event.accepted = true;}}
 			if(document.itemAtIndex(i).selected){
 				document.remove(i)
 			}
@@ -119,12 +129,12 @@ function delPressed(event){
 	if(document.selection === document.noSelection){
 		if(selectedText.length == 0){
 			if(cursorPosition == txt.length && index < document.count-1){
-				if(event) {if(event) {event.accepted = true;}}
+				accept(event)
 				mergeBlocks(index+1, index)
 			}
 		}
 	} else {
-		if(event) {if(event) {event.accepted = true;}}
+		accept(event)
 		for(let i=count-1; i>=0; i--){ // at reverse so removing elements does not cause selected elements to change
 			if(document.itemAtIndex(i).selected){
 				document.remove(i)
@@ -135,13 +145,13 @@ function delPressed(event){
 
 function tabPressed(event){
 	// todo add codeblock support
-	if(event) {event.accepted = true;}
+	accept(event)
 	tabNum++
 }
 
 function backtabPressed(event){
 	// todo add codeblock support
-	if(event) {event.accepted = true;}
+	accept(event)
 	if(tabNum > 0){
 		tabNum--
 	}
@@ -151,7 +161,7 @@ function rightPressed(event){
 	if(cursorPosition == txt.length && index < document.count-1){
 		document.currentIndex++
 		document.currentItem.setCursorPosition(0)
-		event.accepted = true
+		accept(event)
 	}
 }
 
@@ -159,7 +169,7 @@ function leftPressed(event){
 	if(cursorPosition == 0 && index > 0){
 		document.currentIndex--
 		document.currentItem.setCursorPosition(-1)
-		event.accepted = true
+		accept(event)
 	}
 }
 
@@ -170,12 +180,12 @@ function backtickPressed(event){
 		type = Block.Type.CodeBlock
 		headerNum = 0
 	}
-	if(event) {event.accepted = true;}
+	accept(event)
 }
 
 function hashtagPressed(event){
 	if(type == Block.Type.PlainText || true){
-		if(event) {event.accepted = true;}
+		accept(event)
 		if(headerNum < 6){
 			headerNum++
 		}
@@ -189,7 +199,7 @@ function quotePressed(event){
 	} else {
 		type = Block.Type.Quote
 	}
-	if(event) {event.accepted = true;}
+	accept(event)
 }
 
 function dotPressed(event){
@@ -199,14 +209,14 @@ function dotPressed(event){
 	} else {
 		type = Block.Type.DotList
 	}
-	if(event) {event.accepted = true;}
+	accept(event)
 }
 
 function bracketPressed(event){
 	// ignore the current formatting, just set it to quote or plaintext
 	type = Block.Type.CheckList
 	text = text.replace(/^\[/, "")
-	if(event) {event.accepted = true;}
+	accept(event)
 }
 
 function spacePressed(event){ // perhaps remove
@@ -216,13 +226,13 @@ function spacePressed(event){ // perhaps remove
 		let extext = text
 		getType(text.slice(0, cursorPosition) + " " + text.slice(cursorPosition))
 		if(text != extext){
-			if(event) {event.accepted = true;}
+			accept(event)
 		}
 	}
 }
 
 function enterPressed(event){
-	if(event) {event.accepted = true;}
+	accept(event)
 	if(text.length < 1 && type != Block.Type.PlainText){
 		// empty formatted text: remove formatting
 		type = Block.Type.PlainText
@@ -245,4 +255,8 @@ function checkListToggle(){
 	} else {
 		type = Block.Type.CheckList
 	}
+}
+
+function accept(event){
+	if(event) {if(event) {event.accepted = true;}}
 }

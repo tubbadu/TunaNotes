@@ -53,6 +53,7 @@ Item{
 
 	Component.onCompleted:{
 		text = setText
+		tabNum = setTabnum
 		if(setType == -1){
 			BlockFunctions.getType()
 		} else {

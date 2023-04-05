@@ -75,7 +75,7 @@ ListView {
 			Rectangle{
 				id: selection
 				anchors.fill: parent
-				color: parent.selected? Kirigami.Theme.activeBackgroundColor : "transparent"
+				color: parent.selected? Kirigami.Theme.highlightColor : "transparent"
 				z: -100
 			}
 		}
@@ -90,6 +90,10 @@ ListView {
 			//border.color: window.active? Kirigami.Theme.hoverColor : "transparent";
 			//border.width: 1
 		}
+	}
+
+	Clipboard{
+		id: clipboard
 	}
 
 	Keys.onPressed: (event)=> KeyHandler.globalKey(event)
