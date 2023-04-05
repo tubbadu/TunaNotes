@@ -1,5 +1,40 @@
 function key(event){
 	var key = event.key
+	var modifiers = event.modifiers
+
+	if(modifiers == Qt.ShiftModifier && key == Qt.Key_Up){
+		// Shift+Up
+		event.accepted = true
+		if(document.selection === document.noSelection){
+			document.selection = [index, index]
+		} else if (document.selection[1] == index){
+			document.selection = [document.selection[0] - 1, document.selection[1]]
+		} else {
+			document.selection = [document.selection[0], document.selection[1] - 1]
+		}
+
+		if(document.selection[0] < 0){
+			document.selection[0] = 0
+		}
+		return
+	} else if(modifiers == Qt.ShiftModifier && key == Qt.Key_Down){
+		// Shift+Down
+		event.accepted = true
+		if(document.selection === document.noSelection){
+			document.selection = [index, index]
+		} else if (document.selection[0] == index){
+			document.selection = [document.selection[0], document.selection[1] + 1]
+		} else {
+			document.selection = [document.selection[0] + 1, document.selection[1]]
+		}
+		if(document.selection[1] > document.count-1){
+			document.selection[1] = document.count-1
+		}
+		return
+	} else if(modifiers == Qt.NoModifier && key != Qt.Key_Backspace && key != Qt.Key_Delete){
+		document.selection = document.noSelection
+	}
+	
 	if ((key == Qt.Key_Enter || key == Qt.Key_Return) && type != Block.Type.CodeBlock) {
 		enterPressed(event)
 	} else if (key == Qt.Key_Down) {
@@ -15,7 +50,7 @@ function key(event){
 		up();
 	} else if (key == Qt.Key_Delete && selectedText.length == 0) {
 		delPressed(event)
-	} else if (key == Qt.Key_Backspace && selectedText.length == 0) {
+	} else if (key == Qt.Key_Backspace) {
 		backspacePressed(event)
 	} else if(key == Qt.Key_Tab && type != Block.Type.CodeBlock) {
 		tabPressed(event)
@@ -30,7 +65,7 @@ function key(event){
 	} else if(key == Qt.Key_BracketRight && cursorPosition == 1 && text[0] == "["){
 		bracketPressed(event)
 	} else if(key == Qt.Key_Space){
-		spacePressed(event)
+		//spacePressed(event)
 	} else if(key == Qt.Key_Left){
 		leftPressed(event)
 	} else if(key == Qt.Key_Right){
@@ -54,26 +89,47 @@ function globalKey(event){
 }
 
 function backspacePressed(event){
-	if(cursorPosition == 0){
-		if(event) {if(event) {event.accepted = true;}}
-
-		if ((type != Block.Type.CodeBlock) && (headerNum > 0)){
-			headerNum--
-		}else if(type !== Block.Type.PlainText){
-			type = Block.Type.PlainText
-			console.warn("removing formatting");
-		} else if(tabNum > 0){
-			tabNum--
-		} else if(index > 0){
-			mergeBlocks(index, index-1)
+	if(document.selection === document.noSelection){
+		if(selectedText.length == 0){
+			if(cursorPosition == 0){
+				if ((type != Block.Type.CodeBlock) && (headerNum > 0)){
+					headerNum--
+				}else if(type !== Block.Type.PlainText){
+					type = Block.Type.PlainText
+					console.warn("removing formatting");
+				} else if(tabNum > 0){
+					tabNum--
+				} else if(index > 0){
+					mergeBlocks(index, index-1)
+				}
+				if(event) {if(event) {event.accepted = true;}}
+			}
+		}
+	} else {
+		for(let i=count-1; i>=0; i--){ // at reverse so removing elements does not cause selected elements to change
+			if(event) {if(event) {event.accepted = true;}}
+			if(document.itemAtIndex(i).selected){
+				document.remove(i)
+			}
 		}
 	}
 }
 
 function delPressed(event){
-	if(cursorPosition == txt.length && index < document.count-1){
-		if(event) {event.accepted = true;}
-		mergeBlocks(index+1, index)
+	if(document.selection === document.noSelection){
+		if(selectedText.length == 0){
+			if(cursorPosition == txt.length && index < document.count-1){
+				if(event) {if(event) {event.accepted = true;}}
+				mergeBlocks(index+1, index)
+			}
+		}
+	} else {
+		if(event) {if(event) {event.accepted = true;}}
+		for(let i=count-1; i>=0; i--){ // at reverse so removing elements does not cause selected elements to change
+			if(document.itemAtIndex(i).selected){
+				document.remove(i)
+			}
+		}
 	}
 }
 

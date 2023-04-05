@@ -17,6 +17,10 @@ ListView {
 	//height: listView.contentHeight
 
 	property string fileName: "/home/tubbadu/Desktop/TODO.md"
+	property bool unsaved: false
+	property var remove: blockModel.remove
+	readonly property var noSelection: [-1, -1]
+	property var selection: noSelection
 
 	model: blockModel
 	delegate: blockDelegate
@@ -26,27 +30,33 @@ ListView {
 	highlightResizeDuration: 0
 	cacheBuffer: 999999999//*999999999
 
-	property var remove: blockModel.remove
+	
 	
 	Component.onCompleted:{
 		readFile()
+	}
+
+	onCountChanged: {
+		unsaved = true
 	}
 
 	function readFile(){
 		let file = filemanager.read(fileName);
 		let lines = Parser.splitStringExceptInCodeBlocks(file);
 		for(let i=0; i<lines.length; i++){
-			//addBlock(lines[i])
 			blockModel.append({set_text: lines[i], set_type: -1, set_tabnum: -1})
 		}
 		document.currentIndex = 0
 		document.currentItem.forceFocus()
 		document.currentItem.setCursorPosition(-1)
+		console.warn("done loading file")
+		document.unsaved = false
 	}
 
 	function save(){
 		filemanager.write(fileName, Parser.exportMarkdown())
 		console.warn("saved")
+		unsaved = false
 	}
 
 	ListModel {
@@ -62,6 +72,12 @@ ListView {
 			setTabnum: set_tabnum
 			//width: parent? parent.width : 0
 			//height: parent? parent.height : 0
+			Rectangle{
+				id: selection
+				anchors.fill: parent
+				color: parent.selected? Kirigami.Theme.activeBackgroundColor : "transparent"
+				z: -100
+			}
 		}
     }
 

@@ -36,7 +36,8 @@ Item{
 	property alias selectedText: txt.selectedText
 	property alias length: txt.length
 	property var keyHandler: KeyHandler
-	property int delta: 0
+	property int delta: 0 // what is it used for?
+	property bool selected: document.selection[0] <= index && index <= document.selection[1] 
 
 	property font normalFont
 	normalFont.pixelSize: BlockFunctions.textSize()
@@ -51,20 +52,12 @@ Item{
 	property var getType: BlockFunctions.getType
 
 	Component.onCompleted:{
-		//console.warn(type, tabNum)
 		text = setText
 		if(setType == -1){
 			BlockFunctions.getType()
 		} else {
-			//text = parseResult.plainText
 			block.type = block.setType
 		}
-		if(setTabnum == -1) {
-			//block.tabNum = 
-		} else {
-			//block.tabNum = block.setTabnum
-		}
-		//console.warn(type, tabNum)
 	}
 
 	TextField{
@@ -162,6 +155,7 @@ Item{
 					if(focus && (document.currentIndex !== index)){
 						document.currentIndex = index
 					}
+					document.selection = document.noSelection
 				}
 
 				SyntaxHighlighter{
@@ -170,8 +164,12 @@ Item{
 					definition: defName
 				}
 				TextEdit{
-					id: dump
+					id: dump // used only as secondary target
 					visible: false
+				}
+
+				onTextChanged: {
+					document.unsaved = true
 				}
 			}
 		}
