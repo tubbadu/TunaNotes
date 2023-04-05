@@ -37,7 +37,7 @@ ListView {
 		let lines = Parser.splitStringExceptInCodeBlocks(file);
 		for(let i=0; i<lines.length; i++){
 			//addBlock(lines[i])
-			blockModel.append({set_text: lines[i], set_type: -1})
+			blockModel.append({set_text: lines[i], set_type: -1, set_tabnum: -1})
 		}
 		document.currentIndex = 0
 		document.currentItem.forceFocus()
@@ -46,6 +46,7 @@ ListView {
 
 	function save(){
 		filemanager.write(fileName, Parser.exportMarkdown())
+		console.warn("saved")
 	}
 
 	ListModel {
@@ -58,6 +59,7 @@ ListView {
 			id: blk
 			setText: set_text
 			setType: set_type
+			setTabnum: set_tabnum
 			//width: parent? parent.width : 0
 			//height: parent? parent.height : 0
 		}
@@ -74,5 +76,5 @@ ListView {
 		}
 	}
 
-	Keys.onPressed: (event) => KeyHandler.globalKey(event)
+	Keys.onPressed: (event)=> KeyHandler.globalKey(event)
 }

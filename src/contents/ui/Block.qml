@@ -26,8 +26,9 @@ Item{
 	property alias text: txt.text
 	property string setText: "*error*" // used to set an initial value
 	property int setType: -1
+	property int setTabnum: 0
 	property int tabNum: 0
-	property bool checked: false
+	property alias checked: checkboxelement.checked
 	property int headerNum: 0
 	property alias syntaxHighlightning: syntaxNameField.text
 	property var parseResult//: Parser.parseMarkdownLine(setText)
@@ -50,6 +51,7 @@ Item{
 	property var getType: BlockFunctions.getType
 
 	Component.onCompleted:{
+		//console.warn(type, tabNum)
 		text = setText
 		if(setType == -1){
 			BlockFunctions.getType()
@@ -57,6 +59,12 @@ Item{
 			//text = parseResult.plainText
 			block.type = block.setType
 		}
+		if(setTabnum == -1) {
+			//block.tabNum = 
+		} else {
+			//block.tabNum = block.setTabnum
+		}
+		//console.warn(type, tabNum)
 	}
 
 	TextField{

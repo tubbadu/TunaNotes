@@ -35,28 +35,35 @@ function key(event){
 		leftPressed(event)
 	} else if(key == Qt.Key_Right){
 		rightPressed(event)
-	} else if(key == Qt.Key_QuoteLeft&& cursorPosition == 0){
+	} else if(key == Qt.Key_QuoteLeft && cursorPosition == 0){
 		backtickPressed(event)
 	}
 }
 
 function globalKey(event){
+	// strange behavior: gets triggered three times
 	var key = event.key
 	var modifiers = event.modifiers
 	if(modifiers == Qt.ControlModifier && key == Qt.Key_S){
 		// Ctrl+S
 		document.save()
+	} else if(modifiers == Qt.AltModifier && key == Qt.Key_Backspace){
+		// Ctrl+Backspace
+		removeFormatting()
 	}
 }
 
 function backspacePressed(event){
 	if(cursorPosition == 0){
 		if(event) {if(event) {event.accepted = true;}}
+
 		if ((type != Block.Type.CodeBlock) && (headerNum > 0)){
 			headerNum--
 		}else if(type !== Block.Type.PlainText){
 			type = Block.Type.PlainText
 			console.warn("removing formatting");
+		} else if(tabNum > 0){
+			tabNum--
 		} else if(index > 0){
 			mergeBlocks(index, index-1)
 		}
@@ -105,6 +112,7 @@ function backtickPressed(event){
 		type = Block.Type.PlainText
 	} else {
 		type = Block.Type.CodeBlock
+		headerNum = 0
 	}
 	if(event) {event.accepted = true;}
 }
@@ -165,16 +173,14 @@ function enterPressed(event){
 	} else {
 		let subtext = text.substr(cursorPosition, text.length)
 		text = text.substr(0, cursorPosition)
-		newBlock(subtext);
+		newBlock(subtext, tabNum);
 	}
 }
 
 function removeFormatting(){
-	if(type != Block.Type.PlainText){
-		type = Block.Type.PlainText
-	} else if(headerNum > 0){
-		headerNum--
-	}
+	document.currentItem.type = Block.Type.PlainText
+	document.currentItem.headerNum = 0
+	document.currentItem.tabNum = 0
 }
 
 function checkListToggle(){

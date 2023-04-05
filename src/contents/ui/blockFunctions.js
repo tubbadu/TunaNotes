@@ -4,6 +4,7 @@ function getType(t = setText){
 	}
 	text = parseResult.plainText
 	syntaxHighlightning = parseResult.syntaxHighlightning
+	tabNum = parseResult.numTabs
 
 	if(parseResult.isChecklist){
 		type = Block.Type.CheckList
@@ -26,8 +27,8 @@ function getType(t = setText){
 	type = Block.Type.PlainText;
 }
 
-function newBlock(set_text=""){
-	blockModel.insert(index+1, {set_text: set_text, set_type: newType()}) // TODO set type
+function newBlock(set_text="", set_tabnum=0){
+	blockModel.insert(index+1, {set_text: set_text, set_type: newType(), set_tabnum: set_tabnum}) // TODO set type
 	down()
 }
 

@@ -2,8 +2,8 @@ function tabCounter(line){
 	// Replace 4 spaces with a tab
 	line = line.replace(/    /g, '\t');
 
-	// Count the number of tabs
-	let numTabs = (line.match(/\t/g) || []).length;
+	// Count the number of tabs at the beginning of the line
+	let numTabs = (line.match(/^\t/g) || []).length;
 
 	return numTabs;
 }
@@ -46,7 +46,6 @@ function parseMarkdownLine(line) {
 
 	
 	const syntaxHighlightning = getSyntaxHighlightning(line)
-	//console.warn(syntaxHighlightning)
 	const plainText = getPlainText(line).replace(syntaxHighlightning, "").trim()
 
 	let isChecklist = false;
@@ -116,27 +115,27 @@ function splitStringExceptInCodeBlocks(str) {
 }
 
 function exportMarkdown(){
-	console.warn("saving...")
 	let doc = ""
 	for(let i=0; i<document.count; i++){
 		let block = document.itemAtIndex(i)
+
 		if(block){
-			let line = ""
-		
+			let line = "\t".repeat(block.tabNum)
+
 			if(block.type == Block.Type.PlainText){
 
 			}else if(block.type == Block.Type.Quote){
-				line = "> "
+				line += "> "
 			}else if(block.type == Block.Type.DotList){
-				line = "- "
+				line += "- "
 			}else if(block.type == Block.Type.CheckList){
 				if(block.checked){
-					line= "- [x] "
+					line += "- [x] "
 				}else{
-					line= "- [ ] "
+					line += "- [ ] "
 				}
 			}else if(block.type == Block.Type.CodeBlock){
-				line = "```" + block.syntaxHighlightning + "\n"
+				line += "```" + block.syntaxHighlightning + "\n"
 			}
 
 			line += "#".repeat(block.headerNum) + " "
@@ -151,6 +150,6 @@ function exportMarkdown(){
 		}	
 	}
 
-	console.warn(doc)
+	//console.warn(doc)
 	return doc;
 }

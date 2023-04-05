@@ -77,5 +77,6 @@ Kirigami.ApplicationWindow {
 		Document{
 			id: document
 		}
+		
 	}
 }
