@@ -154,6 +154,30 @@ tunanotes_autogen/fast:
 	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes_autogen.dir/build.make src/CMakeFiles/tunanotes_autogen.dir/build
 .PHONY : tunanotes_autogen/fast
 
+Highlighter.o: Highlighter.cpp.o
+.PHONY : Highlighter.o
+
+# target to build an object file
+Highlighter.cpp.o:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/Highlighter.cpp.o
+.PHONY : Highlighter.cpp.o
+
+Highlighter.i: Highlighter.cpp.i
+.PHONY : Highlighter.i
+
+# target to preprocess a source file
+Highlighter.cpp.i:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/Highlighter.cpp.i
+.PHONY : Highlighter.cpp.i
+
+Highlighter.s: Highlighter.cpp.s
+.PHONY : Highlighter.s
+
+# target to generate assembly for a file
+Highlighter.cpp.s:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/Highlighter.cpp.s
+.PHONY : Highlighter.cpp.s
+
 fileManager.o: fileManager.cpp.o
 .PHONY : fileManager.o
 
@@ -226,6 +250,30 @@ main.cpp.s:
 	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+plainTextFormat.o: plainTextFormat.cpp.o
+.PHONY : plainTextFormat.o
+
+# target to build an object file
+plainTextFormat.cpp.o:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/plainTextFormat.cpp.o
+.PHONY : plainTextFormat.cpp.o
+
+plainTextFormat.i: plainTextFormat.cpp.i
+.PHONY : plainTextFormat.i
+
+# target to preprocess a source file
+plainTextFormat.cpp.i:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/plainTextFormat.cpp.i
+.PHONY : plainTextFormat.cpp.i
+
+plainTextFormat.s: plainTextFormat.cpp.s
+.PHONY : plainTextFormat.s
+
+# target to generate assembly for a file
+plainTextFormat.cpp.s:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/plainTextFormat.cpp.s
+.PHONY : plainTextFormat.cpp.s
+
 tunanotes_autogen/EWIEGA46WW/qrc_resources.o: tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o
 .PHONY : tunanotes_autogen/EWIEGA46WW/qrc_resources.o
 
@@ -285,6 +333,9 @@ help:
 	@echo "... test"
 	@echo "... tunanotes_autogen"
 	@echo "... tunanotes"
+	@echo "... Highlighter.o"
+	@echo "... Highlighter.i"
+	@echo "... Highlighter.s"
 	@echo "... fileManager.o"
 	@echo "... fileManager.i"
 	@echo "... fileManager.s"
@@ -294,6 +345,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... plainTextFormat.o"
+	@echo "... plainTextFormat.i"
+	@echo "... plainTextFormat.s"
 	@echo "... tunanotes_autogen/EWIEGA46WW/qrc_resources.o"
 	@echo "... tunanotes_autogen/EWIEGA46WW/qrc_resources.i"
 	@echo "... tunanotes_autogen/EWIEGA46WW/qrc_resources.s"

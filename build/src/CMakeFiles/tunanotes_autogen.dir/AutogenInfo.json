@@ -22,6 +22,12 @@
 	"HEADERS" : 
 	[
 		[
+			"/home/tubbadu/code/Kirigami/TunaNotes/src/Highlighter.h",
+			"Mu",
+			"EWIEGA46WW/moc_Highlighter.cpp",
+			null
+		],
+		[
 			"/home/tubbadu/code/Kirigami/TunaNotes/src/fileManager.h",
 			"Mu",
 			"EWIEGA46WW/moc_fileManager.cpp",
@@ -31,6 +37,12 @@
 			"/home/tubbadu/code/Kirigami/TunaNotes/src/launcher.h",
 			"Mu",
 			"EWIEGA46WW/moc_launcher.cpp",
+			null
+		],
+		[
+			"/home/tubbadu/code/Kirigami/TunaNotes/src/plainTextFormat.h",
+			"Mu",
+			"EWIEGA46WW/moc_plainTextFormat.cpp",
 			null
 		]
 	],
@@ -125,12 +137,22 @@
 	"SOURCES" : 
 	[
 		[
+			"/home/tubbadu/code/Kirigami/TunaNotes/src/Highlighter.cpp",
+			"Mu",
+			null
+		],
+		[
 			"/home/tubbadu/code/Kirigami/TunaNotes/src/fileManager.cpp",
 			"Mu",
 			null
 		],
 		[ "/home/tubbadu/code/Kirigami/TunaNotes/src/launcher.cpp", "Mu", null ],
-		[ "/home/tubbadu/code/Kirigami/TunaNotes/src/main.cpp", "Mu", null ]
+		[ "/home/tubbadu/code/Kirigami/TunaNotes/src/main.cpp", "Mu", null ],
+		[
+			"/home/tubbadu/code/Kirigami/TunaNotes/src/plainTextFormat.cpp",
+			"Mu",
+			null
+		]
 	],
 	"VERBOSITY" : 0
 }

@@ -1,7 +1,7 @@
-src/CMakeFiles/tunanotes.dir/launcher.cpp.o: \
- /home/tubbadu/code/Kirigami/TunaNotes/src/launcher.cpp \
+src/CMakeFiles/tunanotes.dir/plainTextFormat.cpp.o: \
+ /home/tubbadu/code/Kirigami/TunaNotes/src/plainTextFormat.cpp \
  /usr/include/stdc-predef.h \
- /home/tubbadu/code/Kirigami/TunaNotes/src/launcher.h \
+ /home/tubbadu/code/Kirigami/TunaNotes/src/plainTextFormat.h \
  /usr/include/qt5/QtCore/QObject /usr/include/qt5/QtCore/qobject.h \
  /usr/include/qt5/QtCore/qobjectdefs.h \
  /usr/include/qt5/QtCore/qnamespace.h /usr/include/qt5/QtCore/qglobal.h \
@@ -195,6 +195,73 @@ src/CMakeFiles/tunanotes.dir/launcher.cpp.o: \
  /usr/include/c++/12/bits/chrono.h /usr/include/c++/12/ratio \
  /usr/include/c++/12/limits /usr/include/c++/12/ctime \
  /usr/include/c++/12/bits/parse_numbers.h \
- /usr/include/qt5/QtCore/QProcess /usr/include/qt5/QtCore/qprocess.h \
- /usr/include/qt5/QtCore/qiodevice.h /usr/include/qt5/QtCore/qobject.h \
- /usr/include/qt5/QtCore/qshareddata.h /usr/include/qt5/QtCore/qhash.h
+ /usr/include/qt5/QtQuick/QQuickTextDocument \
+ /usr/include/qt5/QtQuick/qquicktextdocument.h \
+ /usr/include/qt5/QtGui/QTextDocument \
+ /usr/include/qt5/QtGui/qtextdocument.h \
+ /usr/include/qt5/QtGui/qtguiglobal.h \
+ /usr/include/qt5/QtGui/qtgui-config.h /usr/include/qt5/QtCore/qobject.h \
+ /usr/include/qt5/QtCore/qsize.h /usr/include/qt5/QtCore/qmargins.h \
+ /usr/include/qt5/QtCore/qrect.h /usr/include/qt5/QtCore/qpoint.h \
+ /usr/include/qt5/QtCore/qvariant.h /usr/include/qt5/QtCore/qmap.h \
+ /usr/include/qt5/QtCore/qhash.h /usr/include/c++/12/variant \
+ /usr/include/qt5/QtGui/qfont.h /usr/include/qt5/QtGui/qwindowdefs.h \
+ /usr/include/qt5/QtCore/qsharedpointer.h \
+ /usr/include/qt5/QtCore/qshareddata.h \
+ /usr/include/qt5/QtCore/qsharedpointer_impl.h /usr/include/c++/12/memory \
+ /usr/include/c++/12/bits/stl_raw_storage_iter.h \
+ /usr/include/c++/12/bits/align.h /usr/include/c++/12/bits/unique_ptr.h \
+ /usr/include/c++/12/bits/shared_ptr.h \
+ /usr/include/c++/12/bits/shared_ptr_base.h \
+ /usr/include/c++/12/ext/concurrence.h \
+ /usr/include/c++/12/bits/shared_ptr_atomic.h \
+ /usr/include/c++/12/backward/auto_ptr.h \
+ /usr/include/c++/12/pstl/glue_memory_defs.h \
+ /usr/include/qt5/QtCore/qurl.h /usr/include/qt5/QtQuick/QQuickItem \
+ /usr/include/qt5/QtQuick/qquickitem.h \
+ /usr/include/qt5/QtQuick/qtquickglobal.h \
+ /usr/include/qt5/QtQml/qtqmlglobal.h \
+ /usr/include/qt5/QtQml/qtqml-config.h \
+ /usr/include/qt5/QtNetwork/qtnetworkglobal.h \
+ /usr/include/qt5/QtNetwork/qtnetwork-config.h \
+ /usr/include/qt5/QtQuick/qtquick-config.h /usr/include/qt5/QtQml/qqml.h \
+ /usr/include/qt5/QtQml/qqmlprivate.h \
+ /usr/include/qt5/QtQml/qqmlparserstatus.h \
+ /usr/include/qt5/QtQml/qqmllist.h \
+ /usr/include/qt5/QtQml/qqmlpropertyvaluesource.h \
+ /usr/include/qt5/QtCore/qpointer.h /usr/include/qt5/QtCore/qmetaobject.h \
+ /usr/include/qt5/QtCore/qdebug.h /usr/include/qt5/QtCore/qtextstream.h \
+ /usr/include/qt5/QtCore/qiodevice.h /usr/include/qt5/QtCore/qlocale.h \
+ /usr/include/qt5/QtCore/qset.h \
+ /usr/include/qt5/QtCore/qcontiguouscache.h \
+ /usr/include/qt5/QtQml/qqmlcomponent.h \
+ /usr/include/qt5/QtQml/qqmlerror.h /usr/include/qt5/QtQml/qjsvalue.h \
+ /usr/include/qt5/QtCore/QObject /usr/include/qt5/QtCore/QList \
+ /usr/include/qt5/QtCore/qlist.h /usr/include/qt5/QtGui/qevent.h \
+ /usr/include/qt5/QtGui/qregion.h /usr/include/qt5/QtCore/qdatastream.h \
+ /usr/include/qt5/QtGui/qkeysequence.h \
+ /usr/include/qt5/QtCore/qcoreevent.h /usr/include/qt5/QtCore/qfile.h \
+ /usr/include/qt5/QtCore/qfiledevice.h /usr/include/qt5/QtGui/qvector2d.h \
+ /usr/include/qt5/QtGui/qtouchdevice.h \
+ /usr/include/qt5/QtGui/qaccessible.h \
+ /usr/include/qt5/QtCore/qcoreapplication.h \
+ /usr/include/qt5/QtCore/qeventloop.h /usr/include/qt5/QtGui/qcolor.h \
+ /usr/include/qt5/QtGui/qrgb.h /usr/include/qt5/QtGui/qrgba64.h \
+ /home/tubbadu/code/Kirigami/TunaNotes/src/Highlighter.h \
+ /usr/include/qt5/QtGui/QSyntaxHighlighter \
+ /usr/include/qt5/QtGui/qsyntaxhighlighter.h \
+ /usr/include/qt5/QtGui/qtextobject.h \
+ /usr/include/qt5/QtGui/qtextformat.h /usr/include/qt5/QtGui/qpen.h \
+ /usr/include/qt5/QtGui/qbrush.h /usr/include/qt5/QtGui/qmatrix.h \
+ /usr/include/qt5/QtGui/qpolygon.h /usr/include/qt5/QtCore/qline.h \
+ /usr/include/qt5/QtGui/qtransform.h /usr/include/qt5/QtGui/qimage.h \
+ /usr/include/qt5/QtGui/qpaintdevice.h \
+ /usr/include/qt5/QtGui/qpixelformat.h /usr/include/qt5/QtGui/qpixmap.h \
+ /usr/include/qt5/QtGui/qtextoption.h \
+ /usr/include/qt5/QtGui/qtextlayout.h /usr/include/qt5/QtGui/qglyphrun.h \
+ /usr/include/qt5/QtGui/qrawfont.h /usr/include/qt5/QtGui/qfontdatabase.h \
+ /usr/include/qt5/QtGui/qtextcursor.h \
+ /usr/include/qt5/QtGui/QTextCharFormat \
+ /usr/include/qt5/QtGui/qtextformat.h \
+ /usr/include/qt5/QtCore/QRegularExpression \
+ /usr/include/qt5/QtCore/qregularexpression.h

@@ -51,7 +51,7 @@ function key(event){
 		quotePressed(event)
 	} else if((key == Qt.Key_Minus || key == Qt.Key_Plus || key == Qt.Key_Asterisk) && cursorPosition == 0){
 		dotPressed(event)
-	} else if(key == Qt.Key_BracketRight && cursorPosition == 1 && text[0] == "["){
+	} else if(key == Qt.Key_BracketRight){
 		bracketPressed(event)
 	} else if(key == Qt.Key_Space){
 		//spacePressed(event)
@@ -109,7 +109,6 @@ function shiftDown(event){
 function copySelected(event){
 	accept(event)
 	let sel = Parser.exportMarkdown(document.selection)
-	console.warn(sel)
 	clipboard.copy(sel)
 }
 
@@ -143,7 +142,6 @@ function paste(event){
 		}
 		accept(event)
 	} else if(text.trim().length == 0){
-		console.warn("parsing pasted text!")
 		pasteParsed(clip)
 		accept(event)
 	}
@@ -189,7 +187,10 @@ function backspacePressed(event){
 function delPressed(event){
 	if(document.selection === document.noSelection){
 		if(selectedText.length == 0){
-			if(cursorPosition == txt.length && index < document.count-1){
+			if(text.length == 0){
+				document.remove(index)
+				currentItem.setCursorPosition(0)
+			} else if(cursorPosition == txt.length && index < document.count-1){
 				accept(event)
 				mergeBlocks(index+1, index)
 			}
@@ -269,10 +270,12 @@ function dotPressed(event){
 }
 
 function bracketPressed(event){
-	// ignore the current formatting, just set it to quote or plaintext
-	type = Block.Type.CheckList
-	text = text.replace(/^\[/, "")
-	accept(event)
+	let reg = /^\s*\[/
+	if(reg.test(text) && cursorPosition == text.indexOf("[") + 1){
+		accept(event)
+		text = text.replace(reg, "")
+		type = Block.Type.CheckList
+	}
 }
 
 function spacePressed(event){ // perhaps remove
@@ -292,6 +295,9 @@ function enterPressed(event){
 	if(text.length < 1 && type != Block.Type.PlainText){
 		// empty formatted text: remove formatting
 		type = Block.Type.PlainText
+	} else if(cursorPosition == 0){
+		// keep formatting of this block, and add a block before
+		blockModel.insert(index, {set_text: "", set_type: Block.Type.PlainText, set_tabnum: 0, set_headernum: 0})
 	} else {
 		let subtext = text.substr(cursorPosition, text.length)
 		text = text.substr(0, cursorPosition)

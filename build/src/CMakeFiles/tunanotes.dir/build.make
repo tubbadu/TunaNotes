@@ -143,10 +143,38 @@ src/CMakeFiles/tunanotes.dir/fileManager.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tunanotes.dir/fileManager.cpp.s"
 	cd /home/tubbadu/code/Kirigami/TunaNotes/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tubbadu/code/Kirigami/TunaNotes/src/fileManager.cpp -o CMakeFiles/tunanotes.dir/fileManager.cpp.s
 
+src/CMakeFiles/tunanotes.dir/plainTextFormat.cpp.o: src/CMakeFiles/tunanotes.dir/flags.make
+src/CMakeFiles/tunanotes.dir/plainTextFormat.cpp.o: /home/tubbadu/code/Kirigami/TunaNotes/src/plainTextFormat.cpp
+src/CMakeFiles/tunanotes.dir/plainTextFormat.cpp.o: src/CMakeFiles/tunanotes.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tubbadu/code/Kirigami/TunaNotes/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/tunanotes.dir/plainTextFormat.cpp.o"
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/tunanotes.dir/plainTextFormat.cpp.o -MF CMakeFiles/tunanotes.dir/plainTextFormat.cpp.o.d -o CMakeFiles/tunanotes.dir/plainTextFormat.cpp.o -c /home/tubbadu/code/Kirigami/TunaNotes/src/plainTextFormat.cpp
+
+src/CMakeFiles/tunanotes.dir/plainTextFormat.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tunanotes.dir/plainTextFormat.cpp.i"
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tubbadu/code/Kirigami/TunaNotes/src/plainTextFormat.cpp > CMakeFiles/tunanotes.dir/plainTextFormat.cpp.i
+
+src/CMakeFiles/tunanotes.dir/plainTextFormat.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tunanotes.dir/plainTextFormat.cpp.s"
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tubbadu/code/Kirigami/TunaNotes/src/plainTextFormat.cpp -o CMakeFiles/tunanotes.dir/plainTextFormat.cpp.s
+
+src/CMakeFiles/tunanotes.dir/Highlighter.cpp.o: src/CMakeFiles/tunanotes.dir/flags.make
+src/CMakeFiles/tunanotes.dir/Highlighter.cpp.o: /home/tubbadu/code/Kirigami/TunaNotes/src/Highlighter.cpp
+src/CMakeFiles/tunanotes.dir/Highlighter.cpp.o: src/CMakeFiles/tunanotes.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tubbadu/code/Kirigami/TunaNotes/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/tunanotes.dir/Highlighter.cpp.o"
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/tunanotes.dir/Highlighter.cpp.o -MF CMakeFiles/tunanotes.dir/Highlighter.cpp.o.d -o CMakeFiles/tunanotes.dir/Highlighter.cpp.o -c /home/tubbadu/code/Kirigami/TunaNotes/src/Highlighter.cpp
+
+src/CMakeFiles/tunanotes.dir/Highlighter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/tunanotes.dir/Highlighter.cpp.i"
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tubbadu/code/Kirigami/TunaNotes/src/Highlighter.cpp > CMakeFiles/tunanotes.dir/Highlighter.cpp.i
+
+src/CMakeFiles/tunanotes.dir/Highlighter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/tunanotes.dir/Highlighter.cpp.s"
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tubbadu/code/Kirigami/TunaNotes/src/Highlighter.cpp -o CMakeFiles/tunanotes.dir/Highlighter.cpp.s
+
 src/CMakeFiles/tunanotes.dir/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o: src/CMakeFiles/tunanotes.dir/flags.make
 src/CMakeFiles/tunanotes.dir/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o: src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp
 src/CMakeFiles/tunanotes.dir/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o: src/CMakeFiles/tunanotes.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tubbadu/code/Kirigami/TunaNotes/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/tunanotes.dir/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/tubbadu/code/Kirigami/TunaNotes/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/tunanotes.dir/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o"
 	cd /home/tubbadu/code/Kirigami/TunaNotes/build/src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT src/CMakeFiles/tunanotes.dir/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o -MF CMakeFiles/tunanotes.dir/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o.d -o CMakeFiles/tunanotes.dir/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o -c /home/tubbadu/code/Kirigami/TunaNotes/build/src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp
 
 src/CMakeFiles/tunanotes.dir/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.i: cmake_force
@@ -163,6 +191,8 @@ tunanotes_OBJECTS = \
 "CMakeFiles/tunanotes.dir/main.cpp.o" \
 "CMakeFiles/tunanotes.dir/launcher.cpp.o" \
 "CMakeFiles/tunanotes.dir/fileManager.cpp.o" \
+"CMakeFiles/tunanotes.dir/plainTextFormat.cpp.o" \
+"CMakeFiles/tunanotes.dir/Highlighter.cpp.o" \
 "CMakeFiles/tunanotes.dir/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o"
 
 # External object files for target tunanotes
@@ -172,10 +202,12 @@ bin/tunanotes: src/CMakeFiles/tunanotes.dir/tunanotes_autogen/mocs_compilation.c
 bin/tunanotes: src/CMakeFiles/tunanotes.dir/main.cpp.o
 bin/tunanotes: src/CMakeFiles/tunanotes.dir/launcher.cpp.o
 bin/tunanotes: src/CMakeFiles/tunanotes.dir/fileManager.cpp.o
+bin/tunanotes: src/CMakeFiles/tunanotes.dir/plainTextFormat.cpp.o
+bin/tunanotes: src/CMakeFiles/tunanotes.dir/Highlighter.cpp.o
 bin/tunanotes: src/CMakeFiles/tunanotes.dir/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp.o
 bin/tunanotes: src/CMakeFiles/tunanotes.dir/build.make
 bin/tunanotes: src/CMakeFiles/tunanotes.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tubbadu/code/Kirigami/TunaNotes/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable ../bin/tunanotes"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/tubbadu/code/Kirigami/TunaNotes/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable ../bin/tunanotes"
 	cd /home/tubbadu/code/Kirigami/TunaNotes/build/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/tunanotes.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

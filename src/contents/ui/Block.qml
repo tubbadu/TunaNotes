@@ -4,6 +4,7 @@ import QtQuick.Dialogs 1.3
 import QtQuick.Layouts 1.12
 import org.kde.kirigami 2.13 as Kirigami
 import org.kde.syntaxhighlighting 1.0
+import PlainTextFormat 1.0
 
 import "parser.js" as Parser
 import "keyHandler.js" as KeyHandler
@@ -167,6 +168,13 @@ Item{
 					textEdit: ((type == Block.Type.CodeBlock) && (defName != "None") && (defName != undefined))? txt : dump
 					definition: defName
 				}
+
+				PlainTextFormat{
+					id: plainTextFormat
+					textDocument: txt.textDocument
+					// todo add enable
+				}
+
 				TextEdit{
 					id: dump // used only as secondary target
 					visible: false

@@ -8,6 +8,7 @@
 
 #include "launcher.h"
 #include "fileManager.h"
+#include "plainTextFormat.h"
 
 int main(int argc, char *argv[])
 {
@@ -21,6 +22,7 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<Launcher>("Launcher", 1, 0, "Launcher");
 	qmlRegisterType<FileManager>("FileManager", 1, 0, "FileManager");
+	qmlRegisterType<PlainTextFormat>("PlainTextFormat", 1, 0, "PlainTextFormat");
 
 	const QFont fixedFont = QFontDatabase::systemFont(QFontDatabase::FixedFont);
     engine.rootContext()->setContextProperty("fixedFont", fixedFont);

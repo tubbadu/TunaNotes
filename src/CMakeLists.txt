@@ -3,6 +3,8 @@ add_executable(tunanotes
 	resources.qrc
 	launcher.cpp
 	fileManager.cpp
+	plainTextFormat.cpp
+	Highlighter.cpp
 )
 
 find_package(KF5SyntaxHighlighting)

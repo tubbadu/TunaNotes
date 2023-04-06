@@ -36,7 +36,6 @@ function getSyntaxHighlightning(line){
 }
 
 function parseMarkdownLine(line) {
-	console.warn("parsing <" + line +">")
 	// Define regular expressions for each type of formatting
 	const headerRegex = /^#+\s(.*)/;
 	const checklistRegex = /^- \[( |x)\](.*)/;
@@ -144,11 +143,7 @@ function exportMarkdown(interval=document.noSelected){
 
 				line += "#".repeat(block.headerNum) + " ".repeat(block.headerNum > 0)
 
-				console.warn("!!!", block.text)
 				line += block.text
-				
-				
-				
 
 				if(block.type == Block.Type.CodeBlock){
 					line += "\n```"
@@ -164,6 +159,5 @@ function exportMarkdown(interval=document.noSelected){
 		}
 	}
 
-	//console.warn(doc)
 	return doc;
 }

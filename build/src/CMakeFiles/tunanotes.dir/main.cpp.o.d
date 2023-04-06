@@ -559,44 +559,44 @@ src/CMakeFiles/tunanotes.dir/main.cpp.o: \
  /usr/include/qt5/QtGui/qfontdatabase.h /usr/include/qt5/QtGui/qfont.h \
  /home/tubbadu/code/Kirigami/TunaNotes/src/launcher.h \
  /usr/include/qt5/QtCore/QProcess \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Definition \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/definition.h \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/ksyntaxhighlighting_export.h \
- /usr/include/qt5/QtCore/QPair /usr/include/qt5/QtCore/QVector \
- /usr/include/qt5/QtCore/qobjectdefs.h \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Repository \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/repository.h \
- /usr/include/qt5/QtCore/QtGlobal \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/SyntaxHighlighter \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/syntaxhighlighter.h \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/abstracthighlighter.h \
- /usr/include/qt5/QtGui/QSyntaxHighlighter \
- /usr/include/qt5/QtGui/qsyntaxhighlighter.h \
- /usr/include/qt5/QtGui/qtextobject.h \
- /usr/include/qt5/QtGui/qtextformat.h /usr/include/qt5/QtGui/qcolor.h \
- /usr/include/qt5/QtGui/qrgb.h /usr/include/qt5/QtGui/qrgba64.h \
- /usr/include/qt5/QtGui/qpen.h /usr/include/qt5/QtGui/qbrush.h \
- /usr/include/qt5/QtGui/qmatrix.h /usr/include/qt5/QtGui/qpolygon.h \
- /usr/include/qt5/QtCore/qrect.h /usr/include/qt5/QtGui/qregion.h \
- /usr/include/qt5/QtCore/qline.h /usr/include/qt5/QtGui/qtransform.h \
- /usr/include/qt5/QtGui/qimage.h /usr/include/qt5/QtGui/qpaintdevice.h \
- /usr/include/qt5/QtGui/qpixelformat.h /usr/include/qt5/QtGui/qpixmap.h \
- /usr/include/qt5/QtGui/qtextoption.h \
- /usr/include/qt5/QtGui/qtextlayout.h /usr/include/qt5/QtGui/qevent.h \
- /usr/include/qt5/QtGui/qkeysequence.h /usr/include/qt5/QtGui/qvector2d.h \
- /usr/include/qt5/QtGui/qtouchdevice.h /usr/include/qt5/QtGui/qglyphrun.h \
- /usr/include/qt5/QtGui/qrawfont.h /usr/include/qt5/QtGui/qfontdatabase.h \
- /usr/include/qt5/QtGui/qtextcursor.h \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/Theme \
- /usr/include/KF5/KSyntaxHighlighting/KSyntaxHighlighting/theme.h \
- /usr/include/qt5/QtGui/QColor /usr/include/qt5/QtGui/qcolor.h \
- /usr/include/qt5/QtCore/QExplicitlySharedDataPointer \
- /usr/include/qt5/QtCore/QTypeInfo \
  /home/tubbadu/code/Kirigami/TunaNotes/src/fileManager.h \
  /usr/include/qt5/QtCore/QFile /usr/include/qt5/QtCore/QTextStream \
  /usr/include/qt5/QtWidgets/QMessageBox \
  /usr/include/qt5/QtWidgets/qmessagebox.h \
  /usr/include/qt5/QtWidgets/qdialog.h \
- /usr/include/qt5/QtWidgets/qwidget.h /usr/include/qt5/QtGui/qpalette.h \
- /usr/include/qt5/QtGui/qfontmetrics.h /usr/include/qt5/QtGui/qfontinfo.h \
- /usr/include/qt5/QtWidgets/qsizepolicy.h
+ /usr/include/qt5/QtWidgets/qwidget.h \
+ /usr/include/qt5/QtGui/qpaintdevice.h /usr/include/qt5/QtCore/qrect.h \
+ /usr/include/qt5/QtGui/qpalette.h /usr/include/qt5/QtGui/qcolor.h \
+ /usr/include/qt5/QtGui/qrgb.h /usr/include/qt5/QtGui/qrgba64.h \
+ /usr/include/qt5/QtGui/qbrush.h /usr/include/qt5/QtGui/qmatrix.h \
+ /usr/include/qt5/QtGui/qpolygon.h /usr/include/qt5/QtGui/qregion.h \
+ /usr/include/qt5/QtCore/qline.h /usr/include/qt5/QtGui/qtransform.h \
+ /usr/include/qt5/QtGui/qimage.h /usr/include/qt5/QtGui/qpixelformat.h \
+ /usr/include/qt5/QtGui/qpixmap.h /usr/include/qt5/QtGui/qfontmetrics.h \
+ /usr/include/qt5/QtGui/qfontinfo.h \
+ /usr/include/qt5/QtWidgets/qsizepolicy.h \
+ /usr/include/qt5/QtGui/qkeysequence.h \
+ /home/tubbadu/code/Kirigami/TunaNotes/src/plainTextFormat.h \
+ /usr/include/qt5/QtQuick/QQuickTextDocument \
+ /usr/include/qt5/QtQuick/qquicktextdocument.h \
+ /usr/include/qt5/QtGui/QTextDocument \
+ /usr/include/qt5/QtGui/qtextdocument.h \
+ /usr/include/qt5/QtQuick/QQuickItem \
+ /usr/include/qt5/QtQuick/qquickitem.h \
+ /usr/include/qt5/QtQuick/qtquickglobal.h \
+ /usr/include/qt5/QtQuick/qtquick-config.h \
+ /usr/include/qt5/QtQml/qqmlcomponent.h /usr/include/qt5/QtGui/qevent.h \
+ /usr/include/qt5/QtGui/qvector2d.h /usr/include/qt5/QtGui/qtouchdevice.h \
+ /usr/include/qt5/QtGui/qaccessible.h \
+ /home/tubbadu/code/Kirigami/TunaNotes/src/Highlighter.h \
+ /usr/include/qt5/QtGui/QSyntaxHighlighter \
+ /usr/include/qt5/QtGui/qsyntaxhighlighter.h \
+ /usr/include/qt5/QtGui/qtextobject.h \
+ /usr/include/qt5/QtGui/qtextformat.h /usr/include/qt5/QtGui/qpen.h \
+ /usr/include/qt5/QtGui/qtextoption.h \
+ /usr/include/qt5/QtGui/qtextlayout.h /usr/include/qt5/QtGui/qglyphrun.h \
+ /usr/include/qt5/QtGui/qrawfont.h /usr/include/qt5/QtGui/qfontdatabase.h \
+ /usr/include/qt5/QtGui/qtextcursor.h \
+ /usr/include/qt5/QtGui/QTextCharFormat \
+ /usr/include/qt5/QtGui/qtextformat.h \
+ /usr/include/qt5/QtCore/QRegularExpression

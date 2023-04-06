@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Launcher_t {
-    QByteArrayData data[6];
-    char stringdata0[75];
+    QByteArrayData data[4];
+    char stringdata0[25];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,13 +35,10 @@ static const qt_meta_stringdata_Launcher_t qt_meta_stringdata_Launcher = {
 QT_MOC_LITERAL(0, 0, 8), // "Launcher"
 QT_MOC_LITERAL(1, 9, 6), // "launch"
 QT_MOC_LITERAL(2, 16, 0), // ""
-QT_MOC_LITERAL(3, 17, 7), // "program"
-QT_MOC_LITERAL(4, 25, 8), // "getProva"
-QT_MOC_LITERAL(5, 34, 40) // "QVector<KSyntaxHighlighting::..."
+QT_MOC_LITERAL(3, 17, 7) // "program"
 
     },
-    "Launcher\0launch\0\0program\0getProva\0"
-    "QVector<KSyntaxHighlighting::Definition>"
+    "Launcher\0launch\0\0program"
 };
 #undef QT_MOC_LITERAL
 
@@ -51,7 +48,7 @@ static const uint qt_meta_data_Launcher[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       1,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -59,12 +56,10 @@ static const uint qt_meta_data_Launcher[] = {
        0,       // signalCount
 
  // methods: name, argc, parameters, tag, flags
-       1,    1,   24,    2, 0x02 /* Public */,
-       4,    0,   27,    2, 0x02 /* Public */,
+       1,    1,   19,    2, 0x02 /* Public */,
 
  // methods: parameters
     QMetaType::QString, QMetaType::QString,    3,
-    0x80000000 | 5,
 
        0        // eod
 };
@@ -77,8 +72,6 @@ void Launcher::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, vo
         switch (_id) {
         case 0: { QString _r = _t->launch((*reinterpret_cast< const QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
-        case 1: { QVector<KSyntaxHighlighting::Definition> _r = _t->getProva();
-            if (_a[0]) *reinterpret_cast< QVector<KSyntaxHighlighting::Definition>*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
@@ -113,13 +106,13 @@ int Launcher::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 1)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 1;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 1)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 2;
+        _id -= 1;
     }
     return _id;
 }
