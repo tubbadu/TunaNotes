@@ -28,7 +28,7 @@ ListView {
 	highlightFollowsCurrentItem: true
 	highlightMoveDuration: 0
 	highlightResizeDuration: 0
-	cacheBuffer: 999999999//*999999999
+	//cacheBuffer: 999999999//*999999999
 
 	
 	
@@ -44,13 +44,13 @@ ListView {
 		let file = filemanager.read(fileName);
 		let lines = Parser.splitStringExceptInCodeBlocks(file);
 		for(let i=0; i<lines.length; i++){
-			blockModel.append({set_text: lines[i], set_type: -1, set_tabnum: -1})
+			blockModel.append({set_text: lines[i], set_type: -1, set_tabnum: -1, set_headernum: 0})
 		}
 		document.currentIndex = 0
 		document.currentItem.forceFocus()
 		document.currentItem.setCursorPosition(-1)
 		console.warn("done loading file")
-		document.unsaved = false
+		document.unsaved = false // does not work: syntax highlighting breaks everything
 	}
 
 	function save(){
@@ -70,6 +70,7 @@ ListView {
 			setText: set_text
 			setType: set_type
 			setTabnum: set_tabnum
+			setHeadernum: set_headernum
 			//width: parent? parent.width : 0
 			//height: parent? parent.height : 0
 			Rectangle{

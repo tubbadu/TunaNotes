@@ -27,6 +27,7 @@ Item{
 	property string setText: "*error*" // used to set an initial value
 	property int setType: -1
 	property int setTabnum: 0
+	property int setHeadernum: 0
 	property int tabNum: 0
 	property alias checked: checkboxelement.checked
 	property int headerNum: 0
@@ -54,6 +55,7 @@ Item{
 	Component.onCompleted:{
 		text = setText
 		tabNum = setTabnum
+		headerNum = setHeadernum
 		if(setType == -1){
 			BlockFunctions.getType()
 		} else {
@@ -152,6 +154,7 @@ Item{
 				Keys.onPressed: (event) => KeyHandler.key(event)
 
 				onFocusChanged: {
+					BlockFunctions.sync()
 					// needed to set the current item on the clicked element
 					if(focus && (document.currentIndex !== index)){
 						document.currentIndex = index

@@ -4,42 +4,26 @@ function key(event){
 
 	if(modifiers == Qt.ShiftModifier && key == Qt.Key_Up){
 		// Shift+Up
-		accept(event)
-		if(document.selection === document.noSelection){
-			document.selection = [index, index]
-		} else if (document.selection[1] == index){
-			document.selection = [document.selection[0] - 1, document.selection[1]]
-		} else {
-			document.selection = [document.selection[0], document.selection[1] - 1]
-		}
-
-		if(document.selection[0] < 0){
-			document.selection[0] = 0
-		}
+		shiftUp(event)
 		return
 	} else if(modifiers == Qt.ShiftModifier && key == Qt.Key_Down){
 		// Shift+Down
-		accept(event)
-		if(document.selection === document.noSelection){
-			document.selection = [index, index]
-		} else if (document.selection[0] == index){
-			document.selection = [document.selection[0], document.selection[1] + 1]
-		} else {
-			document.selection = [document.selection[0] + 1, document.selection[1]]
-		}
-		if(document.selection[1] > document.count-1){
-			document.selection[1] = document.count-1
-		}
+		shiftDown(event)
 		return
 	} else if(modifiers == Qt.NoModifier && key != Qt.Key_Backspace && key != Qt.Key_Delete){
-		console.warn("unselecting")
-		document.selection = document.noSelection
+		unselectSelected()
 	}
 	
 	if (modifiers == Qt.ControlModifier && key == Qt.Key_C && document.selection != document.noSelection) {
+		// Ctrl+C
 		copySelected(event)
 	} else if (modifiers == Qt.ControlModifier && key == Qt.Key_V) {
+		// Cltr+V
 		paste(event)
+	} else if (modifiers == Qt.ControlModifier && key == Qt.Key_X && document.selection != document.noSelection) {
+		// Ctrl+X
+		copySelected(event)
+		deleteSelected()
 	}  else if ((key == Qt.Key_Enter || key == Qt.Key_Return) && type != Block.Type.CodeBlock) {
 		enterPressed(event)
 	} else if (key == Qt.Key_Down) {
@@ -93,6 +77,35 @@ function globalKey(event){
 	}
 }
 
+function shiftUp(event){
+	accept(event)
+	if(document.selection === document.noSelection){
+		document.selection = [index, index]
+	} else if (document.selection[1] == index){
+		document.selection = [document.selection[0] - 1, document.selection[1]]
+	} else {
+		document.selection = [document.selection[0], document.selection[1] - 1]
+	}
+
+	if(document.selection[0] < 0){
+		document.selection[0] = 0
+	}
+}
+
+function shiftDown(event){
+	accept(event)
+	if(document.selection === document.noSelection){
+		document.selection = [index, index]
+	} else if (document.selection[0] == index){
+		document.selection = [document.selection[0], document.selection[1] + 1]
+	} else {
+		document.selection = [document.selection[0] + 1, document.selection[1]]
+	}
+	if(document.selection[1] > document.count-1){
+		document.selection[1] = document.count-1
+	}
+}
+
 function copySelected(event){
 	accept(event)
 	let sel = Parser.exportMarkdown(document.selection)
@@ -100,13 +113,54 @@ function copySelected(event){
 	clipboard.copy(sel)
 }
 
-function paste(event){ // TODO
-	if(clipboard.paste().includes("\n")){
+function unselectSelected(){
+	document.selection = document.noSelection
+}
+
+function paste(event){
+	let clip = clipboard.paste()
+	if(clip.includes("\n")){
+		let clipLines = clip.split("\n")
+
+		if(text.trim().length == 0){
+			// first pasted line, the original block is empty:
+			// do not create a new block
+		} else if(cursorPosition == 0){
+			// insert blocks before current block:
+			blockModel.insert(index, {set_text: "", set_type: Block.Type.PlainText, set_tabnum: 0, set_headernum: 0})
+			currentIndex = index-1
+		}
+		pasteParsed(clipLines[0], currentItem)
+
+		for(let i=0; i<clipLines.length; i++){ // skip first element, already done
+			if(clipLines[i].trim().length > 0){
+				if(i != clipLines.length-1) {
+					blockModel.insert(currentIndex+1, {set_text: "", set_type: Block.Type.PlainText, set_tabnum: 0, set_headernum: 0})
+				}
+				pasteParsed(clipLines[i], currentItem)
+				currentIndex++
+			}
+		}
 		accept(event)
-		console.warn("multiline paste!")
 	} else if(text.trim().length == 0){
 		console.warn("parsing pasted text!")
+		pasteParsed(clip)
 		accept(event)
+	}
+}
+
+function pasteParsed(text, blk=block){
+	blk.parseResult = undefined
+	blk.getType(text)
+	blk.setCursorPosition(-1)
+}
+
+function deleteSelected(event){
+	accept(event)
+	for(let i=count-1; i>=0; i--){ // at reverse so removing elements does not cause selected elements to change
+		if(document.itemAtIndex(i).selected){
+			document.remove(i)
+		}
 	}
 }
 
@@ -128,12 +182,7 @@ function backspacePressed(event){
 			}
 		}
 	} else {
-		accept(event)
-		for(let i=count-1; i>=0; i--){ // at reverse so removing elements does not cause selected elements to change
-			if(document.itemAtIndex(i).selected){
-				document.remove(i)
-			}
-		}
+		deleteSelected(event)
 	}
 }
 
@@ -146,12 +195,7 @@ function delPressed(event){
 			}
 		}
 	} else {
-		accept(event)
-		for(let i=count-1; i>=0; i--){ // at reverse so removing elements does not cause selected elements to change
-			if(document.itemAtIndex(i).selected){
-				document.remove(i)
-			}
-		}
+		deleteSelected(event)
 	}
 }
 

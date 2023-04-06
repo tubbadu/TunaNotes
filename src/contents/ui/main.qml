@@ -61,14 +61,14 @@ Kirigami.ApplicationWindow {
 	}
 
 	Kirigami.ActionToolBar { // top right toolbar
-			anchors.right: parent.right
-			actions: [
-				Kirigami.Action {
-				text: "Save" 
-				icon.name: "document-save" 
-				onTriggered: document.save()
-			}]
-		}
+		anchors.right: parent.right
+		actions: [
+			Kirigami.Action {
+			text: "Save" 
+			icon.name: "document-save" 
+			onTriggered: document.save()
+		}]
+	}
 
 	pageStack.initialPage: Kirigami.ScrollablePage { // scrollablepage does not successfully set focus at the beginning (fixable probably)
 		id: page

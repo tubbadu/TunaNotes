@@ -36,6 +36,7 @@ function getSyntaxHighlightning(line){
 }
 
 function parseMarkdownLine(line) {
+	console.warn("parsing <" + line +">")
 	// Define regular expressions for each type of formatting
 	const headerRegex = /^#+\s(.*)/;
 	const checklistRegex = /^- \[( |x)\](.*)/;
@@ -46,7 +47,7 @@ function parseMarkdownLine(line) {
 
 	
 	const syntaxHighlightning = getSyntaxHighlightning(line)
-	const plainText = getPlainText(line).replace(syntaxHighlightning, "").trim()
+	let plainText = getPlainText(line).replace(syntaxHighlightning, "").trim()
 
 	let isChecklist = false;
 	let isChecked = false;
@@ -62,7 +63,9 @@ function parseMarkdownLine(line) {
 	// remove initial tabs and spaces
 	line = line.trim()
 
-	if (checklistRegex.test(line)) {
+	if(line.trim() == "<br>"){
+		plainText = ""
+	} else if (checklistRegex.test(line)) {
 		isChecklist = true;
 		isChecked = line[3] === "x";
 	} else if (dotListRegex.test(line)) {
@@ -139,12 +142,19 @@ function exportMarkdown(interval=document.noSelected){
 					line += "```" + block.syntaxHighlightning + "\n"
 				}
 
-				line += "#".repeat(block.headerNum) + " "
+				line += "#".repeat(block.headerNum) + " ".repeat(block.headerNum > 0)
 
+				console.warn("!!!", block.text)
 				line += block.text
+				
+				
+				
 
 				if(block.type == Block.Type.CodeBlock){
 					line += "\n```"
+				}
+				if(block.text < 1){
+					line = "<br>"
 				}
 				if(doc.length > 0) {
 					doc += "\n\n"

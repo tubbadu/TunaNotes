@@ -27,8 +27,8 @@ function getType(t = setText){
 	type = Block.Type.PlainText;
 }
 
-function newBlock(set_text="", set_tabnum=0){
-	blockModel.insert(index+1, {set_text: set_text, set_type: newType(), set_tabnum: set_tabnum}) // TODO set type
+function newBlock(set_text="", set_tabnum=0, set_headernum=0){
+	blockModel.insert(index+1, {set_text: set_text, set_type: newType(), set_tabnum: set_tabnum, set_headernum: set_headernum}) // TODO set type
 	down()
 }
 
@@ -103,4 +103,9 @@ function textSize(){
 	}
 
 	return ret
+}
+
+function sync(){
+	// saves modifications to the model so that the buffer does not creates any problem
+	blockModel.set(index, {set_text: text, set_type: type, set_tabnum: tabNum, set_headernum: headerNum})
 }
