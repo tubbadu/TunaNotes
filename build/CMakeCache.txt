@@ -44,7 +44,7 @@ CMAKE_BUILD_TYPE:STRING=Debug
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
 //CXX compiler
-CMAKE_CXX_COMPILER:FILEPATH=/usr/bin/c++
+CMAKE_CXX_COMPILER:STRING=/usr/bin/c++
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -70,7 +70,7 @@ CMAKE_CXX_FLAGS_RELEASE:STRING=-O3 -DNDEBUG
 CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 
 //C compiler
-CMAKE_C_COMPILER:FILEPATH=/usr/bin/cc
+CMAKE_C_COMPILER:STRING=/usr/bin/cc
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -412,6 +412,18 @@ KDE_L10N_SYNC_TRANSLATIONS:BOOL=OFF
 //Prevent an "uninstall" target from being generated.
 KDE_SKIP_UNINSTALL_TARGET:BOOL=OFF
 
+//The directory containing a CMake configuration file for KF5Auth.
+KF5Auth_DIR:PATH=/usr/lib64/cmake/KF5Auth
+
+//The directory containing a CMake configuration file for KF5Codecs.
+KF5Codecs_DIR:PATH=/usr/lib64/cmake/KF5Codecs
+
+//The directory containing a CMake configuration file for KF5ConfigWidgets.
+KF5ConfigWidgets_DIR:PATH=/usr/lib64/cmake/KF5ConfigWidgets
+
+//The directory containing a CMake configuration file for KF5Config.
+KF5Config_DIR:PATH=/usr/lib64/cmake/KF5Config
+
 //The directory containing a CMake configuration file for KF5CoreAddons.
 KF5CoreAddons_DIR:PATH=/usr/lib64/cmake/KF5CoreAddons
 
@@ -424,6 +436,9 @@ KF5Kirigami2_DIR:PATH=/usr/lib64/cmake/KF5Kirigami2
 //The directory containing a CMake configuration file for KF5SyntaxHighlighting.
 KF5SyntaxHighlighting_DIR:PATH=/usr/lib64/cmake/KF5SyntaxHighlighting
 
+//The directory containing a CMake configuration file for KF5WidgetsAddons.
+KF5WidgetsAddons_DIR:PATH=/usr/lib64/cmake/KF5WidgetsAddons
+
 //Path to a program.
 KI18N_PYTHON_EXECUTABLE:FILEPATH=/usr/bin/python3
 
@@ -432,6 +447,9 @@ QUERY_EXECUTABLE:FILEPATH=/usr/lib64/qt5/bin/qmake
 
 //The directory containing a CMake configuration file for Qt5Core.
 Qt5Core_DIR:PATH=/usr/lib64/cmake/Qt5Core
+
+//The directory containing a CMake configuration file for Qt5DBus.
+Qt5DBus_DIR:PATH=/usr/lib64/cmake/Qt5DBus
 
 //The directory containing a CMake configuration file for Qt5Gui.
 Qt5Gui_DIR:PATH=/usr/lib64/cmake/Qt5Gui
@@ -456,6 +474,9 @@ Qt5Test_DIR:PATH=/usr/lib64/cmake/Qt5Test
 
 //The directory containing a CMake configuration file for Qt5Widgets.
 Qt5Widgets_DIR:PATH=/usr/lib64/cmake/Qt5Widgets
+
+//The directory containing a CMake configuration file for Qt5Xml.
+Qt5Xml_DIR:PATH=/usr/lib64/cmake/Qt5Xml
 
 //The directory containing a CMake configuration file for Qt5.
 Qt5_DIR:PATH=/usr/lib64/cmake/Qt5
@@ -487,7 +508,7 @@ CMAKE_CACHE_MAJOR_VERSION:INTERNAL=3
 //Minor version of cmake used to create the current loaded cache
 CMAKE_CACHE_MINOR_VERSION:INTERNAL=26
 //Patch version of cmake used to create the current loaded cache
-CMAKE_CACHE_PATCH_VERSION:INTERNAL=1
+CMAKE_CACHE_PATCH_VERSION:INTERNAL=2
 //ADVANCED property for variable: CMAKE_COLOR_MAKEFILE
 CMAKE_COLOR_MAKEFILE-ADVANCED:INTERNAL=1
 //Path to CMake executable.

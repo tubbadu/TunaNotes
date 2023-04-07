@@ -385,6 +385,30 @@ src/CMakeFiles/tunanotes.dir/Highlighter.cpp.o: /home/tubbadu/code/Kirigami/Tuna
   /usr/include/qt5/QtCore/qcoreapplication.h \
   /usr/include/qt5/QtCore/qeventloop.h \
   /usr/include/KF5/Kirigami2/kirigami/kirigami2_export.h \
+  /usr/include/KF5/KConfigWidgets/KColorScheme \
+  /usr/include/KF5/KConfigWidgets/kcolorscheme.h \
+  /usr/include/KF5/KConfigCore/KSharedConfig \
+  /usr/include/KF5/KConfigCore/ksharedconfig.h \
+  /usr/include/qt5/QtCore/QExplicitlySharedDataPointer \
+  /usr/include/qt5/QtCore/qshareddata.h \
+  /usr/include/KF5/KConfigCore/kconfig.h \
+  /usr/include/KF5/KConfigCore/kconfigbase.h \
+  /usr/include/KF5/KConfigCore/kconfigcore_export.h \
+  /usr/include/qt5/QtCore/QStringList \
+  /usr/include/qt5/QtCore/qstringlist.h \
+  /usr/include/qt5/QtCore/QtGlobal \
+  /usr/include/qt5/QtCore/qglobal.h \
+  /usr/include/qt5/QtCore/QByteArray \
+  /usr/include/qt5/QtCore/qbytearray.h \
+  /usr/include/qt5/QtCore/QList \
+  /usr/include/qt5/QtCore/QStandardPaths \
+  /usr/include/qt5/QtCore/qstandardpaths.h \
+  /usr/include/qt5/QtCore/QString \
+  /usr/include/qt5/QtCore/qstring.h \
+  /usr/include/qt5/QtCore/QVariant \
+  /usr/include/qt5/QtCore/qvariant.h \
+  /usr/include/KF5/KConfigWidgets/kconfigwidgets_export.h \
+  /usr/include/KF5/KConfigWidgets/kstatefulbrush.h \
   /usr/include/qt5/QtCore/QDebug \
   /usr/include/qt5/QtCore/qdebug.h
 
@@ -2651,8 +2675,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtQml/qtqmlcompilerglobal.h:
 
-/usr/include/qt5/QtNetwork/qtnetworkversion.h:
-
 /usr/include/qt5/QtNetwork/qudpsocket.h:
 
 /usr/include/qt5/QtNetwork/qsslkey.h:
@@ -2689,10 +2711,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtCore/QIODevice:
 
-/usr/include/qt5/QtCore/QByteArray:
-
-/usr/include/qt5/QtNetwork/qhttp2configuration.h:
-
 /usr/include/qt5/QtNetwork/qhstspolicy.h:
 
 /usr/include/qt5/QtNetwork/qhostinfo.h:
@@ -2709,11 +2727,7 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtNetwork/qauthenticator.h:
 
-/usr/include/qt5/QtCore/QVariant:
-
 /usr/include/qt5/QtCore/QSharedDataPointer:
-
-/usr/include/qt5/QtNetwork/QtNetwork:
 
 /usr/include/qt5/QtCore/qtcoreversion.h:
 
@@ -2747,6 +2761,24 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtCore/qstringlistmodel.h:
 
+/usr/include/qt5/QtCore/qsocketnotifier.h:
+
+/usr/include/qt5/QtCore/qsignalmapper.h:
+
+/usr/include/qt5/QtCore/qsettings.h:
+
+/usr/include/qt5/QtCore/qsequentialanimationgroup.h:
+
+/usr/include/qt5/QtCore/qscopeguard.h:
+
+/usr/include/qt5/QtCore/qsavefile.h:
+
+/usr/include/qt5/QtCore/qresource.h:
+
+/home/tubbadu/code/Kirigami/TunaNotes/src/plainTextFormat.cpp:
+
+/usr/include/qt5/QtCore/qreadwritelock.h:
+
 /usr/include/c++/12/list:
 
 /usr/include/c++/12/bits/enable_special_members.h:
@@ -2756,6 +2788,10 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 /usr/include/qt5/QtCore/QDeadlineTimer:
 
 /usr/include/c++/12/array:
+
+/usr/include/qt5/QtNetwork/QtNetwork:
+
+/usr/include/KF5/KConfigWidgets/kcolorscheme.h:
 
 /usr/include/qt5/QtCore/qregexp.h:
 
@@ -2887,8 +2923,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtGui/qpaintdevice.h:
 
-/usr/include/qt5/QtGui/qfontdatabase.h:
-
 /usr/include/qt5/QtNetwork/QtNetworkDepends:
 
 /usr/include/c++/12/bits/atomic_futex.h:
@@ -2947,10 +2981,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/c++/12/x86_64-redhat-linux/bits/cpu_defines.h:
 
-/usr/include/qt5/QtCore/QString:
-
-/usr/include/c++/12/bits/stl_pair.h:
-
 /usr/include/c++/12/bits/unique_lock.h:
 
 /usr/include/qt5/QtCore/qtimer.h:
@@ -3001,8 +3031,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtCore/qprocessordetection.h:
 
-/usr/include/qt5/QtCore/qsettings.h:
-
 /usr/include/bits/types/struct_itimerspec.h:
 
 /usr/include/qt5/QtGui/qkeysequence.h:
@@ -3037,8 +3065,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/c++/12/new:
 
-/usr/include/qt5/QtGui/QColor:
-
 /usr/include/c++/12/bits/concept_check.h:
 
 /usr/include/gnu/stubs-64.h:
@@ -3060,6 +3086,10 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 /usr/include/qt5/QtCore/qatomic.h:
 
 /usr/include/c++/12/pstl/execution_defs.h:
+
+/usr/include/qt5/QtCore/qsharedmemory.h:
+
+/usr/include/c++/12/algorithm:
 
 /usr/include/c++/12/bits/random.tcc:
 
@@ -3183,6 +3213,10 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtQml/qqml.h:
 
+/usr/include/qt5/QtCore/qstate.h:
+
+/usr/include/c++/12/bits/uses_allocator.h:
+
 /usr/include/qt5/QtCore/qmetaobject.h:
 
 /usr/include/c++/12/bits/stl_iterator.h:
@@ -3203,8 +3237,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtCore/quuid.h:
 
-/usr/include/qt5/QtCore/qsocketnotifier.h:
-
 /usr/include/errno.h:
 
 /usr/include/c++/12/x86_64-redhat-linux/bits/c++config.h:
@@ -3222,6 +3254,12 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 /usr/include/bits/types/struct___jmp_buf_tag.h:
 
 /usr/include/qt5/QtCore/qabstractproxymodel.h:
+
+/usr/include/qt5/QtCore/qscopedvaluerollback.h:
+
+/usr/include/bits/select.h:
+
+/usr/include/qt5/QtCore/qfuturewatcher.h:
 
 /usr/include/c++/12/ext/numeric_traits.h:
 
@@ -3289,6 +3327,8 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/c++/12/atomic:
 
+/usr/include/KF5/KConfigCore/kconfig.h:
+
 /usr/include/c++/12/bits/stl_algobase.h:
 
 /usr/include/qt5/QtNetwork/QSslConfiguration:
@@ -3344,8 +3384,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 /usr/lib/gcc/x86_64-redhat-linux/12/include/stdint.h:
 
 /usr/include/bits/mathcalls-narrow.h:
-
-/usr/include/qt5/QtCore/qsignalmapper.h:
 
 /usr/include/bits/types/__sigset_t.h:
 
@@ -3405,12 +3443,6 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 
 /usr/include/qt5/QtCore/qflags.h:
 
-/home/tubbadu/code/Kirigami/TunaNotes/src/plainTextFormat.h:
-
-/usr/include/qt5/QtCore/qpair.h:
-
-/usr/include/bits/timex.h:
-
 /usr/include/KF5/KI18n/ki18n_export.h:
 
 /usr/include/qt5/QtCore/qbasicatomic.h:
@@ -3464,6 +3496,12 @@ src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp:
 /usr/include/c++/12/x86_64-redhat-linux/bits/error_constants.h:
 
 /usr/include/bits/math-vector.h:
+
+/usr/include/qt5/QtNetwork/qhttp2configuration.h:
+
+/usr/include/KF5/KConfigCore/ksharedconfig.h:
+
+/usr/include/qt5/QtCore/QStandardPaths:
 
 /usr/include/qt5/QtCore/qstringmatcher.h:
 
@@ -3623,9 +3661,17 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 
 /usr/include/qt5/QtGui/qglyphrun.h:
 
+/usr/include/qt5/QtCore/qsemaphore.h:
+
+/usr/include/qt5/QtGui/qtextcursor.h:
+
 /usr/include/qt5/QtCore/QRegularExpression:
 
 /usr/include/qt5/QtCore/qregularexpression.h:
+
+/usr/include/qt5/QtCore/qsignaltransition.h:
+
+/usr/include/KF5/Kirigami2/kirigami/platformtheme.h:
 
 /usr/include/qt5/QtGui/QIcon:
 
@@ -3644,6 +3690,8 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 /usr/include/qt5/QtCore/qcoreapplication.h:
 
 /usr/include/qt5/QtQuick/qquickitem.h:
+
+/usr/include/qt5/QtCore/QVariant:
 
 /usr/include/bits/types/__mbstate_t.h:
 
@@ -3677,15 +3725,61 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 
 /usr/include/qt5/QtGui/qfontmetrics.h:
 
+/usr/include/qt5/QtNetwork/qtnetworkversion.h:
+
+/usr/include/KF5/KConfigWidgets/KColorScheme:
+
+/usr/include/qt5/QtGui/qfontdatabase.h:
+
+/usr/include/KF5/KConfigCore/KSharedConfig:
+
+/usr/include/qt5/QtCore/qmimedatabase.h:
+
+/usr/include/qt5/QtGui/QColor:
+
+/usr/include/qt5/QtCore/QExplicitlySharedDataPointer:
+
+/usr/include/KF5/KConfigCore/kconfigbase.h:
+
+/home/tubbadu/code/Kirigami/TunaNotes/src/plainTextFormat.h:
+
+/usr/include/qt5/QtCore/qpair.h:
+
+/usr/include/bits/timex.h:
+
+/usr/include/KF5/KConfigCore/kconfigcore_export.h:
+
+/usr/include/qt5/QtCore/qmap.h:
+
+/usr/include/qt5/QtCore/QStringList:
+
+/usr/include/qt5/QtCore/QtGlobal:
+
+/usr/include/qt5/QtCore/QByteArray:
+
+/usr/include/asm-generic/errno-base.h:
+
+/usr/include/qt5/QtCore/qstandardpaths.h:
+
+/usr/include/c++/12/bits/stl_pair.h:
+
+/usr/include/qt5/QtCore/QString:
+
+/usr/include/qt5/QtCore/qbytearraylist.h:
+
+/usr/include/qt5/QtWidgets/qmessagebox.h:
+
+/usr/include/KF5/KConfigWidgets/kconfigwidgets_export.h:
+
+/usr/include/KF5/KConfigWidgets/kstatefulbrush.h:
+
+/usr/include/qt5/QtCore/qarraydatapointer.h:
+
 /usr/include/endian.h:
 
 /home/tubbadu/code/Kirigami/TunaNotes/src/fileManager.h:
 
 /usr/include/qt5/QtWidgets/QMessageBox:
-
-/usr/include/qt5/QtCore/qbytearraylist.h:
-
-/usr/include/qt5/QtWidgets/qmessagebox.h:
 
 /usr/include/qt5/QtWidgets/qtwidgets-config.h:
 
@@ -3732,8 +3826,6 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 /usr/include/qt5/QtCore/qrunnable.h:
 
 /usr/include/qt5/QtCore/qabstractstate.h:
-
-/usr/include/qt5/QtCore/qarraydatapointer.h:
 
 /usr/include/qt5/QtCore/qbasictimer.h:
 
@@ -3813,10 +3905,6 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 
 /usr/include/qt5/QtCore/qexception.h:
 
-/usr/include/qt5/QtCore/qmap.h:
-
-/usr/include/qt5/QtCore/QStringList:
-
 /usr/include/qt5/QtCore/qfutureinterface.h:
 
 /usr/include/qt5/QtCore/qresultstore.h:
@@ -3877,15 +3965,9 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 
 /usr/include/qt5/QtCore/qmimedata.h:
 
-/usr/include/qt5/QtCore/qmimedatabase.h:
-
 /usr/include/qt5/QtCore/qobjectcleanuphandler.h:
 
-/usr/include/qt5/QtCore/qsequentialanimationgroup.h:
-
 /usr/include/qt5/QtCore/qoperatingsystemversion.h:
-
-/usr/include/qt5/QtCore/qsavefile.h:
 
 /usr/include/qt5/QtCore/qparallelanimationgroup.h:
 
@@ -3900,37 +3982,3 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 /usr/include/c++/12/random:
 
 /usr/include/c++/12/bits/random.h:
-
-/home/tubbadu/code/Kirigami/TunaNotes/src/plainTextFormat.cpp:
-
-/usr/include/qt5/QtCore/qreadwritelock.h:
-
-/usr/include/qt5/QtCore/qresource.h:
-
-/usr/include/bits/select.h:
-
-/usr/include/qt5/QtCore/qfuturewatcher.h:
-
-/usr/include/qt5/QtCore/qscopedvaluerollback.h:
-
-/usr/include/qt5/QtCore/qscopeguard.h:
-
-/usr/include/qt5/QtGui/qtextcursor.h:
-
-/usr/include/qt5/QtCore/qsemaphore.h:
-
-/usr/include/c++/12/algorithm:
-
-/usr/include/qt5/QtCore/qsharedmemory.h:
-
-/usr/include/KF5/Kirigami2/kirigami/platformtheme.h:
-
-/usr/include/qt5/QtCore/qsignaltransition.h:
-
-/usr/include/asm-generic/errno-base.h:
-
-/usr/include/qt5/QtCore/qstandardpaths.h:
-
-/usr/include/c++/12/bits/uses_allocator.h:
-
-/usr/include/qt5/QtCore/qstate.h:

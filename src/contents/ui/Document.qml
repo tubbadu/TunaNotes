@@ -29,8 +29,6 @@ ListView {
 	highlightMoveDuration: 0
 	highlightResizeDuration: 0
 	//cacheBuffer: 999999999//*999999999
-
-	
 	
 	Component.onCompleted:{
 		readFile()

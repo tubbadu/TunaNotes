@@ -10,11 +10,7 @@ function key(event){
 		// Shift+Down
 		shiftDown(event)
 		return
-	} else if(modifiers == Qt.NoModifier && key != Qt.Key_Backspace && key != Qt.Key_Delete){
-		unselectSelected()
-	}
-	
-	if (modifiers == Qt.ControlModifier && key == Qt.Key_C && document.selection != document.noSelection) {
+	} else if (modifiers == Qt.ControlModifier && key == Qt.Key_C && document.selection != document.noSelection) {
 		// Ctrl+C
 		copySelected(event)
 	} else if (modifiers == Qt.ControlModifier && key == Qt.Key_V) {
@@ -26,41 +22,63 @@ function key(event){
 		deleteSelected()
 	}  else if ((key == Qt.Key_Enter || key == Qt.Key_Return) && type != Block.Type.CodeBlock) {
 		enterPressed(event)
+		unselectSelected()
 	} else if (key == Qt.Key_Down) {
 		if(cursorPosition == length && index == document.count-1){
 			newBlock()
 			accept(event)
+			unselectSelected()
 		}else if(type != Block.Type.CodeBlock){
 			accept(event)
 			down();
+			unselectSelected()
 		}		
 	} else if (key == Qt.Key_Up && type != Block.Type.CodeBlock) {
 		accept(event)
 		up();
-	} else if (key == Qt.Key_Delete && selectedText.length == 0) {
+		unselectSelected()
+	} else if (key == Qt.Key_Delete) {
 		delPressed(event)
 	} else if (key == Qt.Key_Backspace) {
 		backspacePressed(event)
-	} else if(key == Qt.Key_Tab && type != Block.Type.CodeBlock) {
+	} else if(key == Qt.Key_Tab) {
 		tabPressed(event)
-	} else if(key == Qt.Key_Backtab && type != Block.Type.CodeBlock) {
+	} else if(key == Qt.Key_Backtab) {
 		backtabPressed(event)
-	} else if(key == Qt.Key_NumberSign && cursorPosition == 0){
+	} else if(key == Qt.Key_NumberSign){
 		hashtagPressed(event)
-	} else if(key == Qt.Key_Greater && cursorPosition == 0){
+	} else if(key == Qt.Key_Greater){
 		quotePressed(event)
-	} else if((key == Qt.Key_Minus || key == Qt.Key_Plus || key == Qt.Key_Asterisk) && cursorPosition == 0){
+	} else if((key == Qt.Key_Minus || key == Qt.Key_Plus || key == Qt.Key_Asterisk)){
 		dotPressed(event)
 	} else if(key == Qt.Key_BracketRight){
-		bracketPressed(event)
+		closeBracketPressed(event)
+	} else if(key == Qt.Key_BracketLeft){
+		openBracketPressed(event)
+	} else if(key == Qt.Key_BraceLeft || key == Qt.Key_BraceRight){
+		bracePressed(event)
+	} else if(key == Qt.Key_ParenLeft || key == Qt.Key_ParenRight){
+		parenthesisPressed(event)
 	} else if(key == Qt.Key_Space){
 		//spacePressed(event)
 	} else if(key == Qt.Key_Left){
 		leftPressed(event)
 	} else if(key == Qt.Key_Right){
 		rightPressed(event)
-	} else if(key == Qt.Key_QuoteLeft && cursorPosition == 0){
+	} else if(key == Qt.Key_QuoteLeft){
 		backtickPressed(event)
+	} else if(key == Qt.Key_QuoteDbl){
+		doublequotePressed(event)
+	} else if(key == Qt.Key_Apostrophe){
+		singlequotePressed(event)
+	} else{
+		//console.warn(key)
+		//unselectSelected()
+		//accept(event)
+	}
+
+	if(document.selection !== document.noSelection){
+		accept(event)
 	}
 }
 
@@ -162,6 +180,27 @@ function deleteSelected(event){
 	}
 }
 
+function indentSelected(event, n){
+	accept(event)
+	for(let i=count-1; i>=0; i--){ // at reverse so removing elements does not cause selected elements to change
+		if(document.itemAtIndex(i).selected){
+			let newTabNum = document.itemAtIndex(i).tabNum + n
+			if(newTabNum >= 0){
+				document.itemAtIndex(i).tabNum = newTabNum
+			}
+		}
+	}
+}
+
+function setTypeToSelected(event, t){ // not used
+	accept(event)
+	for(let i=count-1; i>=0; i--){ // at reverse so removing elements does not cause selected elements to change
+		if(document.itemAtIndex(i).selected){
+			document.itemAtIndex(i).type = t
+		}
+	}
+}
+
 function backspacePressed(event){
 	if(document.selection === document.noSelection){
 		if(selectedText.length == 0){
@@ -190,6 +229,7 @@ function delPressed(event){
 			if(text.length == 0){
 				document.remove(index)
 				currentItem.setCursorPosition(0)
+				accept(event)
 			} else if(cursorPosition == txt.length && index < document.count-1){
 				accept(event)
 				mergeBlocks(index+1, index)
@@ -201,16 +241,26 @@ function delPressed(event){
 }
 
 function tabPressed(event){
-	// todo add codeblock support
-	accept(event)
-	tabNum++
+	if(document.selection === document.noSelection){
+		if(type != Block.Type.CodeBlock){
+			accept(event)
+			tabNum++
+		}
+	} else {
+		indentSelected(event, +1)
+	}
 }
 
 function backtabPressed(event){
-	// todo add codeblock support
-	accept(event)
-	if(tabNum > 0){
-		tabNum--
+	if(document.selection === document.noSelection){
+		if(type != Block.Type.CodeBlock){
+			accept(event)
+		if(tabNum > 0){
+			tabNum--
+		}
+		}
+	} else {
+		indentSelected(event, -1)
 	}
 }
 
@@ -231,50 +281,106 @@ function leftPressed(event){
 }
 
 function backtickPressed(event){
-	if(type == Block.Type.CodeBlock){
-		type = Block.Type.PlainText
-	} else {
-		type = Block.Type.CodeBlock
-		headerNum = 0
+	if(selectedText.length > 0){
+		applyToHighlight("\`", "\`")
+		accept(event)
+	}else if(cursorPosition == 0){
+		if(type == Block.Type.CodeBlock){
+			type = Block.Type.PlainText
+		} else {
+			type = Block.Type.CodeBlock
+			headerNum = 0
+		}
+		accept(event)
 	}
-	accept(event)
+}
+
+function doublequotePressed(event){
+	if(selectedText.length > 0){
+		applyToHighlight("\"", "\"")
+		accept(event)
+	}
+}
+
+function singlequotePressed(event){
+	if(selectedText.length > 0){
+		applyToHighlight("\'", "\'")
+		accept(event)
+	}
+}
+
+function applyToHighlight(firstStr, lastStr){
+	let pos = selectionEnd + 2
+	text = [text.slice(0, selectionStart), firstStr, text.slice(selectionStart, selectionEnd), lastStr, text.slice(selectionEnd)].join('')
+	cursorPosition = pos
 }
 
 function hashtagPressed(event){
-	if(type == Block.Type.PlainText || true){
-		accept(event)
-		if(headerNum < 6){
-			headerNum++
+	if(document.selection === document.noSelection){
+		if(cursorPosition == 0){
+			accept(event)
+			if(headerNum < 6){
+				headerNum++
+			}
 		}
+	} else {
+
 	}
 }
 
 function quotePressed(event){
-	// ignore the current formatting, just set it to quote or plaintext
-	if(type == Block.Type.Quote){
-		type = Block.Type.PlainText
-	} else {
-		type = Block.Type.Quote
+	if(cursorPosition == 0){
+		// ignore the current formatting, just set it to quote or plaintext
+		if(type == Block.Type.Quote){
+			type = Block.Type.PlainText
+		} else {
+			type = Block.Type.Quote
+		}
+		accept(event)
 	}
-	accept(event)
 }
 
 function dotPressed(event){
-// ignore the current formatting, just set it to quote or plaintext
-	if(type == Block.Type.DotList){
-		type = Block.Type.PlainText
-	} else {
-		type = Block.Type.DotList
+	if(cursorPosition == 0){
+		// ignore the current formatting, just set it to quote or plaintext
+		if(type == Block.Type.DotList){
+			type = Block.Type.PlainText
+		} else {
+			type = Block.Type.DotList
+		}
+		accept(event)
 	}
-	accept(event)
 }
 
-function bracketPressed(event){
-	let reg = /^\s*\[/
-	if(reg.test(text) && cursorPosition == text.indexOf("[") + 1){
+function closeBracketPressed(event){
+	if(selectedText.length > 0){
+		applyToHighlight("[", "]")
+		accept(event)
+	} else if(reg.test(text) && cursorPosition == text.indexOf("[") + 1){
+		let reg = /^\s*\[/
 		accept(event)
 		text = text.replace(reg, "")
 		type = Block.Type.CheckList
+	}
+}
+function openBracketPressed(event){
+	if(selectedText.length > 0){
+		applyToHighlight("[", "]")
+		accept(event)
+	}
+}
+
+function bracePressed(event){
+	if(selectedText.length > 0){
+		applyToHighlight("{", "}")
+		accept(event)
+	}
+}
+
+function parenthesisPressed(event){
+	if(selectedText.length > 0){
+		applyToHighlight("(", ")")
+		accept(event)
 	}
 }
 

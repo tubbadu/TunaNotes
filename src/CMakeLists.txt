@@ -8,6 +8,8 @@ add_executable(tunanotes
 )
 
 find_package(KF5SyntaxHighlighting)
+find_package(KF5ConfigWidgets)
+
 
 target_link_libraries(tunanotes
 	Qt5::Quick
@@ -18,4 +20,5 @@ target_link_libraries(tunanotes
 	KF5::Kirigami2
 	KF5::I18n
 	KF5::SyntaxHighlighting
+	KF5::ConfigWidgets
 ) 

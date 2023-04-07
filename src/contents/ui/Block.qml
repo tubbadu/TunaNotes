@@ -36,6 +36,8 @@ Item{
 	property var parseResult//: Parser.parseMarkdownLine(setText)
 	property alias cursorPosition: txt.cursorPosition
 	property alias selectedText: txt.selectedText
+	property alias selectionEnd: txt.selectionEnd
+	property alias selectionStart: txt.selectionStart
 	property alias length: txt.length
 	property var keyHandler: KeyHandler
 	property int delta: 0 // what is it used for?

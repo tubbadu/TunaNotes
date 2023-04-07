@@ -1,12 +1,13 @@
 #include "Highlighter.h"
 #include <Kirigami/PlatformTheme>
+#include <KColorScheme>
+
 #include<QDebug>
 
 Highlighter::Highlighter(QTextDocument *parent)
     : QSyntaxHighlighter(parent)
 {
     HighlightingRule rule;
-	Kirigami::PlatformTheme* theme = new Kirigami::PlatformTheme;
 
     keywordFormat.setForeground(Qt::darkBlue);
     keywordFormat.setFontWeight(QFont::Bold);
@@ -48,7 +49,8 @@ Highlighter::Highlighter(QTextDocument *parent)
     highlightingRules.append(rule);*/
 
 	// my edits:
-	//qWarning() << "color: " << theme->linkColor();
+	Kirigami::PlatformTheme theme;// = Kirigami::PlatformTheme; //::palette; // = new Kirigami::PlatformTheme;
+	qWarning() << "color: " << theme.activeBackgroundColor();
 	linksFormat.setForeground(Qt::cyan);
 	linksFormat.setFontUnderline(true);
 	linksFormat.setAnchor(true);

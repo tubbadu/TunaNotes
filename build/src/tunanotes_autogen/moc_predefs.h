@@ -161,6 +161,7 @@
 #define __ATOMIC_HLE_RELEASE 131072
 #define __PTRDIFF_MAX__ 0x7fffffffffffffffL
 #define __amd64 1
+#define QT_XML_LIB 1
 #define __ATOMIC_HLE_ACQUIRE 65536
 #define __GNUG__ 12
 #define __LONG_LONG_MAX__ 0x7fffffffffffffffLL
@@ -262,6 +263,7 @@
 #define __FLT16_MAX_EXP__ 16
 #define __DEC32_SUBNORMAL_MIN__ 0.000001E-95DF
 #define __INT_FAST16_MAX__ 0x7fffffffffffffffL
+#define KCOREADDONS_LIB 1
 #define __GCC_CONSTRUCTIVE_SIZE 64
 #define __FLT64_DIG__ 15
 #define __UINT_FAST32_MAX__ 0xffffffffffffffffUL
