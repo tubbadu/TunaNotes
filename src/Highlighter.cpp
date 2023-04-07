@@ -49,9 +49,9 @@ Highlighter::Highlighter(QTextDocument *parent)
     highlightingRules.append(rule);*/
 
 	// my edits:
-	Kirigami::PlatformTheme theme;// = Kirigami::PlatformTheme; //::palette; // = new Kirigami::PlatformTheme;
-	qWarning() << "color: " << theme.activeBackgroundColor();
-	linksFormat.setForeground(Qt::cyan);
+	Kirigami::PlatformTheme* theme = static_cast<Kirigami::PlatformTheme *>(qmlAttachedPropertiesObject<Kirigami::PlatformTheme>(this, true));
+	//qWarning() << "color: " << theme->activeBackgroundColor();
+	linksFormat.setForeground(theme->linkColor());
 	linksFormat.setFontUnderline(true);
 	linksFormat.setAnchor(true);
 	rule.pattern = QRegularExpression(QStringLiteral("https?://\\S*?(?=\\s|$)"));
