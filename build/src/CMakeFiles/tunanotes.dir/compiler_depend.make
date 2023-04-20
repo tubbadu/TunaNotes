@@ -1773,6 +1773,7 @@ src/CMakeFiles/tunanotes.dir/main.cpp.o: /home/tubbadu/code/Kirigami/TunaNotes/s
   /usr/include/qt5/QtGui/QFontDatabase \
   /usr/include/qt5/QtGui/qfontdatabase.h \
   /usr/include/qt5/QtGui/qfont.h \
+  /usr/include/qt5/QtNetwork/QLocalServer \
   /home/tubbadu/code/Kirigami/TunaNotes/src/launcher.h \
   /usr/include/qt5/QtCore/QProcess \
   /home/tubbadu/code/Kirigami/TunaNotes/src/fileManager.h \
@@ -3682,6 +3683,8 @@ src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp:
 /usr/include/qt5/QtCore/qmutex.h:
 
 /usr/include/qt5/QtGui/QPalette:
+
+/usr/include/qt5/QtNetwork/QLocalServer:
 
 /usr/include/qt5/QtNetwork/qlocalsocket.h:
 

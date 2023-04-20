@@ -29,6 +29,7 @@ Item{
 	property int setType: -1
 	property int setTabnum: 0
 	property int setHeadernum: 0
+	property string setSyntaxHighlightning: ""
 	property int tabNum: 0
 	property alias checked: checkboxelement.checked
 	property int headerNum: 0
@@ -42,6 +43,7 @@ Item{
 	property var keyHandler: KeyHandler
 	property int delta: 0 // what is it used for?
 	property bool selected: document.selection[0] <= index && index <= document.selection[1] 
+	property var sync: BlockFunctions.sync
 
 	property font normalFont
 	normalFont.pixelSize: BlockFunctions.textSize()
@@ -59,6 +61,7 @@ Item{
 		text = setText
 		tabNum = setTabnum
 		headerNum = setHeadernum
+		syntaxHighlightning = setSyntaxHighlightning
 		if(setType == -1){
 			BlockFunctions.getType()
 		} else {
@@ -68,24 +71,30 @@ Item{
 
 	TextField{
 		id: syntaxNameField
+		property int size: 150
 		visible: (type == Block.Type.CodeBlock)
 		text: "text"
 		anchors.right: parent.right
 		anchors.rightMargin: height/2
+		width: parent.width > (size + anchors.rightMargin * 2) ? size : parent.width - anchors.rightMargin * 2
+		//anchors.left: parent.width > (size + anchors.rightMargin + anchors.leftMargin) ? undefined : parent.left
+		//anchors.leftMargin: height/2
 		z: 10
 		horizontalAlignment: TextInput.AlignHCenter
-		onTextChanged: {
-			syntaxHighlightning = text.trim()
-		}
+
 		onFocusChanged: {
 			if(focus){
 				selectAll()
+				document.currentIndex = index
 			}
 		}
 		onEditingFinished: {
 			if(text.trim().length < 1){
 				text = "text"
+			} else if(text.trim().length !== text.length){
+				text = text.trim()
 			}
+			sync()
 		}
 		onAccepted: {
 			forceFocus()
@@ -152,12 +161,13 @@ Item{
 				selectByMouse: true
 				wrapMode: (type == Block.Type.CodeBlock)? TextEdit.Wrap : TextEdit.Wrap // TODO implement scrollable codeblocks
 				tabStopDistance: checkboxelement.width
-				//textFormat: TextEdit.RichText
+				textFormat: TextEdit.PlainText //AutoText
+				onLinkActivated: Qt.openUrlExternally(link)
 
 				Keys.onPressed: (event) => KeyHandler.key(event)
 
 				onFocusChanged: {
-					BlockFunctions.sync()
+					sync()
 					// needed to set the current item on the clicked element
 					if(focus && (document.currentIndex !== index)){
 						document.currentIndex = index
@@ -171,11 +181,11 @@ Item{
 					definition: defName
 				}
 
-				PlainTextFormat{
+				/*PlainTextFormat{
 					id: plainTextFormat
 					textDocument: txt.textDocument
 					// todo add enable
-				}
+				}*/
 
 				TextEdit{
 					id: dump // used only as secondary target

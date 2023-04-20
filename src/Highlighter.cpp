@@ -54,6 +54,8 @@ Highlighter::Highlighter(QTextDocument *parent)
 	linksFormat.setForeground(theme->linkColor());
 	linksFormat.setFontUnderline(true);
 	linksFormat.setAnchor(true);
+	linksFormat.setAnchorHref(QString("http://google.com"));
+	//linksFormat.setAnchorNames()
 	rule.pattern = QRegularExpression(QStringLiteral("https?://\\S*?(?=\\s|$)"));
     rule.format = linksFormat;
     highlightingRules.append(rule);

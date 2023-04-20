@@ -12,6 +12,8 @@ import FileManager 1.0
 
 Kirigami.ApplicationWindow {
 	id: window
+	minimumWidth: 300
+    minimumHeight: 300
 
 	property string unsavedToken: document.unsaved? "*" : ""
 	title: i18nc("@title:window", "TunaNotes") + unsavedToken

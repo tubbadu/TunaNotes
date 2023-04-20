@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
   "/home/tubbadu/code/Kirigami/TunaNotes/CMakeLists.txt"
-  "CMakeFiles/3.26.2/CMakeCCompiler.cmake"
-  "CMakeFiles/3.26.2/CMakeCXXCompiler.cmake"
-  "CMakeFiles/3.26.2/CMakeSystem.cmake"
+  "CMakeFiles/3.26.3/CMakeCCompiler.cmake"
+  "CMakeFiles/3.26.3/CMakeCXXCompiler.cmake"
+  "CMakeFiles/3.26.3/CMakeSystem.cmake"
   "/home/tubbadu/code/Kirigami/TunaNotes/src/CMakeLists.txt"
   "/home/tubbadu/code/Kirigami/TunaNotes/src/resources.qrc"
   "/usr/lib64/cmake/KF5Auth/KF5AuthConfig.cmake"

@@ -28,7 +28,8 @@ function getType(t = setText){
 }
 
 function newBlock(set_text="", set_tabnum=0, set_headernum=0){
-	blockModel.insert(index+1, {set_text: set_text, set_type: newType(), set_tabnum: set_tabnum, set_headernum: set_headernum}) // TODO set type
+	//blockModel.insert(index+1, {set_text: set_text, set_type: newType(), set_tabnum: set_tabnum, set_headernum: set_headernum}) // TODO set type
+	document.insert(index+1, set_text, newType(), set_tabnum, set_headernum)
 	down()
 }
 
@@ -107,5 +108,5 @@ function textSize(){
 
 function sync(){
 	// saves modifications to the model so that the buffer does not creates any problem
-	blockModel.set(index, {set_text: text, set_type: type, set_tabnum: tabNum, set_headernum: headerNum})
+	blockModel.set(index, {set_text: text, set_type: type, set_tabnum: tabNum, set_headernum: headerNum, set_syntaxhighlightning: syntaxHighlightning})
 }

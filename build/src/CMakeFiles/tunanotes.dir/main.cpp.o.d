@@ -557,6 +557,7 @@ src/CMakeFiles/tunanotes.dir/main.cpp.o: \
  /usr/include/KF5/KI18n/klocalizedcontext.h \
  /usr/include/qt5/QtGui/QFontDatabase \
  /usr/include/qt5/QtGui/qfontdatabase.h /usr/include/qt5/QtGui/qfont.h \
+ /usr/include/qt5/QtNetwork/QLocalServer \
  /home/tubbadu/code/Kirigami/TunaNotes/src/launcher.h \
  /usr/include/qt5/QtCore/QProcess \
  /home/tubbadu/code/Kirigami/TunaNotes/src/fileManager.h \

@@ -42,7 +42,8 @@ ListView {
 		let file = filemanager.read(fileName);
 		let lines = Parser.splitStringExceptInCodeBlocks(file);
 		for(let i=0; i<lines.length; i++){
-			blockModel.append({set_text: lines[i], set_type: -1, set_tabnum: -1, set_headernum: 0})
+			//blockModel.append({set_text: lines[i], set_type: -1, set_tabnum: -1, set_headernum: 0})
+			insert(-1, lines[i])
 		}
 		document.currentIndex = 0
 		document.currentItem.forceFocus()
@@ -52,9 +53,20 @@ ListView {
 	}
 
 	function save(){
+		// first update the model
+		document.currentItem.sync()
+		// then save to file
 		filemanager.write(fileName, Parser.exportMarkdown())
 		console.warn("saved")
 		unsaved = false
+	}
+
+	function insert(new_pos=-1, new_text="", new_type=-1, new_tabnum=-1, new_headernum=0, new_syntaxhighlightning = ""){
+		if(new_pos === -1){
+			blockModel.append({set_text: new_text, set_type: new_type, set_tabnum: new_tabnum, set_headernum: new_headernum, set_syntaxhighlightning: new_syntaxhighlightning})
+		} else {
+			blockModel.insert(new_pos, {set_text: new_text, set_type: new_type, set_tabnum: new_tabnum, set_headernum: new_headernum, set_syntaxhighlightning: new_syntaxhighlightning})
+		}
 	}
 
 	ListModel {
@@ -69,6 +81,7 @@ ListView {
 			setType: set_type
 			setTabnum: set_tabnum
 			setHeadernum: set_headernum
+			setSyntaxHighlightning: set_syntaxhighlightning
 			//width: parent? parent.width : 0
 			//height: parent? parent.height : 0
 			Rectangle{

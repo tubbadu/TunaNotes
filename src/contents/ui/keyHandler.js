@@ -353,11 +353,12 @@ function dotPressed(event){
 }
 
 function closeBracketPressed(event){
+	let reg = /^\s*\[/
 	if(selectedText.length > 0){
 		applyToHighlight("[", "]")
 		accept(event)
 	} else if(reg.test(text) && cursorPosition == text.indexOf("[") + 1){
-		let reg = /^\s*\[/
+		
 		accept(event)
 		text = text.replace(reg, "")
 		type = Block.Type.CheckList

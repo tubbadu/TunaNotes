@@ -116,39 +116,40 @@ function splitStringExceptInCodeBlocks(str) {
 	return lines;
 }
 
-function exportMarkdown(interval=document.noSelected){
+function exportMarkdown(interval=document.noSelection){
+	console.warn("interval=", interval, document.noSelection)
 	let doc = ""
-	for(let i=0; i<document.count; i++){
-		if(interval == document.noSelected || (interval[0] <= i && i <= interval[1])){
-			let block = document.itemAtIndex(i)
+	for(let i=0; i<blockModel.count; i++){
+		if(interval == document.noSelection || (interval[0] <= i && i <= interval[1])){
+			let blk = blockModel.get(i)
+			if(blk){
+				let x = blk.set_tabnum > 0? blk.set_tabnum : 0
+				let line = "\t".repeat(x)
 
-			if(block){
-				let line = "\t".repeat(block.tabNum)
+				if(blk.set_type == Block.Type.PlainText){
 
-				if(block.type == Block.Type.PlainText){
-
-				}else if(block.type == Block.Type.Quote){
+				}else if(blk.set_type == Block.Type.Quote){
 					line += "> "
-				}else if(block.type == Block.Type.DotList){
+				}else if(blk.set_type == Block.Type.DotList){
 					line += "- "
-				}else if(block.type == Block.Type.CheckList){
-					if(block.checked){
+				}else if(blk.set_type == Block.Type.CheckList){
+					if(blk.set_typechecked){
 						line += "- [x] "
 					}else{
 						line += "- [ ] "
 					}
-				}else if(block.type == Block.Type.CodeBlock){
-					line += "```" + block.syntaxHighlightning + "\n"
+				}else if(blk.set_type == Block.Type.CodeBlock){
+					line += "```" + blk.set_syntaxhighlightning + "\n" // how can this work? I have no idea...
 				}
 
-				line += "#".repeat(block.headerNum) + " ".repeat(block.headerNum > 0)
+				line += "#".repeat(blk.set_headernum) + " ".repeat(blk.set_headernum > 0)
 
-				line += block.text
+				line += blk.set_text
 
-				if(block.type == Block.Type.CodeBlock){
+				if(blk.set_type == Block.Type.CodeBlock){
 					line += "\n```"
 				}
-				if(block.text < 1){
+				if(blk.set_text < 1){
 					line = "<br>"
 				}
 				if(doc.length > 0) {
@@ -158,6 +159,5 @@ function exportMarkdown(interval=document.noSelected){
 			}	
 		}
 	}
-
 	return doc;
 }
