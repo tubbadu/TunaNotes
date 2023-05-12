@@ -553,11 +553,17 @@ src/CMakeFiles/tunanotes.dir/main.cpp.o: \
  /usr/include/KF5/KI18n/klocalizedstring.h /usr/include/qt5/QtCore/QChar \
  /usr/include/qt5/QtCore/QLatin1Char /usr/include/qt5/QtCore/QSet \
  /usr/include/qt5/QtCore/QString /usr/include/qt5/QtCore/QStringList \
- /usr/include/KF5/KI18n/kuitmarkup.h /usr/include/qt5/QtCore/QHash \
+ /usr/include/KF5/KI18n/kuitsetup.h /usr/include/qt5/QtCore/QHash \
  /usr/include/KF5/KI18n/klocalizedcontext.h \
  /usr/include/qt5/QtGui/QFontDatabase \
  /usr/include/qt5/QtGui/qfontdatabase.h /usr/include/qt5/QtGui/qfont.h \
  /usr/include/qt5/QtNetwork/QLocalServer \
+ /usr/include/qt5/QtDBus/QDBusMessage \
+ /usr/include/qt5/QtDBus/qdbusmessage.h \
+ /usr/include/qt5/QtDBus/qtdbusglobal.h \
+ /usr/include/qt5/QtDBus/qdbuserror.h \
+ /usr/include/qt5/QtDBus/QDBusConnection \
+ /usr/include/qt5/QtDBus/qdbusconnection.h \
  /home/tubbadu/code/Kirigami/TunaNotes/src/launcher.h \
  /usr/include/qt5/QtCore/QProcess \
  /home/tubbadu/code/Kirigami/TunaNotes/src/fileManager.h \
@@ -600,4 +606,12 @@ src/CMakeFiles/tunanotes.dir/main.cpp.o: \
  /usr/include/qt5/QtGui/qtextcursor.h \
  /usr/include/qt5/QtGui/QTextCharFormat \
  /usr/include/qt5/QtGui/qtextformat.h \
- /usr/include/qt5/QtCore/QRegularExpression
+ /usr/include/qt5/QtCore/QRegularExpression \
+ /home/tubbadu/code/Kirigami/TunaNotes/src/DBusReceiver.h \
+ /usr/include/qt5/QtDBus/QDBusInterface \
+ /usr/include/qt5/QtDBus/qdbusinterface.h \
+ /usr/include/qt5/QtDBus/qdbusabstractinterface.h \
+ /usr/include/qt5/QtDBus/qdbusmessage.h \
+ /usr/include/qt5/QtDBus/qdbusextratypes.h \
+ /usr/include/qt5/QtDBus/qdbusconnection.h \
+ /usr/include/qt5/QtDBus/qdbuspendingcall.h

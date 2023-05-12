@@ -70,6 +70,12 @@
 	"HEADERS" : 
 	[
 		[
+			"/home/tubbadu/code/Kirigami/TunaNotes/src/DBusReceiver.h",
+			"Mu",
+			"EWIEGA46WW/moc_DBusReceiver.cpp",
+			null
+		],
+		[
 			"/home/tubbadu/code/Kirigami/TunaNotes/src/Highlighter.h",
 			"Mu",
 			"EWIEGA46WW/moc_Highlighter.cpp",
@@ -101,6 +107,7 @@
 	[
 		"KCOREADDONS_LIB",
 		"QT_CORE_LIB",
+		"QT_DBUS_LIB",
 		"QT_GUI_LIB",
 		"QT_NETWORK_LIB",
 		"QT_QMLMODELS_LIB",
@@ -141,6 +148,7 @@
 		"/usr/include/qt5/QtGui",
 		"/usr/include/qt5/QtQuickControls2",
 		"/usr/include/qt5/QtWidgets",
+		"/usr/include/qt5/QtDBus",
 		"/usr/include/KF5/Kirigami2",
 		"/usr/include/KF5",
 		"/usr/include/KF5/KI18n",
@@ -151,11 +159,11 @@
 		"/usr/include/KF5/KConfigGui",
 		"/usr/include/qt5/QtXml",
 		"/usr/include/KF5/KConfigCore",
+		"/usr/include/KF5/KCoreAddons",
 		"/usr/include/KF5/KCodecs",
 		"/usr/include/KF5/KAuthWidgets",
 		"/usr/include/KF5/KAuthCore",
 		"/usr/include/KF5/KAuth",
-		"/usr/include/KF5/KCoreAddons",
 		"/usr/include",
 		"/usr/include/c++/12",
 		"/usr/include/c++/12/x86_64-redhat-linux",
@@ -197,6 +205,11 @@
 	"SETTINGS_FILE" : "/home/tubbadu/code/Kirigami/TunaNotes/build/src/CMakeFiles/tunanotes_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[
+			"/home/tubbadu/code/Kirigami/TunaNotes/src/DBusReceiver.cpp",
+			"Mu",
+			null
+		],
 		[
 			"/home/tubbadu/code/Kirigami/TunaNotes/src/Highlighter.cpp",
 			"Mu",

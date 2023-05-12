@@ -5,6 +5,7 @@ add_executable(tunanotes
 	fileManager.cpp
 	plainTextFormat.cpp
 	Highlighter.cpp
+	DBusReceiver.cpp
 )
 
 find_package(KF5SyntaxHighlighting)
@@ -17,6 +18,7 @@ target_link_libraries(tunanotes
 	Qt5::Gui
 	Qt5::QuickControls2
 	Qt5::Widgets
+	Qt5::DBus
 	KF5::Kirigami2
 	KF5::I18n
 	KF5::SyntaxHighlighting

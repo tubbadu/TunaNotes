@@ -154,6 +154,30 @@ tunanotes_autogen/fast:
 	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes_autogen.dir/build.make src/CMakeFiles/tunanotes_autogen.dir/build
 .PHONY : tunanotes_autogen/fast
 
+DBusReceiver.o: DBusReceiver.cpp.o
+.PHONY : DBusReceiver.o
+
+# target to build an object file
+DBusReceiver.cpp.o:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/DBusReceiver.cpp.o
+.PHONY : DBusReceiver.cpp.o
+
+DBusReceiver.i: DBusReceiver.cpp.i
+.PHONY : DBusReceiver.i
+
+# target to preprocess a source file
+DBusReceiver.cpp.i:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/DBusReceiver.cpp.i
+.PHONY : DBusReceiver.cpp.i
+
+DBusReceiver.s: DBusReceiver.cpp.s
+.PHONY : DBusReceiver.s
+
+# target to generate assembly for a file
+DBusReceiver.cpp.s:
+	cd /home/tubbadu/code/Kirigami/TunaNotes/build && $(MAKE) $(MAKESILENT) -f src/CMakeFiles/tunanotes.dir/build.make src/CMakeFiles/tunanotes.dir/DBusReceiver.cpp.s
+.PHONY : DBusReceiver.cpp.s
+
 Highlighter.o: Highlighter.cpp.o
 .PHONY : Highlighter.o
 
@@ -333,6 +357,9 @@ help:
 	@echo "... test"
 	@echo "... tunanotes_autogen"
 	@echo "... tunanotes"
+	@echo "... DBusReceiver.o"
+	@echo "... DBusReceiver.i"
+	@echo "... DBusReceiver.s"
 	@echo "... Highlighter.o"
 	@echo "... Highlighter.i"
 	@echo "... Highlighter.s"

@@ -9,6 +9,8 @@ import "parser.js" as Parser
 
 import Launcher 1.0
 import FileManager 1.0
+import DBusReceiver 1.0
+
 
 Kirigami.ApplicationWindow {
 	id: window
@@ -23,10 +25,13 @@ Kirigami.ApplicationWindow {
 	FileManager{
 		id: filemanager
 	}
+	DBusReceiver{
+		id: dbus
+	}
 
 	Kirigami.ActionToolBar { // top left toolbar
 		//anchors.top: parent.top
-		actions: [
+		/*actions: [
 			Kirigami.Action { 
 				icon.name: "irc-operator" 
 				onTriggered: document.currentItem.keyHandler.hashtagPressed()
@@ -59,7 +64,7 @@ Kirigami.ApplicationWindow {
 				icon.name: "edit-clear" 
 				onTriggered: document.currentItem.keyHandler.removeFormatting()
 			}
-		]
+		]*/
 	}
 
 	Kirigami.ActionToolBar { // top right toolbar

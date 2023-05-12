@@ -210,6 +210,7 @@
 #define __VERSION__ "12.2.1 20221121 (Red Hat 12.2.1-4)"
 #define __UINT64_C(c) c ## UL
 #define __cpp_unicode_characters 201411L
+#define QT_DBUS_LIB 1
 #define _STDC_PREDEF_H 1
 #define __INT_LEAST32_MAX__ 0x7fffffff
 #define __GCC_ATOMIC_INT_LOCK_FREE 2

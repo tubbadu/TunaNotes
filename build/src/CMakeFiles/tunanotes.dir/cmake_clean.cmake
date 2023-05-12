@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/tunanotes_autogen.dir/AutogenUsed.txt"
   "CMakeFiles/tunanotes_autogen.dir/ParseCache.txt"
   "tunanotes_autogen"
+  "CMakeFiles/tunanotes.dir/DBusReceiver.cpp.o"
+  "CMakeFiles/tunanotes.dir/DBusReceiver.cpp.o.d"
   "CMakeFiles/tunanotes.dir/Highlighter.cpp.o"
   "CMakeFiles/tunanotes.dir/Highlighter.cpp.o.d"
   "CMakeFiles/tunanotes.dir/fileManager.cpp.o"

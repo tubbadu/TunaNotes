@@ -16,11 +16,12 @@ ListView {
 	height: parent.height
 	//height: listView.contentHeight
 
-	property string fileName: "/home/tubbadu/Desktop/TODO.md"
+	property string fileName: "/home/tubbadu/code/Kirigami/TunaNotes/provaaa.md"
 	property bool unsaved: false
 	property var remove: blockModel.remove
 	readonly property var noSelection: [-1, -1]
 	property var selection: noSelection
+	property int lastLoadedIndex: -1
 
 	model: blockModel
 	delegate: blockDelegate
@@ -35,38 +36,67 @@ ListView {
 	}
 
 	onCountChanged: {
-		unsaved = true
 	}
 
 	function readFile(){
 		let file = filemanager.read(fileName);
 		let lines = Parser.splitStringExceptInCodeBlocks(file);
+		lastLoadedIndex = lines.length - 1
 		for(let i=0; i<lines.length; i++){
 			//blockModel.append({set_text: lines[i], set_type: -1, set_tabnum: -1, set_headernum: 0})
-			insert(-1, lines[i])
+			//let IsLastLoaded = (i === lines.length-1);
+			insertBlock({index: -1, new_text: lines[i]})//, isLastLoaded: (i === lines.length-1)})
 		}
 		document.currentIndex = 0
 		document.currentItem.forceFocus()
 		document.currentItem.setCursorPosition(-1)
 		console.warn("done loading file")
-		document.unsaved = false // does not work: syntax highlighting breaks everything
 	}
 
 	function save(){
-		// first update the model
-		document.currentItem.sync()
-		// then save to file
-		filemanager.write(fileName, Parser.exportMarkdown())
-		console.warn("saved")
-		unsaved = false
+		if(unsaved){
+			// first update the model
+			document.currentItem.sync()
+			// then save to file
+			filemanager.write(fileName, Parser.exportMarkdown())
+			console.warn("saved")
+			unsaved = false
+		}
 	}
 
-	function insert(new_pos=-1, new_text="", new_type=-1, new_tabnum=-1, new_headernum=0, new_syntaxhighlightning = ""){
+	/*function insert(new_pos=-1, new_text="", new_type=-1, new_tabnum=-1, new_headernum=0, new_syntaxhighlightning = ""){
 		if(new_pos === -1){
 			blockModel.append({set_text: new_text, set_type: new_type, set_tabnum: new_tabnum, set_headernum: new_headernum, set_syntaxhighlightning: new_syntaxhighlightning})
 		} else {
 			blockModel.insert(new_pos, {set_text: new_text, set_type: new_type, set_tabnum: new_tabnum, set_headernum: new_headernum, set_syntaxhighlightning: new_syntaxhighlightning})
 		}
+	}*/
+
+	function insertBlock(values){ //new_pos=-1, new_text="", new_type=-1, new_tabnum=-1, new_headernum=0, new_syntaxhighlightning = "", isLastLoaded = false){
+		let defaults = {
+			index: -1,
+			new_text: "",
+			new_type: -1,
+			new_tabnum: -1,
+			new_headernum: 0,
+			new_syntaxhighlightning: ""
+		}
+		let trueValues = {}
+		// load default values where unspecified
+		for (const [key, value] of Object.entries(defaults)) {
+			if(values[key] === undefined){
+				trueValues[key] = value
+			} else {
+				trueValues[key] = values[key]
+			}
+		}
+		if(trueValues["index"] === -1){
+			blockModel.append({set_text: trueValues["new_text"], set_type: trueValues["new_type"], set_tabnum: trueValues["new_tabnum"], set_headernum: trueValues["new_headernum"], set_syntaxhighlightning: trueValues["new_syntaxhighlightning"]})
+		} else {
+			blockModel.insert(trueValues["index"], {set_text: trueValues["new_text"], set_type: trueValues["new_type"], set_tabnum: trueValues["new_tabnum"], set_headernum: trueValues["new_headernum"], set_syntaxhighlightning: trueValues["new_syntaxhighlightning"]})
+		}
+		console.warn("unsaved set true")
+		document.unsaved = true
 	}
 
 	ListModel {
@@ -82,6 +112,7 @@ ListView {
 			setTabnum: set_tabnum
 			setHeadernum: set_headernum
 			setSyntaxHighlightning: set_syntaxhighlightning
+			//loadingFinished: isLastLoaded
 			//width: parent? parent.width : 0
 			//height: parent? parent.height : 0
 			Rectangle{

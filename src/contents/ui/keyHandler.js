@@ -144,7 +144,8 @@ function paste(event){
 			// do not create a new block
 		} else if(cursorPosition == 0){
 			// insert blocks before current block:
-			blockModel.insert(index, {set_text: "", set_type: Block.Type.PlainText, set_tabnum: 0, set_headernum: 0})
+			//blockModel.insert(index, {set_text: "", set_type: Block.Type.PlainText, set_tabnum: 0, set_headernum: 0})
+			document.insertBlock(index)
 			currentIndex = index-1
 		}
 		pasteParsed(clipLines[0], currentItem)
@@ -152,7 +153,8 @@ function paste(event){
 		for(let i=0; i<clipLines.length; i++){ // skip first element, already done
 			if(clipLines[i].trim().length > 0){
 				if(i != clipLines.length-1) {
-					blockModel.insert(currentIndex+1, {set_text: "", set_type: Block.Type.PlainText, set_tabnum: 0, set_headernum: 0})
+					//blockModel.insert(currentIndex+1, {set_text: "", set_type: Block.Type.PlainText, set_tabnum: 0, set_headernum: 0})
+					document.insertBlock(currentIndex+1)
 				}
 				pasteParsed(clipLines[i], currentItem)
 				currentIndex++
@@ -404,7 +406,8 @@ function enterPressed(event){
 		type = Block.Type.PlainText
 	} else if(cursorPosition == 0){
 		// keep formatting of this block, and add a block before
-		blockModel.insert(index, {set_text: "", set_type: Block.Type.PlainText, set_tabnum: 0, set_headernum: 0})
+		//blockModel.insert(index, {set_text: "", set_type: Block.Type.PlainText, set_tabnum: 0, set_headernum: 0})
+		document.insertBlock(index)
 	} else {
 		let subtext = text.substr(cursorPosition, text.length)
 		text = text.substr(0, cursorPosition)

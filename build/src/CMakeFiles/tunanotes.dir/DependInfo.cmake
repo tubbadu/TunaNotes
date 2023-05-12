@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/home/tubbadu/code/Kirigami/TunaNotes/src/DBusReceiver.cpp" "src/CMakeFiles/tunanotes.dir/DBusReceiver.cpp.o" "gcc" "src/CMakeFiles/tunanotes.dir/DBusReceiver.cpp.o.d"
   "/home/tubbadu/code/Kirigami/TunaNotes/src/Highlighter.cpp" "src/CMakeFiles/tunanotes.dir/Highlighter.cpp.o" "gcc" "src/CMakeFiles/tunanotes.dir/Highlighter.cpp.o.d"
   "/home/tubbadu/code/Kirigami/TunaNotes/src/fileManager.cpp" "src/CMakeFiles/tunanotes.dir/fileManager.cpp.o" "gcc" "src/CMakeFiles/tunanotes.dir/fileManager.cpp.o.d"
   "/home/tubbadu/code/Kirigami/TunaNotes/src/launcher.cpp" "src/CMakeFiles/tunanotes.dir/launcher.cpp.o" "gcc" "src/CMakeFiles/tunanotes.dir/launcher.cpp.o.d"

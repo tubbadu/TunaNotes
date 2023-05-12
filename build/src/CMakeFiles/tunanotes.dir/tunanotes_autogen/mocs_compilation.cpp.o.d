@@ -1,7 +1,7 @@
 src/CMakeFiles/tunanotes.dir/tunanotes_autogen/mocs_compilation.cpp.o: \
  /home/tubbadu/code/Kirigami/TunaNotes/build/src/tunanotes_autogen/mocs_compilation.cpp \
  /usr/include/stdc-predef.h \
- /home/tubbadu/code/Kirigami/TunaNotes/build/src/tunanotes_autogen/EWIEGA46WW/moc_Highlighter.cpp \
+ /home/tubbadu/code/Kirigami/TunaNotes/build/src/tunanotes_autogen/EWIEGA46WW/moc_DBusReceiver.cpp \
  /usr/include/c++/12/memory /usr/include/c++/12/bits/stl_algobase.h \
  /usr/include/c++/12/x86_64-redhat-linux/bits/c++config.h \
  /usr/include/bits/wordsize.h \
@@ -95,10 +95,10 @@ src/CMakeFiles/tunanotes.dir/tunanotes_autogen/mocs_compilation.cpp.o: \
  /usr/include/c++/12/backward/auto_ptr.h \
  /usr/include/c++/12/pstl/glue_memory_defs.h \
  /usr/include/c++/12/pstl/execution_defs.h \
- /home/tubbadu/code/Kirigami/TunaNotes/build/src/tunanotes_autogen/EWIEGA46WW/../../../../src/Highlighter.h \
- /usr/include/qt5/QtGui/QSyntaxHighlighter \
- /usr/include/qt5/QtGui/qsyntaxhighlighter.h \
- /usr/include/qt5/QtGui/qtguiglobal.h /usr/include/qt5/QtCore/qglobal.h \
+ /home/tubbadu/code/Kirigami/TunaNotes/build/src/tunanotes_autogen/EWIEGA46WW/../../../../src/DBusReceiver.h \
+ /usr/include/qt5/QtCore/QObject /usr/include/qt5/QtCore/qobject.h \
+ /usr/include/qt5/QtCore/qobjectdefs.h \
+ /usr/include/qt5/QtCore/qnamespace.h /usr/include/qt5/QtCore/qglobal.h \
  /usr/include/c++/12/cstddef /usr/include/c++/12/utility \
  /usr/include/c++/12/bits/stl_relops.h \
  /usr/include/c++/12/initializer_list /usr/include/assert.h \
@@ -127,9 +127,6 @@ src/CMakeFiles/tunanotes.dir/tunanotes_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt5/QtCore/qglobalstatic.h \
  /usr/include/qt5/QtCore/qnumeric.h \
  /usr/include/qt5/QtCore/qversiontagging.h \
- /usr/include/qt5/QtGui/qtgui-config.h /usr/include/qt5/QtCore/qobject.h \
- /usr/include/qt5/QtCore/qobjectdefs.h \
- /usr/include/qt5/QtCore/qnamespace.h \
  /usr/include/qt5/QtCore/qobjectdefs_impl.h \
  /usr/include/qt5/QtCore/qstring.h /usr/include/qt5/QtCore/qchar.h \
  /usr/include/qt5/QtCore/qbytearray.h /usr/include/qt5/QtCore/qrefcount.h \
@@ -204,20 +201,39 @@ src/CMakeFiles/tunanotes.dir/tunanotes_autogen/mocs_compilation.cpp.o: \
  /usr/include/c++/12/bits/chrono.h /usr/include/c++/12/ratio \
  /usr/include/c++/12/limits /usr/include/c++/12/ctime \
  /usr/include/c++/12/bits/parse_numbers.h \
+ /usr/include/qt5/QtDBus/QDBusMessage \
+ /usr/include/qt5/QtDBus/qdbusmessage.h \
+ /usr/include/qt5/QtDBus/qtdbusglobal.h \
+ /usr/include/qt5/QtCore/qvariant.h /usr/include/qt5/QtCore/qmap.h \
+ /usr/include/qt5/QtCore/qhash.h /usr/include/qt5/QtCore/qobject.h \
+ /usr/include/c++/12/variant /usr/include/qt5/QtDBus/qdbuserror.h \
+ /usr/include/qt5/QtDBus/QDBusConnection \
+ /usr/include/qt5/QtDBus/qdbusconnection.h \
+ /usr/include/qt5/QtDBus/QDBusInterface \
+ /usr/include/qt5/QtDBus/qdbusinterface.h \
+ /usr/include/qt5/QtDBus/qdbusabstractinterface.h \
+ /usr/include/qt5/QtDBus/qdbusmessage.h \
+ /usr/include/qt5/QtDBus/qdbusextratypes.h \
+ /usr/include/qt5/QtDBus/qdbusconnection.h \
+ /usr/include/qt5/QtDBus/qdbuspendingcall.h \
+ /usr/include/qt5/QtCore/qshareddata.h \
+ /home/tubbadu/code/Kirigami/TunaNotes/build/src/tunanotes_autogen/EWIEGA46WW/moc_Highlighter.cpp \
+ /home/tubbadu/code/Kirigami/TunaNotes/build/src/tunanotes_autogen/EWIEGA46WW/../../../../src/Highlighter.h \
+ /usr/include/qt5/QtGui/QSyntaxHighlighter \
+ /usr/include/qt5/QtGui/qsyntaxhighlighter.h \
+ /usr/include/qt5/QtGui/qtguiglobal.h \
+ /usr/include/qt5/QtGui/qtgui-config.h \
  /usr/include/qt5/QtGui/qtextobject.h \
  /usr/include/qt5/QtGui/qtextformat.h /usr/include/qt5/QtGui/qcolor.h \
  /usr/include/qt5/QtGui/qrgb.h /usr/include/qt5/QtGui/qrgba64.h \
  /usr/include/qt5/QtGui/qfont.h /usr/include/qt5/QtGui/qwindowdefs.h \
  /usr/include/qt5/QtCore/qsharedpointer.h \
- /usr/include/qt5/QtCore/qshareddata.h /usr/include/qt5/QtCore/qhash.h \
  /usr/include/qt5/QtCore/qsharedpointer_impl.h \
- /usr/include/qt5/QtCore/qvariant.h /usr/include/qt5/QtCore/qmap.h \
- /usr/include/c++/12/variant /usr/include/qt5/QtGui/qpen.h \
- /usr/include/qt5/QtGui/qbrush.h /usr/include/qt5/QtCore/qpoint.h \
- /usr/include/qt5/QtGui/qmatrix.h /usr/include/qt5/QtGui/qpolygon.h \
- /usr/include/qt5/QtCore/qrect.h /usr/include/qt5/QtCore/qmargins.h \
- /usr/include/qt5/QtCore/qsize.h /usr/include/qt5/QtGui/qregion.h \
- /usr/include/qt5/QtCore/qdatastream.h \
+ /usr/include/qt5/QtGui/qpen.h /usr/include/qt5/QtGui/qbrush.h \
+ /usr/include/qt5/QtCore/qpoint.h /usr/include/qt5/QtGui/qmatrix.h \
+ /usr/include/qt5/QtGui/qpolygon.h /usr/include/qt5/QtCore/qrect.h \
+ /usr/include/qt5/QtCore/qmargins.h /usr/include/qt5/QtCore/qsize.h \
+ /usr/include/qt5/QtGui/qregion.h /usr/include/qt5/QtCore/qdatastream.h \
  /usr/include/qt5/QtCore/qiodevice.h /usr/include/qt5/QtCore/qline.h \
  /usr/include/qt5/QtGui/qtransform.h /usr/include/qt5/QtGui/qimage.h \
  /usr/include/qt5/QtGui/qpaintdevice.h \
@@ -237,7 +253,6 @@ src/CMakeFiles/tunanotes.dir/tunanotes_autogen/mocs_compilation.cpp.o: \
  /usr/include/qt5/QtCore/qregularexpression.h \
  /home/tubbadu/code/Kirigami/TunaNotes/build/src/tunanotes_autogen/EWIEGA46WW/moc_fileManager.cpp \
  /home/tubbadu/code/Kirigami/TunaNotes/build/src/tunanotes_autogen/EWIEGA46WW/../../../../src/fileManager.h \
- /usr/include/qt5/QtCore/QObject /usr/include/qt5/QtCore/qobject.h \
  /usr/include/qt5/QtCore/QFile /usr/include/qt5/QtCore/qfile.h \
  /usr/include/qt5/QtCore/QTextStream \
  /usr/include/qt5/QtCore/qtextstream.h /usr/include/qt5/QtCore/qlocale.h \

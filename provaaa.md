@@ -58,9 +58,11 @@ if ch == '#':
 if ch in "+*-":
 	type = "dotlist"
 if ch == ']':
-	if txt.beginsWith({'+' or '*' or '-'}{' ' or ''}'['{' ' or 'x' or 'X'}:```
+	if txt.beginsWith({'+' or '*' or '-'}{' ' or ''}'['{' ' or 'x' or 'X'}:
+```
 
  https://iampe.agenziaentrate.gov.it/sam/UI/Login?realm=/agenziaentrate
 
  
 
+ciaociao

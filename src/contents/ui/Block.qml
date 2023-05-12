@@ -30,6 +30,7 @@ Item{
 	property int setTabnum: 0
 	property int setHeadernum: 0
 	property string setSyntaxHighlightning: ""
+	//property bool loadingFinished: false
 	property int tabNum: 0
 	property alias checked: checkboxelement.checked
 	property int headerNum: 0
@@ -66,6 +67,13 @@ Item{
 			BlockFunctions.getType()
 		} else {
 			block.type = block.setType
+		}
+
+		if(index == document.lastLoadedIndex){
+			// the last block has been loaded
+			console.warn("loaded last element: " + text)
+			document.lastLoadedIndex = -1
+			document.unsaved = false
 		}
 	}
 
@@ -193,7 +201,7 @@ Item{
 				}
 
 				onTextChanged: {
-					document.unsaved = true
+					//document.unsaved = true
 				}
 			}
 		}
