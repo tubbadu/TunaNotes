@@ -1,4 +1,4 @@
-function getType(t = setText){
+function getType(t = text){
 	if(parseResult == undefined){
 		parseResult =  Parser.parseMarkdownLine(t)
 	}
@@ -27,8 +27,7 @@ function getType(t = setText){
 	type = Block.Type.PlainText;
 }
 
-function newBlock(set_text="", set_tabnum=0, set_headernum=0){
-	//blockModel.insert(index+1, {set_text: set_text, set_type: newType(), set_tabnum: set_tabnum, set_headernum: set_headernum}) // TODO set type
+function newBlock(set_text="", set_tabnum=0, set_headernum=0){ // TODO rename toremove 'set_'
 	document.insertBlock({index: index+1, new_text: set_text, new_type: newType(), new_tabnum: set_tabnum, new_headernum: set_headernum})
 	down()
 }

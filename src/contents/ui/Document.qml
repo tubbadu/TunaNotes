@@ -47,9 +47,7 @@ ListView {
 		let lines = Parser.splitStringExceptInCodeBlocks(file);
 		lastLoadedIndex = lines.length - 1
 		for(let i=0; i<lines.length; i++){
-			//blockModel.append({set_text: lines[i], set_type: -1, set_tabnum: -1, set_headernum: 0})
-			//let IsLastLoaded = (i === lines.length-1);
-			insertBlock({index: -1, new_text: lines[i]})//, isLastLoaded: (i === lines.length-1)})
+			insertBlock({index: -1, new_text: lines[i]})
 		}
 		document.currentIndex = 0
 		document.currentItem.forceFocus()
@@ -86,7 +84,7 @@ ListView {
 			new_type: -1,
 			new_tabnum: -1,
 			new_headernum: 0,
-			new_syntaxhighlightning: ""
+			new_syntaxhighlightning: "",
 			new_selection: [-1, -1]
 		}
 		let trueValues = {}
@@ -127,11 +125,11 @@ ListView {
         id: blockDelegate
 		Block{
 			id: blk
-			setText: set_text
-			setType: set_type
-			setTabnum: set_tabnum
-			setHeadernum: set_headernum
-			setSyntaxHighlightning: set_syntaxhighlightning
+			text: set_text
+			type: set_type
+			tabNum: set_tabnum
+			headerNum: set_headernum
+			syntaxHighlightning: set_syntaxhighlightning
 			//loadingFinished: isLastLoaded
 			//width: parent? parent.width : 0
 			//height: parent? parent.height : 0

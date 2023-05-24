@@ -26,12 +26,12 @@ Item{
 	property int type: Block.Type.PlainText
 	property alias text: txt.text
 	property string extext
-	property string setText: "*error*" // used to set an initial value
-	property int setType: -1
-	property int setTabnum: 0
-	property int setHeadernum: 0
-	property string setSyntaxHighlightning: ""
-	//property bool loadingFinished: false
+	//property string setText: "*error*" // used to set an initial value
+	//property int setType: -1
+	//property int setTabnum: 0
+	//property int setHeadernum: 0
+	//property string setSyntaxHighlightning: ""
+	property bool loadingFinished: false
 	property int tabNum: 0
 	property alias checked: checkboxelement.checked
 	property int headerNum: 0
@@ -61,14 +61,8 @@ Item{
 	property var deselect: txt.deselect
 
 	Component.onCompleted:{
-		text = setText
-		tabNum = setTabnum
-		headerNum = setHeadernum
-		syntaxHighlightning = setSyntaxHighlightning
-		if(setType == -1){
+		if(type == -1){
 			BlockFunctions.getType()
-		} else {
-			block.type = block.setType
 		}
 
 		if(index == document.lastLoadedIndex){
