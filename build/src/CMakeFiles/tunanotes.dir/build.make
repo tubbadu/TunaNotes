@@ -72,11 +72,14 @@ include src/CMakeFiles/tunanotes.dir/flags.make
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/resources.qrc
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: src/CMakeFiles/tunanotes_autogen.dir/AutoRcc_resources_EWIEGA46WW_Info.json
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/CheckBoxElement.qml
+src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/SyntaxNameField.qml
+src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/BlockTextEdit.qml
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/DotListElement.qml
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/IndentElement.qml
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/Clipboard.qml
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/syntaxDefinition.js
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/Document.qml
+src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/MouseAreaFunctions.js
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/keyHandler.js
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/blockFunctions.js
 src/tunanotes_autogen/EWIEGA46WW/qrc_resources.cpp: /home/tubbadu/code/Kirigami/TunaNotes/src/contents/ui/Block.qml

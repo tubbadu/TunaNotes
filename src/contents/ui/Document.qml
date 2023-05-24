@@ -19,7 +19,13 @@ ListView {
 	property string fileName: "/home/tubbadu/code/Kirigami/TunaNotes/provaaa.md"
 	property bool unsaved: false
 	property var remove: blockModel.remove
-	readonly property var noSelection: [-1, -1]
+	readonly property var noSelection: {
+		"blockStart": -1,
+		"blockEnd": -1,
+		"cursorStart": -1,
+		"cursorEnd": -1,
+		"refresh": function(){document.selection = document.selection}
+	} //[-1, -1]
 	property var selection: noSelection
 	property int lastLoadedIndex: -1
 
@@ -35,7 +41,10 @@ ListView {
 		readFile()
 	}
 
-	onCountChanged: {
+	onSelectionChanged: {
+		if(selection !== noSelection){
+			//document.currentItem.deselect() // there are probably better alternatives
+		}
 	}
 
 	function readFile(){
@@ -50,7 +59,6 @@ ListView {
 		document.currentIndex = 0
 		document.currentItem.forceFocus()
 		document.currentItem.setCursorPosition(-1)
-		console.warn("done loading file")
 	}
 
 	function save(){
@@ -95,8 +103,20 @@ ListView {
 		} else {
 			blockModel.insert(trueValues["index"], {set_text: trueValues["new_text"], set_type: trueValues["new_type"], set_tabnum: trueValues["new_tabnum"], set_headernum: trueValues["new_headernum"], set_syntaxhighlightning: trueValues["new_syntaxhighlightning"]})
 		}
-		console.warn("unsaved set true")
-		document.unsaved = true
+		if(document.lastLoadedIndex == -1){
+			console.warn("unsaved set true")
+			document.unsaved = true
+		}
+	}
+
+	function getIndexFromCoordinates(x, y){
+		for(let i=0; i<document.count; i++){
+			if(document.itemAtIndex(i) === document.itemAt(x, y)){
+				return i;
+			}
+		}
+		console.warn("not found")
+		return -1;
 	}
 
 	ListModel {
@@ -115,12 +135,12 @@ ListView {
 			//loadingFinished: isLastLoaded
 			//width: parent? parent.width : 0
 			//height: parent? parent.height : 0
-			Rectangle{
-				id: selection
+			/*Rectangle{
+				id: selectionxxx
 				anchors.fill: parent
 				color: parent.selected? Kirigami.Theme.highlightColor : "transparent"
 				z: -100
-			}
+			}*/
 		}
     }
 

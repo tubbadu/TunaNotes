@@ -110,3 +110,31 @@ function sync(){
 	// saves modifications to the model so that the buffer does not creates any problem
 	blockModel.set(index, {set_text: text, set_type: type, set_tabnum: tabNum, set_headernum: headerNum, set_syntaxhighlightning: syntaxHighlightning})
 }
+
+function getLinksCoordinates(text){
+	const regex = /(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,})/g;
+	const linkIndices = [];
+	let match;
+
+	while ((match = regex.exec(text)) !== null) {
+		const start = match.index;
+		const end = match.index + match[0].length;
+		var link = match[0];
+		if(!link.startsWith("http")){
+			link = "http://" + link
+		}
+		linkIndices.push([start, end, link]);
+	}
+
+	return(linkIndices);
+}
+
+function linkAtIndex(linksCoordinates, i){
+	let ret = "";
+	linksCoordinates.forEach(linkCoordinates => {
+		if(linkCoordinates[0] < i && i < linkCoordinates[1]){
+			ret = linkCoordinates[2]
+		}
+	});
+	return ret;
+}

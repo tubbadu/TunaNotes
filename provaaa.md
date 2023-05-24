@@ -1,12 +1,14 @@
 # TODO:
 
-- [ ]  fare cassa di legno
+<br>
 
-- [ ]  sistemare tunanotes
+- [ ] fare cassa di legno
 
-- [ ]  mettere i quadernoni da qualche altra parte
+- [ ] sistemare tunanotes
 
-- [x]  sistemare qtpanel (e trovare un nome migliore, tipo touchscreenGestures o qualcosa del genere)
+- [ ] mettere i quadernoni da qualche altra parte
+
+- [ ] sistemare qtpanel (e trovare un nome migliore, tipo touchscreenGestures o qualcosa del genere)
 
 ## urgenti:
 
@@ -14,7 +16,7 @@
 
 ## TunaNotes:
 
--  UN solo tipo per blocco (`enum`)
+- UN solo tipo per blocco (`enum`)
 
 -  dotlist
 
@@ -61,8 +63,4 @@ if ch == ']':
 	if txt.beginsWith({'+' or '*' or '-'}{' ' or ''}'['{' ' or 'x' or 'X'}:
 ```
 
- https://iampe.agenziaentrate.gov.it/sam/UI/Login?realm=/agenziaentrate
-
- 
-
-ciaociao
+https://iampe.agenziaentrate.gov.it/sam/UI/Login?realm=/agenziaentrate

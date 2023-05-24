@@ -98,29 +98,43 @@ function globalKey(event){
 function shiftUp(event){
 	accept(event)
 	if(document.selection === document.noSelection){
-		document.selection = [index, index]
-	} else if (document.selection[1] == index){
-		document.selection = [document.selection[0] - 1, document.selection[1]]
+		document.selection.blockStart = index
+		document.selection.blockEnd = index
+		document.selection.refresh()
+	} else if (document.selection.blockEnd == index){
+		document.selection.blockStart = document.selection.blockStart - 1
+		document.selection.blockEnd = document.selection.blockEnd
+		document.selection.refresh()
 	} else {
-		document.selection = [document.selection[0], document.selection[1] - 1]
+		//document.selection = [document.selection.blockStart, document.selection.blockEnd - 1]
+		document.selection.blockStart = document.selection.blockStart
+		document.selection.blockEnd = document.selection.blockEnd - 1
+		document.selection.refresh()
 	}
 
-	if(document.selection[0] < 0){
-		document.selection[0] = 0
+	if(document.selection.blockStart < 0){
+		document.selection.blockStart = 0
+		document.selection.refresh()
 	}
 }
 
 function shiftDown(event){
 	accept(event)
 	if(document.selection === document.noSelection){
-		document.selection = [index, index]
-	} else if (document.selection[0] == index){
-		document.selection = [document.selection[0], document.selection[1] + 1]
+		document.selection.blockStart = index
+		document.selection.blockEnd = index
+		document.selection.refresh()
+	} else if (document.selection.blockStart == index){
+		document.selection.blockStart = document.selection.blockStart
+		document.selection.blockEnd = document.selection.blockEnd + 1
+		document.selection.refresh()
 	} else {
-		document.selection = [document.selection[0] + 1, document.selection[1]]
+		document.selection.blockStart = document.selection.blockStart + 1
+		document.selection.blockEnd = document.selection.blockEnd
+		document.selection.refresh()
 	}
-	if(document.selection[1] > document.count-1){
-		document.selection[1] = document.count-1
+	if(document.selection.blockEnd > document.count-1){
+		document.selection.blockEnd = document.count-1
 	}
 }
 
@@ -145,7 +159,7 @@ function paste(event){
 		} else if(cursorPosition == 0){
 			// insert blocks before current block:
 			//blockModel.insert(index, {set_text: "", set_type: Block.Type.PlainText, set_tabnum: 0, set_headernum: 0})
-			document.insertBlock(index)
+			document.insertBlock({index: index})
 			currentIndex = index-1
 		}
 		pasteParsed(clipLines[0], currentItem)
@@ -154,7 +168,7 @@ function paste(event){
 			if(clipLines[i].trim().length > 0){
 				if(i != clipLines.length-1) {
 					//blockModel.insert(currentIndex+1, {set_text: "", set_type: Block.Type.PlainText, set_tabnum: 0, set_headernum: 0})
-					document.insertBlock(currentIndex+1)
+					document.insertBlock({index: currentIndex+1})
 				}
 				pasteParsed(clipLines[i], currentItem)
 				currentIndex++
@@ -180,6 +194,7 @@ function deleteSelected(event){
 			document.remove(i)
 		}
 	}
+	document.unsaved = true
 }
 
 function indentSelected(event, n){
@@ -216,6 +231,7 @@ function backspacePressed(event){
 					tabNum--
 				} else if(index > 0){
 					mergeBlocks(index, index-1)
+					document.unsaved = true;
 				}
 				accept(event)
 			}
@@ -232,9 +248,11 @@ function delPressed(event){
 				document.remove(index)
 				currentItem.setCursorPosition(0)
 				accept(event)
+				document.unsaved = true;
 			} else if(cursorPosition == txt.length && index < document.count-1){
 				accept(event)
 				mergeBlocks(index+1, index)
+				document.unsaved = true;
 			}
 		}
 	} else {
@@ -407,7 +425,7 @@ function enterPressed(event){
 	} else if(cursorPosition == 0){
 		// keep formatting of this block, and add a block before
 		//blockModel.insert(index, {set_text: "", set_type: Block.Type.PlainText, set_tabnum: 0, set_headernum: 0})
-		document.insertBlock(index)
+		document.insertBlock({index: index})
 	} else {
 		let subtext = text.substr(cursorPosition, text.length)
 		text = text.substr(0, cursorPosition)

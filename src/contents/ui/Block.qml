@@ -25,6 +25,7 @@ Item{
 	}
 	property int type: Block.Type.PlainText
 	property alias text: txt.text
+	property string extext
 	property string setText: "*error*" // used to set an initial value
 	property int setType: -1
 	property int setTabnum: 0
@@ -35,7 +36,7 @@ Item{
 	property alias checked: checkboxelement.checked
 	property int headerNum: 0
 	property alias syntaxHighlightning: syntaxNameField.text
-	property var parseResult//: Parser.parseMarkdownLine(setText)
+	property var parseResult
 	property alias cursorPosition: txt.cursorPosition
 	property alias selectedText: txt.selectedText
 	property alias selectionEnd: txt.selectionEnd
@@ -43,7 +44,7 @@ Item{
 	property alias length: txt.length
 	property var keyHandler: KeyHandler
 	property int delta: 0 // what is it used for?
-	property bool selected: document.selection[0] <= index && index <= document.selection[1] 
+	property bool selected: document.selection.blockStart <= index && index <= document.selection.blockEnd
 	property var sync: BlockFunctions.sync
 
 	property font normalFont
@@ -57,6 +58,7 @@ Item{
 	property var mergeBlocks: BlockFunctions.mergeBlocks 
 	property var newBlock: BlockFunctions.newBlock
 	property var getType: BlockFunctions.getType
+	property var deselect: txt.deselect
 
 	Component.onCompleted:{
 		text = setText
@@ -71,49 +73,21 @@ Item{
 
 		if(index == document.lastLoadedIndex){
 			// the last block has been loaded
-			console.warn("loaded last element: " + text)
 			document.lastLoadedIndex = -1
 			document.unsaved = false
 		}
 	}
 
-	TextField{
-		id: syntaxNameField
-		property int size: 150
-		visible: (type == Block.Type.CodeBlock)
-		text: "text"
-		anchors.right: parent.right
-		anchors.rightMargin: height/2
-		width: parent.width > (size + anchors.rightMargin * 2) ? size : parent.width - anchors.rightMargin * 2
-		//anchors.left: parent.width > (size + anchors.rightMargin + anchors.leftMargin) ? undefined : parent.left
-		//anchors.leftMargin: height/2
-		z: 10
-		horizontalAlignment: TextInput.AlignHCenter
+	onSelectedChanged: {
+		if(selected){
+			txt.selectAll()
+		} else {
+			txt.deselect()
+		}
+	}
 
-		onFocusChanged: {
-			if(focus){
-				selectAll()
-				document.currentIndex = index
-			}
-		}
-		onEditingFinished: {
-			if(text.trim().length < 1){
-				text = "text"
-			} else if(text.trim().length !== text.length){
-				text = text.trim()
-			}
-			sync()
-		}
-		onAccepted: {
-			forceFocus()
-		}
-		onVisibleChanged: {
-			if(visible){
-				delta = 30
-			} else {
-				delta = 0
-			}
-		}
+	SyntaxNameField{
+		id: syntaxNameField
 	}
 
 	Rectangle{
@@ -154,55 +128,10 @@ Item{
 				width: checkboxelement.width
 				//Layout.maximumHeight: txt.lineHeight
 				Layout.fillHeight: true
-			}	
+			}
 			
-			TextEdit{
+			BlockTextEdit{
 				id: txt
-				property int lineHeight: height / lineCount
-				Layout.fillWidth: true
-				Layout.leftMargin: 5
-				Layout.rightMargin: 5
-				font: type == Block.Type.CodeBlock? fixedFont : normalFont
-				color: Kirigami.Theme.textColor
-				selectionColor: Kirigami.Theme.highlightColor
-				selectedTextColor: Kirigami.Theme.highlightedTextColor
-				selectByMouse: true
-				wrapMode: (type == Block.Type.CodeBlock)? TextEdit.Wrap : TextEdit.Wrap // TODO implement scrollable codeblocks
-				tabStopDistance: checkboxelement.width
-				textFormat: TextEdit.PlainText //AutoText
-				onLinkActivated: Qt.openUrlExternally(link)
-
-				Keys.onPressed: (event) => KeyHandler.key(event)
-
-				onFocusChanged: {
-					sync()
-					// needed to set the current item on the clicked element
-					if(focus && (document.currentIndex !== index)){
-						document.currentIndex = index
-					}
-					document.selection = document.noSelection
-				}
-
-				SyntaxHighlighter{
-					property string defName: SyntaxDefinition.getLanguageName(syntaxHighlightning)
-					textEdit: ((type == Block.Type.CodeBlock) && (defName != "None") && (defName != undefined))? txt : dump
-					definition: defName
-				}
-
-				/*PlainTextFormat{
-					id: plainTextFormat
-					textDocument: txt.textDocument
-					// todo add enable
-				}*/
-
-				TextEdit{
-					id: dump // used only as secondary target
-					visible: false
-				}
-
-				onTextChanged: {
-					//document.unsaved = true
-				}
 			}
 		}
 	}
@@ -211,5 +140,27 @@ Item{
 		if(focus && !txt.focus){
 			txt.focus = true
 		}
+	}
+
+	onTextChanged: {
+		if(text != extext){
+			document.unsaved = true
+			extext = text
+		}
+	}
+	onSyntaxHighlightningChanged:{
+		document.unsaved = true
+	}
+	onHeaderNumChanged:{
+		document.unsaved = true
+	}
+	onCheckedChanged:{
+		document.unsaved = true
+	}
+	onTypeChanged:{
+		document.unsaved = true
+	}
+	onTabNumChanged:{
+		document.unsaved = true
 	}
 }

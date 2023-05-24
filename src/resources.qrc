@@ -12,5 +12,8 @@
 		<file alias="keyHandler.js">contents/ui/keyHandler.js</file>
 		<file alias="blockFunctions.js">contents/ui/blockFunctions.js</file>
 		<file alias="syntaxDefinition.js">contents/ui/syntaxDefinition.js</file>
+		<file alias="MouseAreaFunctions.js">contents/ui/MouseAreaFunctions.js</file>
+		<file alias="SyntaxNameField.qml">contents/ui/SyntaxNameField.qml</file>
+		<file alias="BlockTextEdit.qml">contents/ui/BlockTextEdit.qml</file>
     </qresource>
 </RCC>
