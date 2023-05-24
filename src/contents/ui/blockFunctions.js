@@ -108,7 +108,7 @@ function textSize(){
 
 function sync(){
 	// saves modifications to the model so that the buffer does not creates any problem
-	blockModel.set(index, {set_text: text, set_type: type, set_tabnum: tabNum, set_headernum: headerNum, set_syntaxhighlightning: syntaxHighlightning})
+	blockModel.set(index, {set_text: text, set_type: type, set_tabnum: tabNum, set_headernum: headerNum, set_syntaxhighlightning: syntaxHighlightning, set_selection: [selectionStart, selectionEnd]})
 }
 
 function getLinksCoordinates(text){

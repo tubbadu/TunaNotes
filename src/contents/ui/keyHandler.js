@@ -10,13 +10,13 @@ function key(event){
 		// Shift+Down
 		shiftDown(event)
 		return
-	} else if (modifiers == Qt.ControlModifier && key == Qt.Key_C && document.selection != document.noSelection) {
+	} else if (modifiers == Qt.ControlModifier && key == Qt.Key_C && !nothingSelected) {
 		// Ctrl+C
 		copySelected(event)
 	} else if (modifiers == Qt.ControlModifier && key == Qt.Key_V) {
 		// Cltr+V
 		paste(event)
-	} else if (modifiers == Qt.ControlModifier && key == Qt.Key_X && document.selection != document.noSelection) {
+	} else if (modifiers == Qt.ControlModifier && key == Qt.Key_X && !nothingSelected) {
 		// Ctrl+X
 		copySelected(event)
 		deleteSelected()
@@ -77,7 +77,7 @@ function key(event){
 		//accept(event)
 	}
 
-	if(document.selection !== document.noSelection){
+	if(!nothingSelected){
 		accept(event)
 	}
 }
@@ -97,7 +97,7 @@ function globalKey(event){
 
 function shiftUp(event){
 	accept(event)
-	if(document.selection === document.noSelection){
+	if(document.nothingSelected){
 		document.selection.blockStart = index
 		document.selection.blockEnd = index
 		document.selection.refresh()
@@ -106,7 +106,6 @@ function shiftUp(event){
 		document.selection.blockEnd = document.selection.blockEnd
 		document.selection.refresh()
 	} else {
-		//document.selection = [document.selection.blockStart, document.selection.blockEnd - 1]
 		document.selection.blockStart = document.selection.blockStart
 		document.selection.blockEnd = document.selection.blockEnd - 1
 		document.selection.refresh()
@@ -120,20 +119,25 @@ function shiftUp(event){
 
 function shiftDown(event){
 	accept(event)
-	if(document.selection === document.noSelection){
+	console.warn("start:", JSON.stringify(document.selection), JSON.stringify(document.noSelection), document.nothingSelected)
+	if(document.nothingSelected){
+		console.warn("caso 1:")
 		document.selection.blockStart = index
 		document.selection.blockEnd = index
 		document.selection.refresh()
 	} else if (document.selection.blockStart == index){
+		console.warn("caso 2")
 		document.selection.blockStart = document.selection.blockStart
 		document.selection.blockEnd = document.selection.blockEnd + 1
 		document.selection.refresh()
 	} else {
+		console.warn("caso 3:")
 		document.selection.blockStart = document.selection.blockStart + 1
 		document.selection.blockEnd = document.selection.blockEnd
 		document.selection.refresh()
 	}
 	if(document.selection.blockEnd > document.count-1){
+		console.warn("caso 4")
 		document.selection.blockEnd = document.count-1
 	}
 }
@@ -145,7 +149,7 @@ function copySelected(event){
 }
 
 function unselectSelected(){
-	document.selection = document.noSelection
+	document.unselectAll()
 }
 
 function paste(event){
@@ -219,7 +223,7 @@ function setTypeToSelected(event, t){ // not used
 }
 
 function backspacePressed(event){
-	if(document.selection === document.noSelection){
+	if(document.nothingSelected){
 		if(selectedText.length == 0){
 			if(cursorPosition == 0){
 				if ((type != Block.Type.CodeBlock) && (headerNum > 0)){
@@ -242,7 +246,7 @@ function backspacePressed(event){
 }
 
 function delPressed(event){
-	if(document.selection === document.noSelection){
+	if(document.nothingSelected){
 		if(selectedText.length == 0){
 			if(text.length == 0){
 				document.remove(index)
@@ -261,7 +265,7 @@ function delPressed(event){
 }
 
 function tabPressed(event){
-	if(document.selection === document.noSelection){
+	if(document.nothingSelected){
 		if(type != Block.Type.CodeBlock){
 			accept(event)
 			tabNum++
@@ -272,7 +276,7 @@ function tabPressed(event){
 }
 
 function backtabPressed(event){
-	if(document.selection === document.noSelection){
+	if(document.nothingSelected){
 		if(type != Block.Type.CodeBlock){
 			accept(event)
 		if(tabNum > 0){
@@ -336,7 +340,7 @@ function applyToHighlight(firstStr, lastStr){
 }
 
 function hashtagPressed(event){
-	if(document.selection === document.noSelection){
+	if(document.nothingSelected){
 		if(cursorPosition == 0){
 			accept(event)
 			if(headerNum < 6){

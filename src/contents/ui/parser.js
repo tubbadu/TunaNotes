@@ -116,47 +116,45 @@ function splitStringExceptInCodeBlocks(str) {
 	return lines;
 }
 
-function exportMarkdown(interval=document.noSelection){
-	console.warn("interval=", interval, document.noSelection)
+function exportMarkdown(interval = document.noSelection){
 	let doc = ""
 	for(let i=0; i<blockModel.count; i++){
-		if(interval == document.noSelection || (interval[0] <= i && i <= interval[1])){
-			let blk = blockModel.get(i)
-			if(blk){
-				let x = blk.set_tabnum > 0? blk.set_tabnum : 0
-				let line = "\t".repeat(x)
+		let blk = blockModel.get(i)
+		if(blk && blk){ //interval == document.noSelection || (interval[0] <= i && i <= interval[1])){
+			console.warn(">>", blk.data)
+			let x = blk.set_tabnum > 0? blk.set_tabnum : 0
+			let line = "\t".repeat(x)
 
-				if(blk.set_type == Block.Type.PlainText){
-
-				}else if(blk.set_type == Block.Type.Quote){
-					line += "> "
-				}else if(blk.set_type == Block.Type.DotList){
-					line += "- "
-				}else if(blk.set_type == Block.Type.CheckList){
-					if(blk.set_typechecked){
-						line += "- [x] "
-					}else{
-						line += "- [ ] "
-					}
-				}else if(blk.set_type == Block.Type.CodeBlock){
-					line += "```" + blk.set_syntaxhighlightning + "\n" // how can this work? I have no idea...
+			if(blk.set_type == Block.Type.PlainText){
+				// do nothing
+			}else if(blk.set_type == Block.Type.Quote){
+				line += "> "
+			}else if(blk.set_type == Block.Type.DotList){
+				line += "- "
+			}else if(blk.set_type == Block.Type.CheckList){
+				if(blk.set_typechecked){
+					line += "- [x] "
+				}else{
+					line += "- [ ] "
 				}
+			}else if(blk.set_type == Block.Type.CodeBlock){
+				line += "```" + blk.set_syntaxhighlightning + "\n" // how can this work? I have no idea...
+			}
 
-				line += "#".repeat(blk.set_headernum) + " ".repeat(blk.set_headernum > 0)
+			line += "#".repeat(blk.set_headernum) + " ".repeat(blk.set_headernum > 0)
 
-				line += blk.set_text
+			line += blk.set_text
 
-				if(blk.set_type == Block.Type.CodeBlock){
-					line += "\n```"
-				}
-				if(blk.set_text < 1){
-					line = "<br>"
-				}
-				if(doc.length > 0) {
-					doc += "\n\n"
-				} 
-				doc += line
-			}	
+			if(blk.set_type == Block.Type.CodeBlock){
+				line += "\n```"
+			}
+			if(blk.set_text < 1){
+				line = "<br>"
+			}
+			if(doc.length > 0) {
+				doc += "\n\n"
+			}
+			doc += line
 		}
 	}
 	return doc;

@@ -25,8 +25,9 @@ ListView {
 		"cursorStart": -1,
 		"cursorEnd": -1,
 		"refresh": function(){document.selection = document.selection}
-	} //[-1, -1]
-	property var selection: noSelection
+	}
+	property var selection: Object.assign({}, noSelection);
+	property bool nothingSelected: JSON.stringify(selection) === JSON.stringify(noSelection)
 	property int lastLoadedIndex: -1
 
 	model: blockModel
@@ -39,12 +40,6 @@ ListView {
 	
 	Component.onCompleted:{
 		readFile()
-	}
-
-	onSelectionChanged: {
-		if(selection !== noSelection){
-			//document.currentItem.deselect() // there are probably better alternatives
-		}
 	}
 
 	function readFile(){
@@ -72,6 +67,10 @@ ListView {
 		}
 	}
 
+	function unselectAll(){
+		document.selection = Object.assign({}, document.noSelection);
+	}
+
 	/*function insert(new_pos=-1, new_text="", new_type=-1, new_tabnum=-1, new_headernum=0, new_syntaxhighlightning = ""){
 		if(new_pos === -1){
 			blockModel.append({set_text: new_text, set_type: new_type, set_tabnum: new_tabnum, set_headernum: new_headernum, set_syntaxhighlightning: new_syntaxhighlightning})
@@ -88,6 +87,7 @@ ListView {
 			new_tabnum: -1,
 			new_headernum: 0,
 			new_syntaxhighlightning: ""
+			new_selection: [-1, -1]
 		}
 		let trueValues = {}
 		// load default values where unspecified

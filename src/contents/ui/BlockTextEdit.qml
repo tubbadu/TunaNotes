@@ -39,7 +39,7 @@ TextEdit{
 		if(focus && (document.currentIndex !== index)){
 			document.currentIndex = index
 		}
-		document.selection = document.noSelection
+		document.unselectAll()
 	}
 
 	onCursorPositionChanged: {
@@ -76,7 +76,7 @@ TextEdit{
 		onReleased: (mouse) => {
 			if(txt.startingSelection === txt.positionAt(mouse.x, mouse.y)){
 				MouseAreaFunctions.singleClick(mouse)
-			} else if(document.selection !== document.noSelection){
+			} else if(!nothingSelected){
 				txt.startingSelection = -1
 			} else if(txt.startingSelection !== -1){
 				/*txt.forceActiveFocus()
@@ -91,6 +91,10 @@ TextEdit{
 			if(txt.startingSelection !== -1){
 				txt.select(startingSelection, txt.positionAt(mouseX, mouseY))
 			}
+
+			if(document.selection.blockEnd === index || document.selection.blockStart === index){
+				console.warn("hereeee", index)
+			}
 		}
 
 		onMouseYChanged: {
@@ -98,18 +102,12 @@ TextEdit{
 				if(mouseY < 0 || mouseY > height){
 					let newindex = getIndexFromCoordinates(mouseX, mouseY + block.y)
 					if(newindex !== -1){
-						if(index < newindex){
-							document.selection.blockStart = index
-							document.selection.blockEnd = newindex
-							document.selection.refresh()
-						} else {
-							document.selection.blockStart = newindex
-							document.selection.blockEnd = index
-							document.selection.refresh()
-						}
+						document.selection.blockStart = Math.min(index, newindex)
+						document.selection.blockEnd = Math.max(index, newindex)
+						document.selection.refresh()
 					}
 				} else {
-					document.selection = document.noSelection
+					document.unselectAll()
 				}
 			}
 		}

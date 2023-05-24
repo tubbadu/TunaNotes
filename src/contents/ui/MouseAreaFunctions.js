@@ -6,7 +6,10 @@ function singleClick(mouse){
         if(document.currentIndex === index){
 
         }
+    } else {
+
     }
+    txt.forceActiveFocus()
 }
 
 function doubleClick(mouse){
