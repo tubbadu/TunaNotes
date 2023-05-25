@@ -137,3 +137,27 @@ function linkAtIndex(linksCoordinates, i){
 	});
 	return ret;
 }
+
+
+/*function calculateSelection(){
+	if(selected){
+		if(index === Math.min(document.selection.blockStart, document.selection.blockEnd)){
+			txt.select(Math.min(document.selection.cursorStart, document.selection.cursorEnd), txt.length)
+		} else if (index === Math.max(document.selection.blockStart, document.selection.blockEnd)){
+			txt.select(0, Math.min(document.selection.cursorStart, document.selection.cursorEnd))
+		} else {
+			txt.selectAll()
+		}
+	} else {
+		txt.deselect()
+	}
+}*/
+/*
+function refreshSelection(){
+	if(selected){
+		txt.select(cursorStart, cursorEnd)
+	} else {
+		txt.deselect()
+	}
+}
+*/

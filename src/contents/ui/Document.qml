@@ -20,14 +20,29 @@ ListView {
 	property bool unsaved: false
 	property var remove: blockModel.remove
 	readonly property var noSelection: {
+		"start": {
+			"index": -1,
+			"cursor": -1
+		},
+		"end": {
+			"index": -1,
+			"cursor": -1
+		},
+		"refresh": function(){document.selection = document.selection}
+	}
+
+	/*
+	 * {
 		"blockStart": -1,
 		"blockEnd": -1,
 		"cursorStart": -1,
 		"cursorEnd": -1,
 		"refresh": function(){document.selection = document.selection}
 	}
+	*/
 	property var selection: Object.assign({}, noSelection);
 	property bool nothingSelected: JSON.stringify(selection) === JSON.stringify(noSelection)
+	property bool selectionMode: false
 	property int lastLoadedIndex: -1
 
 	model: blockModel

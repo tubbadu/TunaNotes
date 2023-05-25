@@ -71,10 +71,17 @@ TextEdit{
 		cursorShape: isHoveringALink? Qt.PointingHandCursor : Qt.ArrowCursor
 
 		onPressed: (mouse) => {
-			txt.startingSelection = txt.positionAt(mouse.x, mouse.y)
+			//txt.startingSelection = txt.positionAt(mouse.x, mouse.y)
+			document.selection.start.index = index
+			document.selection.end.index = index
+			document.selection.start.cursor = txt.positionAt(mouse.x, mouse.y)
+			document.selection.end.cursor = txt.positionAt(mouse.x, mouse.y)
+			document.selection.refresh()
+			document.selectionMode = true
 		}
 		onReleased: (mouse) => {
-			if(txt.startingSelection === txt.positionAt(mouse.x, mouse.y)){
+			document.selectionMode = false
+			if(txt.startingSelection === txt.positionAt(mouse.x, mouse.y + block.y)){
 				MouseAreaFunctions.singleClick(mouse)
 			} else if(!nothingSelected){
 				txt.startingSelection = -1
@@ -88,33 +95,37 @@ TextEdit{
 		}
 
 		onMouseXChanged: {
-			if(txt.startingSelection !== -1){
-				txt.select(startingSelection, txt.positionAt(mouseX, mouseY))
-			}
-
-			if(document.selection.blockEnd === index || document.selection.blockStart === index){
-				console.warn("hereeee", index)
+			if(document.selectionMode){
+				let i = document.indexAt(mouseX, mouseY + block.y)
+				let item = document.itemAtIndex(i)
+				if(item){
+					document.selection.end.index = i
+					document.selection.end.cursor = item.positionAt(mouseX, mouseY + block.y - item.y)
+					document.selection.refresh()
+				} else {
+					console.warn("WARNING: invalid item at index", i)
+				}
 			}
 		}
 
 		onMouseYChanged: {
-			if(txt.startingSelection !== -1){
-				if(mouseY < 0 || mouseY > height){
-					let newindex = getIndexFromCoordinates(mouseX, mouseY + block.y)
-					if(newindex !== -1){
-						document.selection.blockStart = Math.min(index, newindex)
-						document.selection.blockEnd = Math.max(index, newindex)
-						document.selection.refresh()
-					}
+			if(document.selectionMode){
+				let i = document.indexAt(mouseX, mouseY + block.y)
+				let item = document.itemAtIndex(i)
+				if(item){
+					document.selection.end.index = i
+					document.selection.end.cursor = item.positionAt(mouseX, mouseY + block.y - item.y)
+					document.selection.refresh()
+					document.itemAtIndex(document.selection.end.index).select(document.selection.end.cursor, 0)
 				} else {
-					document.unselectAll()
+					console.warn("WARNING: invalid item at index", i)
 				}
 			}
 		}
 
 		onCanceled: {
 			txt.startingSelection = -1
-			console.warn("canceled")
+			console.warn("WARNING: canceled selection")
 		}
 
 		onDoubleClicked: (mouse) => {

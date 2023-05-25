@@ -26,11 +26,7 @@ Item{
 	property int type: Block.Type.PlainText
 	property alias text: txt.text
 	property string extext
-	//property string setText: "*error*" // used to set an initial value
-	//property int setType: -1
-	//property int setTabnum: 0
-	//property int setHeadernum: 0
-	//property string setSyntaxHighlightning: ""
+
 	property bool loadingFinished: false
 	property int tabNum: 0
 	property alias checked: checkboxelement.checked
@@ -44,7 +40,10 @@ Item{
 	property alias length: txt.length
 	property var keyHandler: KeyHandler
 	property int delta: 0 // what is it used for?
-	property bool selected: document.selection.blockStart <= index && index <= document.selection.blockEnd
+	property var selection: document.selection
+	property bool isSelected: Math.min(document.selection.start.block, document.selection.end.block) < index && index < Math.max(document.selection.start.block, document.selection.end.block)
+	//property int cursorStart: (index === Math.min(document.selection.start.block, document.selection.end.block))? document.selection.start.cursor : 0
+	//property int cursorEnd: (index === Math.max(document.selection.start.block, document.selection.end.block))? document.selection.end.cursor : txt.length
 	property var sync: BlockFunctions.sync
 
 	property font normalFont
@@ -59,6 +58,8 @@ Item{
 	property var newBlock: BlockFunctions.newBlock
 	property var getType: BlockFunctions.getType
 	property var deselect: txt.deselect
+	property var positionAt: txt.positionAt
+	property var select: txt.select
 
 	Component.onCompleted:{
 		if(type == -1){
@@ -72,8 +73,8 @@ Item{
 		}
 	}
 
-	onSelectedChanged: {
-		if(selected){
+	onSelectionChanged: {
+		if(isSelected){
 			txt.selectAll()
 		} else {
 			txt.deselect()

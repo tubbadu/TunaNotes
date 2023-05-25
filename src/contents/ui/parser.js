@@ -120,7 +120,7 @@ function exportMarkdown(interval = document.noSelection){
 	let doc = ""
 	for(let i=0; i<blockModel.count; i++){
 		let blk = blockModel.get(i)
-		if(blk && blk){ //interval == document.noSelection || (interval[0] <= i && i <= interval[1])){
+		if(blk && blk.set_selection !== [-1, -1]){ //interval == document.noSelection || (interval[0] <= i && i <= interval[1])){
 			console.warn(">>", blk.data)
 			let x = blk.set_tabnum > 0? blk.set_tabnum : 0
 			let line = "\t".repeat(x)
